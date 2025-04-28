@@ -66,6 +66,7 @@
       <DependentUpon>SteamAccountsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="SteamAccountService.cs" />
+    <Compile Include="Test.cs" />
     <Page Include="AddEditAccountDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
