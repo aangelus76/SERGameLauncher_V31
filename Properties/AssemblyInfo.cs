@@ -1,43 +1,33 @@
 ﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Windows;
 
 // Les informations générales relatives à un assembly dépendent de
-// l'ensemble d'attributs suivant. Pour modifier les informations
+// l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("SERGamesLauncher_V31")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SER-Games Launcher")]
+[assembly: AssemblyDescription("Lanceur centralisé pour différentes plateformes de jeux")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SERGamesLauncher_V31")]
-[assembly: AssemblyCopyright("Copyright ©  2025")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Saint-Étienne-du-Rouvray")]
+[assembly: AssemblyProduct("SERGamesLauncher")]
+[assembly: AssemblyCopyright("Copyright © 2025")]
+[assembly: AssemblyTrademark("Angelus76")]
 [assembly: AssemblyCulture("")]
 
 // L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly
 // aux composants COM. Si vous devez accéder à un type dans cet assembly à partir de
-// COM, affectez la valeur True à l'attribut ComVisible sur ce type.
-[assembly: ComVisible(false)]
+// COM, affectez la valeur true à l'attribut ComVisible sur ce type.
+[assembly: ComVisible(true)]
 
-//Pour commencer à générer des applications localisables, définissez
-//<UICulture>CultureUtiliséePourCoder</UICulture> dans votre fichier .csproj
-//dans <PropertyGroup>.  Par exemple, si vous utilisez le français
-//dans vos fichiers sources, définissez <UICulture> à fr-FR. Puis, supprimez les marques de commentaire de
-//l'attribut NeutralResourceLanguage ci-dessous. Mettez à jour "fr-FR" dans
-//la ligne ci-après pour qu'elle corresponde au paramètre UICulture du fichier projet.
+// Pour commencer à générer des applications localisables, définissez
+// <UICulture>CultureUtiliséePourCoder</UICulture> dans votre fichier .csproj
+// dans <PropertyGroup>.  Par exemple, si vous utilisez le français
+// dans vos fichiers sources, définissez <UICulture> à fr-FR.
+[assembly: NeutralResourcesLanguage("fr-FR")]
 
-//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
-
-
-[assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //où se trouvent les dictionnaires de ressources spécifiques à un thème
-                                     //(utilisé si une ressource est introuvable dans la page,
-                                     // ou dictionnaires de ressources de l'application)
-    ResourceDictionaryLocation.SourceAssembly //où se trouve le dictionnaire de ressources générique
-                                              //(utilisé si une ressource est introuvable dans la page,
-                                              // dans l'application ou dans l'un des dictionnaires de ressources spécifiques à un thème)
-)]
-
+// Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
+[assembly: Guid("bbc7a46f-dbae-4a30-8ba6-3893745d4908")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //
@@ -46,5 +36,6 @@ using System.Windows;
 //      Numéro de build
 //      Révision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("3.1.0.0")]           // Version produit : 3.1.0.0 (ce qui s'affiche dans les propriétés Windows)
+[assembly: AssemblyFileVersion("3.1")]  // Semaine, Jours, Année, N° de modification (31 = V31)
+[assembly: AssemblyInformationalVersion("W18-25.A")] // Version marketing

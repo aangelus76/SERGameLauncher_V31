@@ -70,6 +70,7 @@
       <DependentUpon>SteamAccountsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panel\Steam\SteamAccountService.cs" />
+    <Compile Include="VersionUtility.cs" />
     <Page Include="Panel\Path\AddEditPathDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

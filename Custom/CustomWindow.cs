@@ -60,13 +60,15 @@ namespace SERGamesLauncher_V31
         // Événements des boutons
         protected virtual void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            // Afficher les informations personnalisées sur le programme
-            // Utiliser une fenêtre plus large (450px) avec un bouton plus large (150px)
+            string aboutText = $"Créateur : Belcomb\n" +
+                              $"Version : {VersionUtility.ShortVersion}\n" +
+                              $"Build :  {VersionUtility.InformationalVersion}\n" +
+                              $"Dernière mise à jour : {VersionUtility.BuildDate.ToString("dd/MM/yyyy")}\n" +
+                              $"Droit d'exploitation : Saint-Étienne-du-Rouvray\n" +
+                              $"Description : Lanceur centralisé de plateformes de jeux";
+
             CustomMessageBox.Show(this,
-                "Créateur : Belcombe\n" +
-                "Version : 3\n" +
-                "Build : W18.25.C\n" +
-                "Distribution : Exclusivement pour Saint-Étienne-du-Rouvray",
+                aboutText,
                 "À propos de SER-Games Launcher",
                 MessageBoxButton.OK, MessageBoxImage.Information,
                 450, 250, 150, 30);

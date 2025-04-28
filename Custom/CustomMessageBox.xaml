@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SERGamesLauncher_V31"
         mc:Ignorable="d"
         Title="Message" 
-        Height="200" 
+        Height="216" 
         Width="400"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -67,7 +67,7 @@
             </ScrollViewer>
 
             <!-- Boutons -->
-            <Grid Grid.Row="2" x:Name="buttonGrid">
+            <Grid Grid.Row="2" x:Name="buttonGrid" Margin="0,13,0,7">
                 <!-- Grille dynamique pour les boutons, configurée par code -->
             </Grid>
         </Grid>
