@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Paths>
+    <Path id="b76e023a-5d0b-4269-8926-d1b7687fa99a">
+      <PlatformName>Roblox</PlatformName>
+      <Path>C:\Users\Admin\AppData\Local\Roblox\Versions\version-c2c9efad42eb44e5\RobloxPlayerLauncher.exe</Path>
+      <IsUrl>false</IsUrl>
+      <LaunchArguments></LaunchArguments>
+    </Path>
+  </Paths>
+</Configuration>

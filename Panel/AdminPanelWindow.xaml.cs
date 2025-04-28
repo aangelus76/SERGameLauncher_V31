@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Panel/AdminPanelWindow.xaml.cs
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,6 +9,9 @@ namespace SERGamesLauncher_V31
     {
         // Instance du contrôle utilisateur pour la visibilité des plateformes
         private Panel.PlatformVisibilityControl platformVisibilityControl;
+
+        // Instance du contrôle utilisateur pour les chemins d'applications
+        private PathConfigsControl pathConfigsControl;
 
         public AdminPanelWindow()
         {
@@ -36,7 +40,8 @@ namespace SERGamesLauncher_V31
             // Créer une instance du contrôle de visibilité des plateformes
             platformVisibilityControl = new Panel.PlatformVisibilityControl();
 
-            // Ici vous pourrez initialiser d'autres contrôles à l'avenir
+            // Créer une instance du contrôle de gestion des chemins d'applications
+            pathConfigsControl = new PathConfigsControl();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -101,14 +106,8 @@ namespace SERGamesLauncher_V31
 
         private void btnAppPaths_Click(object sender, RoutedEventArgs e)
         {
-            contentPresenter.Content = new TextBlock()
-            {
-                Text = "Configuration des chemins d'applications",
-                Foreground = System.Windows.Media.Brushes.White,
-                FontSize = 24,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
+            // Afficher le contrôle de gestion des chemins d'applications
+            contentPresenter.Content = pathConfigsControl;
         }
     }
 }

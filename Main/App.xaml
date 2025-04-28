@@ -18,6 +18,7 @@
 
         <!-- Convertisseurs -->
         <local:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
+        <local:BoolToPathTypeConverter x:Key="BoolToPathTypeConverter"/>
 
         <!-- Images -->
         <BitmapImage x:Key="SteamLogo" UriSource="/SERGamesLauncher_V31;component/Images/Steam.png"/>
