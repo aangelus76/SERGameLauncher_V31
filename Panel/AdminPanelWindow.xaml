@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Panneau d'administration" 
         Height="600" 
-        Width="900"
+        Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"

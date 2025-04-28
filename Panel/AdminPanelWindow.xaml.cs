@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SERGamesLauncher_V31
@@ -51,15 +52,33 @@ namespace SERGamesLauncher_V31
         // Gestion des boutons du menu
         private void btnSteamAccounts_Click(object sender, RoutedEventArgs e)
         {
-            // Pour l'instant, afficher juste un message (à remplacer par un contrôle plus tard)
-            contentPresenter.Content = new TextBlock()
+            try
             {
-                Text = "Gestion des comptes Steam",
-                Foreground = System.Windows.Media.Brushes.White,
-                FontSize = 24,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
+                // Créer une nouvelle instance du contrôle
+                SteamAccountsControl steamAccountsControl = new SteamAccountsControl();
+
+                // Afficher le contrôle
+                contentPresenter.Content = steamAccountsControl;
+
+                // Pour déboguer
+                System.Diagnostics.Debug.WriteLine("SteamAccountsControl chargé avec succès");
+            }
+            catch (Exception ex)
+            {
+                // Afficher l'erreur si quelque chose ne va pas
+                contentPresenter.Content = new TextBlock()
+                {
+                    Text = $"Erreur lors du chargement du contrôle : {ex.Message}",
+                    Foreground = System.Windows.Media.Brushes.Red,
+                    FontSize = 18,
+                    TextWrapping = TextWrapping.Wrap,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                // Pour déboguer
+                System.Diagnostics.Debug.WriteLine($"Erreur : {ex.Message}\n{ex.StackTrace}");
+            }
         }
 
         private void btnPlatformVisibility_Click(object sender, RoutedEventArgs e)
