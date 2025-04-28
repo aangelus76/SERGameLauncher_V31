@@ -58,16 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEditAccountDialog.xaml.cs">
+    <Compile Include="Panel\Steam\AddEditAccountDialog.xaml.cs">
       <DependentUpon>AddEditAccountDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SteamAccount.cs" />
-    <Compile Include="SteamAccountsControl.xaml.cs">
+    <Compile Include="Panel\Steam\SteamAccount.cs" />
+    <Compile Include="Panel\Steam\SteamAccountsControl.xaml.cs">
       <DependentUpon>SteamAccountsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SteamAccountService.cs" />
-    <Compile Include="Test.cs" />
-    <Page Include="AddEditAccountDialog.xaml">
+    <Compile Include="Panel\Steam\SteamAccountService.cs" />
+    <Page Include="Panel\Steam\AddEditAccountDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,7 +106,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SteamAccountsControl.xaml">
+    <Page Include="Panel\Steam\SteamAccountsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,9 +168,7 @@
   <ItemGroup>
     <Resource Include="IconeLauncher.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Panel\Steam\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="System.Text.Json">
       <Version>9.0.4</Version>
