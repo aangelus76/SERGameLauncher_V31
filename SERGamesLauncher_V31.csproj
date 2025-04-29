@@ -58,15 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEditFolderDialog.xaml.cs">
+    <Compile Include="Panel\PermissionFolders\AddEditFolderDialog.xaml.cs">
       <DependentUpon>AddEditFolderDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FolderPermission.cs" />
-    <Compile Include="FolderPermissionConverters.cs" />
-    <Compile Include="FolderPermissionsControl.xaml.cs">
+    <Compile Include="Panel\PermissionFolders\FolderPermission.cs" />
+    <Compile Include="Panel\PermissionFolders\FolderPermissionConverters.cs" />
+    <Compile Include="Panel\PermissionFolders\FolderPermissionsControl.xaml.cs">
       <DependentUpon>FolderPermissionsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FolderPermissionService.cs" />
+    <Compile Include="Panel\PermissionFolders\FolderPermissionService.cs" />
     <Compile Include="Panel\Path\AddEditPathDialog.xaml.cs">
       <DependentUpon>AddEditPathDialog.xaml</DependentUpon>
     </Compile>
@@ -80,11 +80,11 @@
     </Compile>
     <Compile Include="Panel\Steam\SteamAccountService.cs" />
     <Compile Include="VersionUtility.cs" />
-    <Page Include="AddEditFolderDialog.xaml">
+    <Page Include="Panel\PermissionFolders\AddEditFolderDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FolderPermissionsControl.xaml">
+    <Page Include="Panel\PermissionFolders\FolderPermissionsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
