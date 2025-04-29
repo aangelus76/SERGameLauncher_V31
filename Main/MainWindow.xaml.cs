@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,13 +15,37 @@ namespace SERGamesLauncher_V31
 
         public MainWindow()
         {
+            FolderPermissionsControl.ResetFirstLoadFlag();
+
             InitializeComponent();
 
             // Initialiser le dictionnaire de boutons après l'initialisation des composants
             InitializePlatformButtons();
 
+            ApplyFolderProtections();
+
             // Appliquer la configuration de visibilité des plateformes
             ApplyPlatformVisibility();
+        }
+
+        /// <summary>
+        /// Applique les protections de dossiers configurées pour le démarrage
+        /// </summary>
+        private void ApplyFolderProtections()
+        {
+            try
+            {
+                // Charger la configuration des dossiers protégés
+                var folders = FolderPermissionService.LoadFolderPermissions();
+
+                // Appliquer les protections pour les dossiers configurés
+                FolderPermissionService.ApplyStartupProtections(folders);
+            }
+            catch (Exception ex)
+            {
+                // En cas d'erreur, ne pas afficher de message pour ne pas perturber le démarrage
+                System.Diagnostics.Debug.WriteLine($"Erreur lors de l'application des protections de dossiers: {ex.Message}");
+            }
         }
 
         // Initialiser le dictionnaire de boutons

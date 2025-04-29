@@ -12,6 +12,7 @@ namespace SERGamesLauncher_V31
 
         // Instance du contrôle utilisateur pour les chemins d'applications
         private PathConfigsControl pathConfigsControl;
+        private FolderPermissionsControl folderPermissionsControl;
 
         public AdminPanelWindow()
         {
@@ -42,6 +43,7 @@ namespace SERGamesLauncher_V31
 
             // Créer une instance du contrôle de gestion des chemins d'applications
             pathConfigsControl = new PathConfigsControl();
+            folderPermissionsControl = new FolderPermissionsControl();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -94,14 +96,8 @@ namespace SERGamesLauncher_V31
 
         private void btnFolderPermissions_Click(object sender, RoutedEventArgs e)
         {
-            contentPresenter.Content = new TextBlock()
-            {
-                Text = "Gestion des permissions dossiers",
-                Foreground = System.Windows.Media.Brushes.White,
-                FontSize = 24,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
+            // Afficher le contrôle de gestion des permissions de dossiers
+            contentPresenter.Content = folderPermissionsControl;
         }
 
         private void btnAppPaths_Click(object sender, RoutedEventArgs e)

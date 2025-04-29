@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\Main\App.xaml
-9-1766820150
+112070915478
 
-23-195743006
+2829254005
 24-1710522784
-Panel\Path\AddEditPathDialog.xaml;Panel\Steam\AddEditAccountDialog.xaml;Panel\AdminPanelWindow.xaml;Custom\CustomMessageBox.xaml;Main\MainWindow.xaml;Custom\PasswordDialog.xaml;Panel\ButtonView\PlatformVisibilityControl.xaml;Panel\Steam\SteamAccountsControl.xaml;Panel\Path\PathConfigsControl.xaml;
+AddEditFolderDialog.xaml;FolderPermissionsControl.xaml;Panel\Path\AddEditPathDialog.xaml;Panel\Steam\AddEditAccountDialog.xaml;Panel\AdminPanelWindow.xaml;Custom\CustomMessageBox.xaml;Main\MainWindow.xaml;Custom\PasswordDialog.xaml;Panel\ButtonView\PlatformVisibilityControl.xaml;Panel\Steam\SteamAccountsControl.xaml;Panel\Path\PathConfigsControl.xaml;
 
-False
+True
 

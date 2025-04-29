@@ -2,6 +2,32 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.8": {
+      "Costura.Fody/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "6.8.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Costura.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "build/Costura.Fody.props": {},
+          "build/Costura.Fody.targets": {}
+        }
+      },
+      "Fody/6.8.2": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
         "type": "package",
         "dependencies": {
@@ -195,6 +221,32 @@
       }
     },
     ".NETFramework,Version=v4.8/win": {
+      "Costura.Fody/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "6.8.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Costura.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "build/Costura.Fody.props": {},
+          "build/Costura.Fody.targets": {}
+        }
+      },
+      "Fody/6.8.2": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
         "type": "package",
         "dependencies": {
@@ -388,6 +440,32 @@
       }
     },
     ".NETFramework,Version=v4.8/win-arm64": {
+      "Costura.Fody/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "6.8.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Costura.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "build/Costura.Fody.props": {},
+          "build/Costura.Fody.targets": {}
+        }
+      },
+      "Fody/6.8.2": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
         "type": "package",
         "dependencies": {
@@ -581,6 +659,32 @@
       }
     },
     ".NETFramework,Version=v4.8/win-x64": {
+      "Costura.Fody/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "6.8.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Costura.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "build/Costura.Fody.props": {},
+          "build/Costura.Fody.targets": {}
+        }
+      },
+      "Fody/6.8.2": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
         "type": "package",
         "dependencies": {
@@ -774,6 +878,32 @@
       }
     },
     ".NETFramework,Version=v4.8/win-x86": {
+      "Costura.Fody/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "6.8.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Costura.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "build/Costura.Fody.props": {},
+          "build/Costura.Fody.targets": {}
+        }
+      },
+      "Fody/6.8.2": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
         "type": "package",
         "dependencies": {
@@ -968,6 +1098,61 @@
     }
   },
   "libraries": {
+    "Costura.Fody/6.0.0": {
+      "sha512": "3Uriu9GJABMivG0wXMJs6NQ7FNE3pylir1gZEBAWDvpii3cnrmxXnOG44MMDuIVOIk/Xhef7WZFsaCNV+py9qA==",
+      "type": "package",
+      "path": "costura.fody/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Costura.Fody.props",
+        "build/Costura.Fody.targets",
+        "costura.fody.6.0.0.nupkg.sha512",
+        "costura.fody.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Costura.dll",
+        "lib/netstandard2.0/Costura.pdb",
+        "lib/netstandard2.0/Costura.xml",
+        "netclassicweaver/Costura.Fody.dll",
+        "netclassicweaver/Costura.Fody.xcf",
+        "netstandardweaver/Costura.Fody.dll",
+        "netstandardweaver/Costura.Fody.xcf"
+      ]
+    },
+    "Fody/6.8.2": {
+      "sha512": "sjGHrtGS1+kcrv99WXCvujOFBTQp4zCH3ZC9wo2LAtVaJkuLpHghQx3y4k1Q8ZKuDAbEw+HE6ZjPUJQK3ejepQ==",
+      "type": "package",
+      "path": "fody/6.8.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License.txt",
+        "build/Fody.targets",
+        "fody.6.8.2.nupkg.sha512",
+        "fody.nuspec",
+        "netclassictask/Fody.dll",
+        "netclassictask/FodyCommon.dll",
+        "netclassictask/FodyHelpers.dll",
+        "netclassictask/FodyIsolated.dll",
+        "netclassictask/Mono.Cecil.Pdb.dll",
+        "netclassictask/Mono.Cecil.Pdb.pdb",
+        "netclassictask/Mono.Cecil.Rocks.dll",
+        "netclassictask/Mono.Cecil.Rocks.pdb",
+        "netclassictask/Mono.Cecil.dll",
+        "netclassictask/Mono.Cecil.pdb",
+        "netstandardtask/Fody.dll",
+        "netstandardtask/FodyCommon.dll",
+        "netstandardtask/FodyHelpers.dll",
+        "netstandardtask/FodyIsolated.dll",
+        "netstandardtask/Mono.Cecil.Pdb.dll",
+        "netstandardtask/Mono.Cecil.Pdb.pdb",
+        "netstandardtask/Mono.Cecil.Rocks.dll",
+        "netstandardtask/Mono.Cecil.Rocks.pdb",
+        "netstandardtask/Mono.Cecil.dll",
+        "netstandardtask/Mono.Cecil.pdb",
+        "readme.md"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
       "sha512": "9VGI5kxIvrNG2mqLQZnUR6y/3fcnygD8eNpHR+CqfbnIXvea6nehnYknDKQTxZVPMpzpNca+7DxLBmpdB3q0Bw==",
       "type": "package",
@@ -1335,6 +1520,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
+      "Costura.Fody >= 6.0.0",
       "System.Text.Json >= 9.0.4"
     ]
   },
@@ -1376,6 +1562,12 @@
     "frameworks": {
       "net48": {
         "dependencies": {
+          "Costura.Fody": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
           "System.Text.Json": {
             "target": "Package",
             "version": "[9.0.4, )"

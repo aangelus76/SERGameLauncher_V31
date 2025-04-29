@@ -58,6 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddEditFolderDialog.xaml.cs">
+      <DependentUpon>AddEditFolderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FolderPermission.cs" />
+    <Compile Include="FolderPermissionConverters.cs" />
+    <Compile Include="FolderPermissionsControl.xaml.cs">
+      <DependentUpon>FolderPermissionsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FolderPermissionService.cs" />
     <Compile Include="Panel\Path\AddEditPathDialog.xaml.cs">
       <DependentUpon>AddEditPathDialog.xaml</DependentUpon>
     </Compile>
@@ -71,6 +80,14 @@
     </Compile>
     <Compile Include="Panel\Steam\SteamAccountService.cs" />
     <Compile Include="VersionUtility.cs" />
+    <Page Include="AddEditFolderDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FolderPermissionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Panel\Path\AddEditPathDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,6 +205,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <PackageReference Include="Costura.Fody">
+      <Version>6.0.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="System.Text.Json">
       <Version>9.0.4</Version>
     </PackageReference>

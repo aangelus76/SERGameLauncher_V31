@@ -19,6 +19,9 @@
         <!-- Convertisseurs -->
         <local:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
         <local:BoolToPathTypeConverter x:Key="BoolToPathTypeConverter"/>
+        <!-- Nouveaux convertisseurs pour les permissions de dossiers -->
+        <local:BoolToStringConverter x:Key="BoolToStringConverter"/>
+        <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
 
         <!-- Images -->
         <BitmapImage x:Key="SteamLogo" UriSource="/SERGamesLauncher_V31;component/Images/Steam.png"/>
