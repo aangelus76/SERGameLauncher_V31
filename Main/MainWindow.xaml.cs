@@ -26,6 +26,33 @@ namespace SERGamesLauncher_V31
 
             // Appliquer la configuration de visibilité des plateformes
             ApplyPlatformVisibility();
+
+            this.Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Verrouiller tous les dossiers à la fermeture de l'application
+            try
+            {
+                // Charger la configuration des dossiers protégés
+                var folders = FolderPermissionService.LoadFolderPermissions();
+
+                // Verrouiller tous les dossiers
+                foreach (var folder in folders)
+                {
+                    folder.IsProtectionEnabled = true;
+                    FolderPermissionService.ApplyProtection(folder);
+                }
+
+                // Sauvegarder les modifications
+                FolderPermissionService.SaveFolderPermissions(folders);
+            }
+            catch (Exception ex)
+            {
+                // En cas d'erreur, ne pas bloquer la fermeture de l'application
+                System.Diagnostics.Debug.WriteLine($"Erreur lors du verrouillage des dossiers à la fermeture: {ex.Message}");
+            }
         }
 
         /// <summary>

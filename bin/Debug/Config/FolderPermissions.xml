@@ -4,10 +4,10 @@
     <Folder id="a015216b-a5aa-4c96-8a33-abc8482a696c">
       <Name>Steam</Name>
       <FolderPath>D:\SteamLibrary\steamapps\downloading</FolderPath>
-      <IsProtectionEnabled>false</IsProtectionEnabled>
+      <IsProtectionEnabled>true</IsProtectionEnabled>
       <EnableOnStartup>true</EnableOnStartup>
       <ProtectionLevel>ReadOnly</ProtectionLevel>
-      <LastModified>29/04/2025 21:46:27</LastModified>
+      <LastModified>29/04/2025 22:23:03</LastModified>
     </Folder>
   </Folders>
 </Configuration>
