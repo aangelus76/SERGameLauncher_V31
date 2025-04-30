@@ -57,6 +57,7 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\C
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\ButtonView\PlatformVisibilityControl.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Steam\SteamAccountsControl.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Path\PathConfigsControl.g.cs
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\PlateformView\PlatformContentControl.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\App.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31_MarkupCompile.cache
@@ -73,6 +74,7 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\C
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\ButtonView\PlatformVisibilityControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Steam\SteamAccountsControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Path\PathConfigsControl.baml
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\PlateformView\PlatformContentControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.g.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.Properties.Resources.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.GenerateResource.cache

@@ -11,7 +11,13 @@ namespace SERGamesLauncher_V31
         private Dictionary<string, Button> platformButtons;
 
         // Plateforme actuellement sélectionnée
-        private string currentPlatform = "Epic";
+        private string currentPlatform = null;
+
+        // Contrôle de contenu de plateforme
+        private PlatformContentControl platformContentControl;
+
+        // Moniteur Steam
+        private SteamActivityMonitor steamMonitor;
 
         public MainWindow()
         {
@@ -19,19 +25,52 @@ namespace SERGamesLauncher_V31
 
             InitializeComponent();
 
+            // Initialiser le moniteur Steam
+            steamMonitor = new SteamActivityMonitor();
+
+            // Démarrer le moniteur Steam dès le lancement de l'application
+            steamMonitor.Start();
+
+            // Vérifier immédiatement si Steam est déjà en cours d'exécution
+            steamMonitor.CheckImmediately();
+
+            // Initialiser le contrôle de contenu de plateforme
+            platformContentControl = new PlatformContentControl(steamMonitor);
+            contentContainer.Child = platformContentControl;
+
             // Initialiser le dictionnaire de boutons après l'initialisation des composants
             InitializePlatformButtons();
 
+            // Appliquer les protections de dossiers
             ApplyFolderProtections();
 
             // Appliquer la configuration de visibilité des plateformes
             ApplyPlatformVisibility();
 
+            // S'abonner aux événements de lancement
+            platformContentControl.LaunchRequested += PlatformContentControl_LaunchRequested;
+
+            // S'abonner à l'événement de fermeture
             this.Closing += MainWindow_Closing;
+        }
+
+        private void PlatformContentControl_LaunchRequested(object sender, string platform)
+        {
+            // TODO: Peut ajouter une logique supplémentaire ici si nécessaire
+            System.Diagnostics.Debug.WriteLine($"Lancement de la plateforme: {platform}");
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            // Arrêter le moniteur Steam
+            steamMonitor.Stop();
+
+            // Si on ne permet pas les comptes personnels, s'assurer que Steam est fermé
+            if (!steamMonitor.AllowUserAccounts)
+            {
+                steamMonitor.KillAllSteamProcesses();
+            }
+
             // Verrouiller tous les dossiers à la fermeture de l'application
             try
             {
@@ -107,7 +146,7 @@ namespace SERGamesLauncher_V31
                     }
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 // En cas d'erreur, ne pas afficher de message
                 // Tous les boutons restent visibles par défaut
@@ -119,20 +158,28 @@ namespace SERGamesLauncher_V31
         {
             if (sender is Button button && button.Tag is string platformName)
             {
+                // Mettre à jour la plateforme actuelle
                 currentPlatform = platformName;
 
-                // À implémenter: logique pour changer le contenu en fonction de la plateforme
-                // Pour l'instant, nous utilisons juste le contenu existant d'Epic Games
+                // Configurer le contrôle de contenu pour cette plateforme
+                platformContentControl.ConfigurePlatform(platformName);
+
+                // Mettre en évidence le bouton sélectionné
+                HighlightSelectedButton(button);
             }
         }
 
-        // Lancement d'une plateforme
-        private void LaunchButton_Click(object sender, RoutedEventArgs e)
+        // Mettre en évidence le bouton sélectionné
+        private void HighlightSelectedButton(Button selectedButton)
         {
-            // À implémenter: logique de lancement en fonction de currentPlatform
-            CustomMessageBox.Show(this,
-                $"Lancement de la plateforme {currentPlatform}.\n\nCette fonctionnalité n'est pas encore implémentée.",
-                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Réinitialiser tous les boutons
+            foreach (var button in platformButtons.Values)
+            {
+                button.Opacity = 0.7;
+            }
+
+            // Mettre en évidence le bouton sélectionné
+            selectedButton.Opacity = 1.0;
         }
     }
 }

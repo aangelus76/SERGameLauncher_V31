@@ -1,0 +1,306 @@
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Diagnostics;
+using System.IO;
+using System.Collections.Generic;
+
+namespace SERGamesLauncher_V31
+{
+    public partial class PlatformContentControl : UserControl
+    {
+        private string currentPlatform = null;
+        private SteamActivityMonitor steamMonitor;
+        private bool allowUserSteamAccounts = false;
+        private bool isSteamMonitorStarted = false;
+
+        public event EventHandler<string> LaunchRequested;
+
+        // Constructeur qui accepte un SteamActivityMonitor externe
+        public PlatformContentControl(SteamActivityMonitor monitor)
+        {
+            InitializeComponent();
+
+            // Utiliser le moniteur Steam externe
+            steamMonitor = monitor;
+            steamMonitor.UserChanged += SteamMonitor_UserChanged;
+        }
+
+        private void SteamMonitor_UserChanged(string username)
+        {
+            // Mettre à jour l'affichage du compte Steam actuel
+            Dispatcher.Invoke(() =>
+            {
+                txtCurrentSteamAccount.Text = $"Compte: {username}";
+            });
+        }
+
+        // Afficher la vue d'information
+        public void ShowInfoView()
+        {
+            infoView.Visibility = Visibility.Visible;
+            platformView.Visibility = Visibility.Collapsed;
+            currentPlatform = null;
+
+            // Ne pas arrêter le moniteur Steam, car il est géré par MainWindow
+            isSteamMonitorStarted = false;
+        }
+
+        // Configurer et afficher une plateforme spécifique
+        public void ConfigurePlatform(string platformName)
+        {
+            currentPlatform = platformName;
+            infoView.Visibility = Visibility.Collapsed;
+            platformView.Visibility = Visibility.Visible;
+
+            // Réinitialiser la case à cocher
+            chkConsent.IsChecked = false;
+
+            // Configurations spécifiques à la plateforme
+            switch (platformName)
+            {
+                case "Steam":
+                    txtPlatformTitle.Text = "Steam";
+                    txtAccountMessage.Text = "Nous prêtons un compte Steam";
+                    txtInstructions.Text = "Un compte Steam configuré pour ce poste sera utilisé automatiquement. Toute tentative de déconnexion ou de changement de compte sera annulée.";
+                    imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["SteamColor"];
+                    // Activer le suivi de compte Steam et afficher les contrôles associés
+                    txtCurrentSteamAccount.Visibility = Visibility.Visible;
+                    toggleAllowUserAccounts.Visibility = Visibility.Visible;
+                    txtAllowUserAccounts.Visibility = Visibility.Visible;
+                    // Indiquer que Steam est sélectionné
+                    isSteamMonitorStarted = true;
+                    // Mettre à jour l'état du toggle pour qu'il corresponde à l'état actuel
+                    toggleAllowUserAccounts.IsChecked = steamMonitor.AllowUserAccounts;
+                    allowUserSteamAccounts = steamMonitor.AllowUserAccounts;
+                    break;
+                case "Epic":
+                    txtPlatformTitle.Text = "Epic Games";
+                    txtAccountMessage.Text = "Nous ne prêtons pas de compte Epic Games";
+                    txtInstructions.Text = "Vous devez utiliser votre propre compte Epic Games.";
+                    imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["EpicColor"];
+                    HideSteamControls();
+                    break;
+                case "Crazy":
+                    txtPlatformTitle.Text = "CrazyGames";
+                    txtAccountMessage.Text = "Accès en ligne sans compte requis";
+                    txtInstructions.Text = "CrazyGames est accessible directement depuis votre navigateur web. Aucun compte n'est nécessaire pour jouer à la plupart des jeux.";
+                    imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["CrazyColor"];
+                    HideSteamControls();
+                    break;
+                case "Roblox":
+                    txtPlatformTitle.Text = "Roblox";
+                    txtAccountMessage.Text = "Vous devez utiliser votre propre compte";
+                    txtInstructions.Text = "Roblox nécessite un compte personnel pour jouer. Si vous n'avez pas de compte, vous pouvez en créer un gratuitement.";
+                    imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["RobloxColor"];
+                    HideSteamControls();
+                    break;
+                case "BGA":
+                    txtPlatformTitle.Text = "BoardGameArena";
+                    txtAccountMessage.Text = "Créez ou utilisez votre compte BGA";
+                    txtInstructions.Text = "BoardGameArena est une plateforme de jeux de société en ligne. Un compte est nécessaire pour jouer avec d'autres personnes.";
+                    imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["BGAColor"];
+                    HideSteamControls();
+                    break;
+                case "Xbox":
+                    txtPlatformTitle.Text = "Xbox Game Pass";
+                    txtAccountMessage.Text = "Nous ne prêtons pas de compte Xbox";
+                    txtInstructions.Text = "Vous devez utiliser votre propre compte Microsoft pour accéder au Xbox Game Pass.";
+                    imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["XboxColor"];
+                    HideSteamControls();
+                    break;
+                default:
+                    // Cas par défaut, ne devrait pas arriver
+                    ShowInfoView();
+                    break;
+            }
+        }
+
+        private void HideSteamControls()
+        {
+            // Cacher les contrôles spécifiques à Steam
+            txtCurrentSteamAccount.Visibility = Visibility.Collapsed;
+            toggleAllowUserAccounts.Visibility = Visibility.Collapsed;
+            txtAllowUserAccounts.Visibility = Visibility.Collapsed;
+
+            // Indiquer que Steam n'est plus sélectionné
+            isSteamMonitorStarted = false;
+        }
+
+        // Gestionnaire pour le bouton de lancement
+        private void LaunchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPlatform == null) return;
+
+            // Vérifier si la plateforme est configurée
+            List<PathConfig> pathConfigs = PathConfigService.LoadPathConfigs();
+            PathConfig pathConfig = PathConfigService.GetPathForPlatform(pathConfigs, currentPlatform);
+
+            if (pathConfig == null)
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"La plateforme {currentPlatform} n'est pas configurée. Veuillez contacter un administrateur.",
+                    "Plateforme non configurée", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Vérifier que le chemin existe
+            if (!pathConfig.IsUrl && !File.Exists(pathConfig.Path))
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Le chemin d'accès pour {currentPlatform} est invalide. Veuillez contacter un administrateur.",
+                    "Chemin invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Pour Steam, utiliser le moniteur Steam et les identifiants
+            if (currentPlatform == "Steam")
+            {
+                LaunchSteam();
+            }
+            else
+            {
+                // Pour les autres plateformes, lancer normalement
+                LaunchPlatform(pathConfig);
+            }
+
+            // Déclencher l'événement de lancement
+            LaunchRequested?.Invoke(this, currentPlatform);
+        }
+
+        private void LaunchSteam()
+        {
+            try
+            {
+                // Si on autorise les comptes personnels, lancer Steam normalement
+                if (allowUserSteamAccounts)
+                {
+                    var configs = PathConfigService.LoadPathConfigs();
+                    var config = PathConfigService.GetPathForPlatform(configs, "Steam");
+
+                    if (config != null)
+                    {
+                        Process.Start(config.Path);
+                    }
+                    return;
+                }
+
+                // Récupérer le compte Steam pour ce poste
+                List<SteamAccount> steamAccounts = SteamAccountService.LoadSteamAccounts();
+                SteamAccount account = SteamAccountService.GetAccountForCurrentComputer(steamAccounts);
+
+                if (account == null)
+                {
+                    CustomMessageBox.Show(Window.GetWindow(this),
+                        "Aucun compte Steam n'est configuré pour ce poste. Veuillez contacter un administrateur.",
+                        "Compte non configuré", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Récupérer le chemin de Steam
+                var pathConfigs = PathConfigService.LoadPathConfigs();
+                var pathConfig = PathConfigService.GetPathForPlatform(pathConfigs, "Steam");
+
+                if (pathConfig == null || !File.Exists(pathConfig.Path))
+                {
+                    CustomMessageBox.Show(Window.GetWindow(this),
+                        "Le chemin d'accès à Steam est invalide. Veuillez contacter un administrateur.",
+                        "Chemin invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Décrypter le mot de passe
+                string password = SteamAccountService.DecryptPassword(account.EncryptedPassword);
+
+                // Lancer Steam avec les identifiants
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = pathConfig.Path,
+                    Arguments = $"-noreactlogin -login {account.Username} {password}"
+                };
+
+                Process process = Process.Start(startInfo);
+
+                // Notifier le moniteur que Steam est en cours de démarrage
+                steamMonitor.NotifyStarting();
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Erreur lors du lancement de Steam: {ex.Message}",
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LaunchPlatform(PathConfig pathConfig)
+        {
+            try
+            {
+                if (pathConfig.IsUrl)
+                {
+                    // Ouvrir l'URL dans le navigateur par défaut
+                    Process.Start(pathConfig.Path);
+                }
+                else
+                {
+                    // Lancer l'application avec les arguments si spécifiés
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = pathConfig.Path
+                    };
+
+                    if (!string.IsNullOrWhiteSpace(pathConfig.LaunchArguments))
+                    {
+                        startInfo.Arguments = pathConfig.LaunchArguments;
+                    }
+
+                    Process.Start(startInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Erreur lors du lancement de {currentPlatform}: {ex.Message}",
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Gestionnaire pour le toggle d'autorisation des comptes personnels
+        private void ToggleAllowUserAccounts_Changed(object sender, RoutedEventArgs e)
+        {
+            // Lire l'état souhaité
+            bool newState = toggleAllowUserAccounts.IsChecked ?? false;
+
+            // Si on veut activer les comptes personnels, demander le mot de passe d'administrateur
+            if (newState && !allowUserSteamAccounts)
+            {
+                // Créer et configurer la boîte de dialogue de mot de passe
+                PasswordDialog passwordDialog = new PasswordDialog();
+                passwordDialog.Owner = Window.GetWindow(this);
+                passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur pour autoriser les comptes personnels";
+                passwordDialog.ShowDialog();
+
+                // Vérifier si l'authentification a réussi
+                if (!passwordDialog.IsAuthenticated)
+                {
+                    // Annuler le changement si l'authentification a échoué
+                    toggleAllowUserAccounts.IsChecked = false;
+                    return;
+                }
+
+                // Afficher un message d'avertissement
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    "Attention: Les comptes personnels sont maintenant autorisés sur Steam.\n\n" +
+                    "Cette option sera désactivée à la fermeture de l'application.",
+                    "Mode administrateur", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            // Mettre à jour l'état
+            allowUserSteamAccounts = toggleAllowUserAccounts.IsChecked ?? false;
+
+            // Mettre à jour l'état du moniteur Steam
+            steamMonitor.AllowUserAccounts = allowUserSteamAccounts;
+        }
+    }
+}

@@ -25,11 +25,17 @@
 
         <!-- Images -->
         <BitmapImage x:Key="SteamLogo" UriSource="/SERGamesLauncher_V31;component/Images/Steam.png"/>
+        <BitmapImage x:Key="SteamColor" UriSource="/SERGamesLauncher_V31;component/Images/SteamColor.png"/>
         <BitmapImage x:Key="EpicLogo" UriSource="/SERGamesLauncher_V31;component/Images/EpicGames.png"/>
+        <BitmapImage x:Key="EpicColor" UriSource="/SERGamesLauncher_V31;component/Images/EpicColor.png"/>
         <BitmapImage x:Key="CrazyLogo" UriSource="/SERGamesLauncher_V31;component/Images/CrazyGames.png"/>
+        <BitmapImage x:Key="CrazyColor" UriSource="/SERGamesLauncher_V31;component/Images/CrazyColor.png"/>
         <BitmapImage x:Key="RobloxLogo" UriSource="/SERGamesLauncher_V31;component/Images/Roblox.png"/>
+        <BitmapImage x:Key="RobloxColor" UriSource="/SERGamesLauncher_V31;component/Images/RobloxColor.png"/>
         <BitmapImage x:Key="BGALogo" UriSource="/SERGamesLauncher_V31;component/Images/BGA.png"/>
+        <BitmapImage x:Key="BGAColor" UriSource="/SERGamesLauncher_V31;component/Images/BGAColor.png"/>
         <BitmapImage x:Key="XboxLogo" UriSource="/SERGamesLauncher_V31;component/Images/Xbox.png"/>
+        <BitmapImage x:Key="XboxColor" UriSource="/SERGamesLauncher_V31;component/Images/XboxColor.png"/>
 
         <BitmapImage x:Key="InfoNormal" UriSource="/SERGamesLauncher_V31;component/Images/InfoN.png"/>
         <BitmapImage x:Key="InfoOver" UriSource="/SERGamesLauncher_V31;component/Images/InfoO.png"/>

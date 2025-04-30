@@ -81,10 +81,79 @@
                         Click="PreFill_Click"/>
 
                 <!-- Identifiant Steam -->
+                <!-- Identifiant Steam -->
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Identifiant :" Foreground="White" 
+           FontSize="14" VerticalAlignment="Center"/>
+                <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                    <TextBox x:Name="txtUsername" 
+             Background="#333333" Foreground="White" 
+             BorderBrush="#444444" BorderThickness="1"
+             Height="30" Padding="5" VerticalContentAlignment="Center"
+             Margin="0,5"/>
+                    <TextBlock IsHitTestVisible="False" Text="écrivez en minuscule" 
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               Margin="10,5,0,0" Foreground="#e84d43" FontStyle="Italic">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=txtUsername}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="Identifiant :" Foreground="White" 
                            FontSize="14" VerticalAlignment="Center"/>
+
                 <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="txtUsername" 
-                         Style="{StaticResource AdminTextBoxStyle}" Margin="0,5"/>
+         Tag="    Écrivez en minuscule"
+         Background="#333333" Foreground="White" 
+         BorderBrush="#444444" BorderThickness="1"
+         Height="30" Padding="5" VerticalContentAlignment="Center"
+         Margin="0,5">
+                    <TextBox.Resources>
+                        <Style TargetType="TextBox">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Background" 
+                            Value="{Binding RelativeSource={RelativeSource Self}, 
+                            Path=Background}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Resources>
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid>
+                                    <TextBlock Text="{TemplateBinding Tag}" 
+                               Foreground="#e84d43" 
+                               Margin="5,0,0,0" 
+                               VerticalAlignment="Center"
+                               FontStyle="Italic"
+                               Visibility="Collapsed"
+                               x:Name="placeholder"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                 Margin="{TemplateBinding Padding}" 
+                                 VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter TargetName="placeholder" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter TargetName="placeholder" Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>-->
 
                 <!-- Mot de passe -->
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Mot de passe :" Foreground="White" 

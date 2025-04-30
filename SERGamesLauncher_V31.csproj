@@ -79,6 +79,10 @@
       <DependentUpon>SteamAccountsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panel\Steam\SteamAccountService.cs" />
+    <Compile Include="Main\PlateformView\PlatformContentControl.xaml.cs">
+      <DependentUpon>PlatformContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Main\PlateformView\SteamActivityMonitor.cs" />
     <Compile Include="VersionUtility.cs" />
     <Page Include="Panel\PermissionFolders\AddEditFolderDialog.xaml">
       <SubType>Designer</SubType>
@@ -137,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Panel\Path\PathConfigsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Main\PlateformView\PlatformContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,7 +211,10 @@
   <ItemGroup>
     <Resource Include="IconeLauncher.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\CrazyColor.png" />
+    <Resource Include="Images\SteamColor.png" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Costura.Fody">
       <Version>6.0.0</Version>
@@ -213,6 +224,14 @@
     <PackageReference Include="System.Text.Json">
       <Version>9.0.4</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BGAColor.png" />
+    <Resource Include="Images\EpicColor.png" />
+    <Resource Include="Images\XboxColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RobloxColor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

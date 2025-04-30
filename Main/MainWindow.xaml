@@ -1,4 +1,5 @@
-﻿<local:CustomWindow x:Class="SERGamesLauncher_V31.MainWindow"
+﻿<!-- MainWindow.xaml modifié -->
+<local:CustomWindow x:Class="SERGamesLauncher_V31.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,8 +16,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="674*"/>
-            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Panel de gauche avec les plateformes -->
@@ -69,27 +69,8 @@
         </Border>
 
         <!-- Zone de contenu à droite -->
-        <Border Grid.Column="1" Style="{StaticResource MainContentStyle}" Grid.ColumnSpan="2">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-
-                <TextBlock Text="Nous ne fournissons pas de" Style="{StaticResource HeaderTextStyle}"/>
-                <TextBlock Text="compte Epic Games." Style="{StaticResource HeaderTextStyle}" Margin="0,5,0,30"/>
-
-                <TextBlock Text="Vous devez utiliser votre" Style="{StaticResource SubHeaderTextStyle}"/>
-                <TextBlock Text="propre compte." Style="{StaticResource SubHeaderTextStyle}" Margin="0,0,0,40"/>
-
-                <!-- Ajout de la CheckBox de consentement -->
-                <CheckBox x:Name="chkConsent" Margin="0,0,0,10" HorizontalAlignment="Center" Style="{StaticResource CustomCheckBoxStyle}">
-                    <TextBlock Text="Je m'engage à respecter les règles liées aux jeux vidéo de la structure." 
-                               Foreground="#b5b5b5" TextWrapping="Wrap" Width="380" TextAlignment="Center"/>
-                </CheckBox>
-
-                <!-- Bouton lancer lié à l'état de la CheckBox -->
-                <Button x:Name="btnLaunch" Content="Lancer" 
-                        Style="{StaticResource LaunchButtonStyle}"
-                        IsEnabled="{Binding ElementName=chkConsent, Path=IsChecked}"
-                        Click="LaunchButton_Click"/>
-            </StackPanel>
+        <Border Grid.Column="1" Style="{StaticResource MainContentStyle}" x:Name="contentContainer">
+            <!-- Le PlatformContentControl sera ajouté ici par le code -->
         </Border>
     </Grid>
 </local:CustomWindow>
