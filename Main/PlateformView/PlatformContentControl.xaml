@@ -11,15 +11,16 @@
         <!-- Vue par défaut (informations) -->
         <!-- Vue par défaut (informations) -->
         <Border x:Name="infoView" Visibility="Visible">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Page d'information du programme" 
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="550">
+                <TextBlock Text="Veuillez choisir votre plateforme de jeux à gauche." 
                    Style="{StaticResource HeaderTextStyle}" 
-                   FontSize="40"/>
+                   FontSize="30"/>
 
-                <TextBlock Text="Sélectionnez une plateforme dans le menu de gauche" 
+                <TextBlock Text="Certaines plateformes demandent&#x0a;à ce que vous utilisiez votre propre compte." 
                    Style="{StaticResource SubHeaderTextStyle}" 
-                   Margin="0,20,0,0"
-                   FontSize="24"/>
+                   Margin="0,0,0,0"
+                   FontSize="24" Height="68" Width="678"
+                   TextAlignment="Center"/>
 
                 <!-- Section des règles avec icônes -->
                 <TextBlock Text="Respecter ces règles :" 
@@ -27,7 +28,7 @@
                    FontSize="36"
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
-                   Margin="0,50,0,20"/>
+                   Margin="0,20,0,10"/>
 
                 <!-- Conteneur pour les icônes de règles -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
@@ -54,10 +55,11 @@
                 </StackPanel>
 
                 <!-- Description des règles -->
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="- Pas d'arme réaliste" Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
-                    <TextBlock Text="- Pas de projection de sang" Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
-                    <TextBlock Text="- Pas de découpe de perssonage ou jeux horrifique" Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                <StackPanel HorizontalAlignment="Center" Width="478" Margin="0,-20,0,0">
+                    <TextBlock Text="- Pas d'arme réaliste." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                    <TextBlock Text="- Pas de projection de sang." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                    <TextBlock Text="- Pas de découpe de perssonage ou jeux horrifique." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                    <TextBlock Text="- Aucun téléchargement de jeux/logiciels sans accord." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
                 </StackPanel>
 
                 <TextBlock Text="Ces règles peuvent changer dans le temps." 
@@ -65,7 +67,7 @@
                    FontSize="18"
                    FontStyle="Italic"
                    HorizontalAlignment="Center"
-                   Margin="0,20,0,0"/>
+                   Margin="0,25,0,0"/>
             </StackPanel>
         </Border>
 
@@ -89,7 +91,8 @@
                                Text="Message sur le compte" 
                                Style="{StaticResource SubHeaderTextStyle}" 
                                Margin="0,5,0,0"
-                               FontSize="30"/>
+                               FontSize="30"
+                               Foreground="#e3911e" />
 
                     <TextBlock x:Name="txtInstructions" 
                                Text="Instructions supplémentaires" 
@@ -149,7 +152,7 @@
                 <TextBlock x:Name="txtCurrentSteamAccount" 
                            Grid.Row="2" 
                            Text="Compte: Non détecté" 
-                           Foreground="#b5b5b5" 
+                           Foreground="#666666" 
                            FontSize="12"
                            HorizontalAlignment="Left" 
                            VerticalAlignment="Bottom"

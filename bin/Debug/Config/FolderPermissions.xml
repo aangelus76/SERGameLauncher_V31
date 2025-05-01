@@ -1,13 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <Folders>
-    <Folder id="a015216b-a5aa-4c96-8a33-abc8482a696c">
-      <Name>Steam</Name>
-      <FolderPath>D:\SteamLibrary\steamapps\downloading</FolderPath>
-      <IsProtectionEnabled>true</IsProtectionEnabled>
-      <EnableOnStartup>true</EnableOnStartup>
-      <ProtectionLevel>ReadOnly</ProtectionLevel>
-      <LastModified>01/05/2025 13:56:26</LastModified>
-    </Folder>
-  </Folders>
+  <Folders />
 </Configuration>

@@ -83,23 +83,23 @@ namespace SERGamesLauncher_V31
                     HideSteamControls();
                     break;
                 case "Crazy":
-                    txtPlatformTitle.Text = "CrazyGames";
-                    txtAccountMessage.Text = "Accès en ligne sans compte requis";
-                    txtInstructions.Text = "CrazyGames est accessible directement depuis votre navigateur web. Aucun compte n'est nécessaire pour jouer à la plupart des jeux.";
+                    txtPlatformTitle.Text = "CrazyGames (site de jeux en ligne)";
+                    txtAccountMessage.Text = "Accès en ligne libre et gratuit";
+                    txtInstructions.Text = "Aucun compte n'est nécessaire pour jouer à la plupart des jeux.";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["CrazyColor"];
                     HideSteamControls();
                     break;
                 case "Roblox":
                     txtPlatformTitle.Text = "Roblox";
-                    txtAccountMessage.Text = "Vous devez utiliser votre propre compte";
-                    txtInstructions.Text = "Roblox nécessite un compte personnel pour jouer. Si vous n'avez pas de compte, vous pouvez en créer un gratuitement.";
+                    txtAccountMessage.Text = "Nous ne prêtons pas de compte Roblox";
+                    txtInstructions.Text = "Vous devez utiliser votre propre compte Roblox";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["RobloxColor"];
                     HideSteamControls();
                     break;
                 case "BGA":
-                    txtPlatformTitle.Text = "BoardGameArena";
-                    txtAccountMessage.Text = "Créez ou utilisez votre compte BGA";
-                    txtInstructions.Text = "BoardGameArena est une plateforme de jeux de société en ligne. Un compte est nécessaire pour jouer avec d'autres personnes.";
+                    txtPlatformTitle.Text = "BoardGameArena (jeux de société en ligne)";
+                    txtAccountMessage.Text = "Nous ne prêtons pas de compte BGA";
+                    txtInstructions.Text = "Vous devez utiliser votre propre compte BoradGameArena";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["BGAColor"];
                     HideSteamControls();
                     break;
