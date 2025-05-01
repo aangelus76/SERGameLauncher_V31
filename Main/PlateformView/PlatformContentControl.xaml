@@ -9,16 +9,63 @@
 
     <Grid>
         <!-- Vue par défaut (informations) -->
+        <!-- Vue par défaut (informations) -->
         <Border x:Name="infoView" Visibility="Visible">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Page d'information du programme" 
-                           Style="{StaticResource HeaderTextStyle}" 
-                           HorizontalAlignment="Center"/>
+                   Style="{StaticResource HeaderTextStyle}" 
+                   FontSize="40"/>
 
-                <!-- Contenu informatif à compléter ultérieurement -->
                 <TextBlock Text="Sélectionnez une plateforme dans le menu de gauche" 
-                           Style="{StaticResource SubHeaderTextStyle}" 
-                           Margin="0,20,0,0"/>
+                   Style="{StaticResource SubHeaderTextStyle}" 
+                   Margin="0,20,0,0"
+                   FontSize="24"/>
+
+                <!-- Section des règles avec icônes -->
+                <TextBlock Text="Respecter ces règles :" 
+                   Foreground="#bf2d22"
+                   FontSize="36"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,50,0,20"/>
+
+                <!-- Conteneur pour les icônes de règles -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <!-- Icône Pas d'armes (image) -->
+                    <Border Width="150" Height="150" Margin="10">
+                        <Image Source="/SERGamesLauncher_V31;component/Images/NoWeapon.png" 
+                       Stretch="Uniform"
+                       Width="150" Height="150"/>
+                    </Border>
+
+                    <!-- Icône Pas de sang (image) -->
+                    <Border Width="150" Height="150" Margin="10">
+                        <Image Source="/SERGamesLauncher_V31;component/Images/NoBlood.png" 
+                       Stretch="Uniform"
+                       Width="150" Height="150"/>
+                    </Border>
+
+                    <!-- Icône Pas de jeux horrifiques (image) -->
+                    <Border Width="150" Height="150" Margin="10">
+                        <Image Source="/SERGamesLauncher_V31;component/Images/NoHorror.png" 
+                       Stretch="Uniform"
+                       Width="150" Height="150"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- Description des règles -->
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="- Pas d'arme réaliste" Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                    <TextBlock Text="- Pas de projection de sang" Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                    <TextBlock Text="- Pas de découpe de perssonage ou jeux horrifique" Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                </StackPanel>
+
+                <TextBlock Text="Ces règles peuvent changer dans le temps." 
+                   Foreground="#cc7d16"
+                   FontSize="18"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0"/>
             </StackPanel>
         </Border>
 
@@ -35,17 +82,19 @@
                 <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,40,0,10">
                     <TextBlock x:Name="txtPlatformTitle" 
                                Text="Titre de la plateforme" 
-                               Style="{StaticResource HeaderTextStyle}"/>
+                               Style="{StaticResource HeaderTextStyle}"
+                               FontSize="40"/>
 
                     <TextBlock x:Name="txtAccountMessage" 
                                Text="Message sur le compte" 
                                Style="{StaticResource SubHeaderTextStyle}" 
-                               Margin="0,5,0,0"/>
+                               Margin="0,5,0,0"
+                               FontSize="30"/>
 
                     <TextBlock x:Name="txtInstructions" 
                                Text="Instructions supplémentaires" 
                                Foreground="#b5b5b5" 
-                               FontSize="16" 
+                               FontSize="20" 
                                TextWrapping="Wrap" 
                                TextAlignment="Center"
                                Margin="0,15,0,0"
@@ -54,7 +103,7 @@
 
                 <!-- Logo de la plateforme -->
                 <Image Grid.Row="1" x:Name="imgPlatformLogo" 
-                       Width="150" Height="150" 
+                       Width="200" Height="200" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Margin="0,0,0,20"/>
@@ -64,7 +113,8 @@
                     <!-- Consentement -->
                     <CheckBox x:Name="chkConsent" Margin="0,0,0,20" HorizontalAlignment="Center" Style="{StaticResource CustomCheckBoxStyle}">
                         <TextBlock Text="Je m'engage à respecter les règles liées aux jeux vidéo de la structure." 
-                                   Foreground="#b5b5b5" TextWrapping="Wrap" Width="380" TextAlignment="Center"/>
+                                   Foreground="#b5b5b5" TextWrapping="Wrap" Width="500" TextAlignment="Center"
+                                   FontSize="16"/>
                     </CheckBox>
 
                     <!-- Bouton de lancement -->

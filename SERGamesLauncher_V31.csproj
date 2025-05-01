@@ -233,5 +233,10 @@
   <ItemGroup>
     <Resource Include="Images\RobloxColor.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NoBlood.png" />
+    <Resource Include="Images\NoHorror.png" />
+    <Resource Include="Images\NoWeapon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
