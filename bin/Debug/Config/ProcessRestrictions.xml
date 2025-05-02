@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Processes>
+    <Process id="973b75bb-74b4-46ea-b609-c8ca1fdafdd5">
+      <ProcessName>Photos</ProcessName>
+      <MinimumAge>99</MinimumAge>
+      <Description></Description>
+      <IsActive>true</IsActive>
+    </Process>
+  </Processes>
+</Configuration>

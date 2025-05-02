@@ -19,6 +19,8 @@ namespace SERGamesLauncher_V31
         // Moniteur Steam
         private SteamActivityMonitor steamMonitor;
 
+        private ProcessMonitor processMonitor;
+
         public MainWindow()
         {
             FolderPermissionsControl.ResetFirstLoadFlag();
@@ -47,11 +49,51 @@ namespace SERGamesLauncher_V31
             // Appliquer la configuration de visibilité des plateformes
             ApplyPlatformVisibility();
 
+            // Initialiser et démarrer le moniteur de processus
+            processMonitor = new ProcessMonitor();
+            processMonitor.Start();
+            processMonitor.UserInfoUpdated += ProcessMonitor_UserInfoUpdated;
+
+            // Récupérer les informations utilisateur
+            UpdateUserInfo();
+
             // S'abonner aux événements de lancement
             platformContentControl.LaunchRequested += PlatformContentControl_LaunchRequested;
 
             // S'abonner à l'événement de fermeture
             this.Closing += MainWindow_Closing;
+        }
+
+        // Gestionnaire d'événement pour les mises à jour des informations utilisateur
+        private void ProcessMonitor_UserInfoUpdated(string displayName, int age)
+        {
+            // Mettre à jour l'affichage sur le thread UI
+            Dispatcher.Invoke(() =>
+            {
+                txtUserName.Text = $"Utilisateur : {displayName}";
+                txtUserAge.Text = $"Âge : {age} ans";
+            });
+        }
+
+        // Méthode pour mettre à jour les informations utilisateur
+        private void UpdateUserInfo()
+        {
+            try
+            {
+                // Récupérer le nom d'utilisateur actuel
+                string username = Environment.UserName;
+
+                // Utiliser la classe UserInfoRetriever pour obtenir les informations
+                UserInfoRetriever.UserInfo userInfo = UserInfoRetriever.GetUserInfo(username);
+
+                // Mettre à jour l'affichage
+                txtUserName.Text = $"Utilisateur : {userInfo.DisplayName}";
+                txtUserAge.Text = $"Âge : {userInfo.Age} ans";
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur lors de la mise à jour des informations utilisateur: {ex.Message}");
+            }
         }
 
         private void PlatformContentControl_LaunchRequested(object sender, string platform)
@@ -69,6 +111,11 @@ namespace SERGamesLauncher_V31
             if (!steamMonitor.AllowUserAccounts)
             {
                 steamMonitor.KillAllSteamProcesses();
+            }
+
+            if (processMonitor != null)
+            {
+                processMonitor.Stop();
             }
 
             // Verrouiller tous les dossiers à la fermeture de l'application

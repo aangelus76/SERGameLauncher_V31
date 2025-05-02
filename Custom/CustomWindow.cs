@@ -77,14 +77,24 @@ namespace SERGamesLauncher_V31
         /// <summary>
         /// Ouvre le panneau d'administration après authentification
         /// </summary>
+        private AdminPanelWindow currentAdminPanel = null;
+
         protected virtual void ConfigButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                // Vérifier si une instance du panneau d'administration est déjà ouverte
+                if (currentAdminPanel != null && currentAdminPanel.IsVisible)
+                {
+                    // Si oui, simplement la mettre en premier plan
+                    currentAdminPanel.Activate();
+                    return;
+                }
+
                 // Afficher la boîte de dialogue de mot de passe
                 PasswordDialog passwordDialog = new PasswordDialog();
                 passwordDialog.Owner = this;
-                passwordDialog.CustomTitle = "Authentification Admin"; // Titre standard
+                passwordDialog.CustomTitle = "Authentification Admin";
                 passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur";
                 passwordDialog.ShowDialog();
 
@@ -93,21 +103,24 @@ namespace SERGamesLauncher_V31
                 {
                     try
                     {
-                        AdminPanelWindow adminPanel = new AdminPanelWindow();
-                        adminPanel.Owner = this;
+                        currentAdminPanel = new AdminPanelWindow();
+                        currentAdminPanel.Owner = this;
 
                         // À implémenter : mécanisme de rafraîchissement de la visibilité des plateformes
                         // après la fermeture du panneau d'administration
-                        adminPanel.Closed += (s, args) =>
+                        currentAdminPanel.Closed += (s, args) =>
                         {
                             // Si cette fenêtre est la fenêtre principale, mettre à jour la visibilité des plateformes
                             if (this is MainWindow mainWindow)
                             {
                                 mainWindow.ApplyPlatformVisibility();
                             }
+                            // Nettoyer la référence quand la fenêtre est fermée
+                            currentAdminPanel = null;
                         };
 
-                        adminPanel.ShowDialog();
+                        // Utiliser Show() au lieu de ShowDialog() pour rendre la fenêtre non-modale
+                        currentAdminPanel.Show();
                     }
                     catch (Exception ex)
                     {

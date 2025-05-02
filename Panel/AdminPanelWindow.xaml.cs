@@ -14,6 +14,9 @@ namespace SERGamesLauncher_V31
         private PathConfigsControl pathConfigsControl;
         private FolderPermissionsControl folderPermissionsControl;
 
+        // Instance du contrôle utilisateur pour les restrictions de processus
+        private ProcessRestrictionsControl processRestrictionsControl;
+
         public AdminPanelWindow()
         {
             InitializeComponent();
@@ -44,6 +47,9 @@ namespace SERGamesLauncher_V31
             // Créer une instance du contrôle de gestion des chemins d'applications
             pathConfigsControl = new PathConfigsControl();
             folderPermissionsControl = new FolderPermissionsControl();
+
+            // Créer une instance du contrôle de gestion des restrictions de processus
+            processRestrictionsControl = new ProcessRestrictionsControl();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -104,6 +110,12 @@ namespace SERGamesLauncher_V31
         {
             // Afficher le contrôle de gestion des chemins d'applications
             contentPresenter.Content = pathConfigsControl;
+        }
+
+        private void btnProcessRestrictions_Click(object sender, RoutedEventArgs e)
+        {
+            // Afficher le contrôle de gestion des restrictions de processus
+            contentPresenter.Content = processRestrictionsControl;
         }
     }
 }

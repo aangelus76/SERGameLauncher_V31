@@ -22,6 +22,7 @@
         <!-- Nouveaux convertisseurs pour les permissions de dossiers -->
         <local:BoolToStringConverter x:Key="BoolToStringConverter"/>
         <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
         <!-- Images -->
         <BitmapImage x:Key="SteamLogo" UriSource="/SERGamesLauncher_V31;component/Images/Steam.png"/>

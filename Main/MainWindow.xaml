@@ -1,4 +1,4 @@
-﻿<!-- MainWindow.xaml modifié -->
+﻿<!-- MainWindow.xaml -->
 <local:CustomWindow x:Class="SERGamesLauncher_V31.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -21,51 +21,62 @@
 
         <!-- Panel de gauche avec les plateformes -->
         <Border Grid.Column="0" Style="{StaticResource LeftPanelStyle}">
-            <StackPanel Margin="0,15,0,0">
+            <Grid>
+                <StackPanel Margin="0,15,0,0">
+                    <!-- Boutons des plateformes (inchangés) -->
+                    <Button x:Name="btnSteam" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Steam">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="{StaticResource SteamLogo}" Width="50" Height="50"/>
+                            <TextBlock Text="Steam" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button x:Name="btnSteam" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Steam">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="{StaticResource SteamLogo}" Width="50" Height="50"/>
-                        <TextBlock Text="Steam" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnEpic" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Epic">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="{StaticResource EpicLogo}" Width="50" Height="50"/>
+                            <TextBlock Text="Epic Games" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button x:Name="btnEpic" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Epic">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="{StaticResource EpicLogo}" Width="50" Height="50"/>
-                        <TextBlock Text="Epic Games" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnCrazy" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Crazy">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="{StaticResource CrazyLogo}" Width="50" Height="50"/>
+                            <TextBlock Text="CrazyGames" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button x:Name="btnCrazy" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Crazy">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="{StaticResource CrazyLogo}" Width="50" Height="50"/>
-                        <TextBlock Text="CrazyGames" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnRoblox" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Roblox">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="{StaticResource RobloxLogo}" Width="50" Height="50"/>
+                            <TextBlock Text="Roblox" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button x:Name="btnRoblox" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Roblox">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="{StaticResource RobloxLogo}" Width="50" Height="50"/>
-                        <TextBlock Text="Roblox" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnBGA" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="BGA">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="{StaticResource BGALogo}" Width="50" Height="50"/>
+                            <TextBlock Text="BoardGameArena" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                <Button x:Name="btnBGA" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="BGA">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="{StaticResource BGALogo}" Width="50" Height="50"/>
-                        <TextBlock Text="BoardGameArena" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnXbox" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Xbox">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image Source="{StaticResource XboxLogo}" Width="50" Height="50"/>
+                            <TextBlock Text="Xbox Games" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
 
-                <Button x:Name="btnXbox" Style="{StaticResource PlatformButtonStyle}" Click="PlatformButton_Click" Tag="Xbox">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Source="{StaticResource XboxLogo}" Width="50" Height="50"/>
-                        <TextBlock Text="Xbox Games" Foreground="White" FontSize="20" Margin="15,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
-
-            </StackPanel>
+                <!-- Informations utilisateur en bas -->
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <TextBlock x:Name="txtUserName" Text="Utilisateur : John Doe" 
+                               Foreground="White" FontSize="14" HorizontalAlignment="Center" 
+                               TextAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock x:Name="txtUserAge" Text="Âge : 3 ans" 
+                               Foreground="White" FontSize="14" HorizontalAlignment="Center"
+                               TextAlignment="Center"/>
+                </StackPanel>
+            </Grid>
         </Border>
 
         <!-- Zone de contenu à droite -->

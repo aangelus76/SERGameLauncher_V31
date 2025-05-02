@@ -3,7 +3,79 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\custom\\custommessagebox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\main\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\custom\\customwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:custom\\customwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processselectordialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processselectordialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processrestrictionscontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processrestrictionscontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\custom\\converters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:custom\\converters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processselectordialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processselectordialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processrestrictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processrestrictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processrestriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processrestriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\main\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\main\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\userinforetriever.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:userinforetriever.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processrestrictionscontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processrestrictionscontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\addeditprocessdialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:addeditprocessdialog.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\addeditprocessdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:addeditprocessdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\panel\\adminpanelwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:panel\\adminpanelwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\panel\\adminpanelwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:panel\\adminpanelwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\processmonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:processmonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\custom\\custommessagebox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:custom\\custommessagebox.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -17,14 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\main\\plateformview\\platformcontentcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\plateformview\\platformcontentcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\main\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergameslauncher_v31\\sergamelauncher_v31\\main\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +98,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Main\\MainWindow.xaml",
@@ -51,20 +115,223 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Main\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\App.xaml.cs*",
+              "RelativeToolTip": "Main\\App.xaml.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:21:27.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Custom\\CustomWindow.cs",
+              "RelativeDocumentMoniker": "Custom\\CustomWindow.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Custom\\CustomWindow.cs",
+              "RelativeToolTip": "Custom\\CustomWindow.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAQwIcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:16:49.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\App.xaml",
+              "RelativeDocumentMoniker": "Main\\App.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\App.xaml",
+              "RelativeToolTip": "Main\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-02T20:08:27.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Converters.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Custom\\Converters.cs",
+              "RelativeDocumentMoniker": "Custom\\Converters.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Custom\\Converters.cs",
+              "RelativeToolTip": "Custom\\Converters.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:06:31.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProcessSelectorDialog.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessSelectorDialog.xaml.cs",
+              "RelativeDocumentMoniker": "ProcessSelectorDialog.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessSelectorDialog.xaml.cs",
+              "RelativeToolTip": "ProcessSelectorDialog.xaml.cs",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAQwOsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:40:09.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProcessSelectorDialog.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessSelectorDialog.xaml",
+              "RelativeDocumentMoniker": "ProcessSelectorDialog.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessSelectorDialog.xaml",
+              "RelativeToolTip": "ProcessSelectorDialog.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-02T19:39:52.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AdminPanelWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Panel\\AdminPanelWindow.xaml",
+              "RelativeDocumentMoniker": "Panel\\AdminPanelWindow.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Panel\\AdminPanelWindow.xaml",
+              "RelativeToolTip": "Panel\\AdminPanelWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-02T19:36:00.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AdminPanelWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Panel\\AdminPanelWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Panel\\AdminPanelWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Panel\\AdminPanelWindow.xaml.cs",
+              "RelativeToolTip": "Panel\\AdminPanelWindow.xaml.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAADwv3gAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:35:42.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserInfoRetriever.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\UserInfoRetriever.cs",
+              "RelativeDocumentMoniker": "UserInfoRetriever.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\UserInfoRetriever.cs",
+              "RelativeToolTip": "UserInfoRetriever.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAQwCIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:34:48.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProcessRestrictionsControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestrictionsControl.xaml.cs",
+              "RelativeDocumentMoniker": "ProcessRestrictionsControl.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestrictionsControl.xaml.cs",
+              "RelativeToolTip": "ProcessRestrictionsControl.xaml.cs",
+              "ViewState": "AgIAAPcAAAAAAAAAAADwvzYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:33:28.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProcessRestrictionsControl.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestrictionsControl.xaml",
+              "RelativeDocumentMoniker": "ProcessRestrictionsControl.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestrictionsControl.xaml",
+              "RelativeToolTip": "ProcessRestrictionsControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-02T19:32:39.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AddEditProcessDialog.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\AddEditProcessDialog.xaml.cs",
+              "RelativeDocumentMoniker": "AddEditProcessDialog.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\AddEditProcessDialog.xaml.cs",
+              "RelativeToolTip": "AddEditProcessDialog.xaml.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAswFUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:31:29.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AddEditProcessDialog.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\AddEditProcessDialog.xaml",
+              "RelativeDocumentMoniker": "AddEditProcessDialog.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\AddEditProcessDialog.xaml",
+              "RelativeToolTip": "AddEditProcessDialog.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-02T19:30:35.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProcessMonitor.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessMonitor.cs",
+              "RelativeDocumentMoniker": "ProcessMonitor.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessMonitor.cs",
+              "RelativeToolTip": "ProcessMonitor.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAwIcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:29:28.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProcessRestrictionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestrictionService.cs",
+              "RelativeDocumentMoniker": "ProcessRestrictionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestrictionService.cs",
+              "RelativeToolTip": "ProcessRestrictionService.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAowIIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:29:00.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProcessRestriction.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestriction.cs",
+              "RelativeDocumentMoniker": "ProcessRestriction.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\ProcessRestriction.cs",
+              "RelativeToolTip": "ProcessRestriction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T19:28:38.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Main\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\MainWindow.xaml.cs",
               "RelativeToolTip": "Main\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAACQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-01T19:39:04.174Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 19,
               "Title": "PasswordDialog.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Custom\\PasswordDialog.xaml",
               "RelativeDocumentMoniker": "Custom\\PasswordDialog.xaml",
@@ -76,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 20,
               "Title": "PlatformContentControl.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml.cs",
               "RelativeDocumentMoniker": "Main\\PlateformView\\PlatformContentControl.xaml.cs",
@@ -84,12 +351,11 @@
               "RelativeToolTip": "Main\\PlateformView\\PlatformContentControl.xaml.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAQwGMAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T20:35:01.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T20:35:01.223Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 21,
               "Title": "PlatformContentControl.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml",
               "RelativeDocumentMoniker": "Main\\PlateformView\\PlatformContentControl.xaml",
@@ -101,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 18,
               "Title": "CustomMessageBox.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\Custom\\CustomMessageBox.xaml",
               "RelativeDocumentMoniker": "Custom\\CustomMessageBox.xaml",
