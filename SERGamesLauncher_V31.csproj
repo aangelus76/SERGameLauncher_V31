@@ -237,10 +237,6 @@
     <Resource Include="IconeLauncher.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\CrazyColor.png" />
-    <Resource Include="Images\SteamColor.png" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Costura.Fody">
       <Version>6.0.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -251,17 +247,17 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\BGAColor.png" />
-    <Resource Include="Images\EpicColor.png" />
-    <Resource Include="Images\XboxColor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\RobloxColor.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\NoBlood.png" />
     <Resource Include="Images\NoHorror.png" />
     <Resource Include="Images\NoWeapon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BGAColor.png" />
+    <Resource Include="Images\CrazyColor.png" />
+    <Resource Include="Images\EpicColor.png" />
+    <Resource Include="Images\RobloxColor.png" />
+    <Resource Include="Images\SteamColor.png" />
+    <Resource Include="Images\XboxColor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

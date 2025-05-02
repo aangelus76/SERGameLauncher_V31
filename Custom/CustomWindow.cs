@@ -160,9 +160,8 @@ namespace SERGamesLauncher_V31
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show(this, "Mot de passe incorrect!", "Erreur d'authentification", MessageBoxButton.OK, MessageBoxImage.Error);
-                //MessageBox.Show($"Erreur lors de la tentative de fermeture : {ex.Message}",
-                ///"Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Erreur lors de la tentative de fermeture : {ex.Message}",
+                   "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
