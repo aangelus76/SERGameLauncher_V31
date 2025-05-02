@@ -58,13 +58,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEditProcessDialog.xaml.cs">
+    <Compile Include="Panel\AgeControl\AddEditProcessDialog.xaml.cs">
       <DependentUpon>AddEditProcessDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProcessSelectorDialog.xaml.cs">
+    <Compile Include="Panel\AgeControl\ProcessSelectorDialog.xaml.cs">
       <DependentUpon>ProcessSelectorDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInfoRetriever.cs" />
+    <Compile Include="Panel\AgeControl\UserInfoRetriever.cs" />
     <Compile Include="Panel\PermissionFolders\AddEditFolderDialog.xaml.cs">
       <DependentUpon>AddEditFolderDialog.xaml</DependentUpon>
     </Compile>
@@ -90,14 +90,14 @@
       <DependentUpon>PlatformContentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Main\PlateformView\SteamActivityMonitor.cs" />
-    <Compile Include="ProcessMonitor.cs" />
-    <Compile Include="ProcessRestriction.cs" />
-    <Compile Include="ProcessRestrictionsControl.xaml.cs">
+    <Compile Include="Panel\AgeControl\ProcessMonitor.cs" />
+    <Compile Include="Panel\AgeControl\ProcessRestriction.cs" />
+    <Compile Include="Panel\AgeControl\ProcessRestrictionsControl.xaml.cs">
       <DependentUpon>ProcessRestrictionsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProcessRestrictionService.cs" />
+    <Compile Include="Panel\AgeControl\ProcessRestrictionService.cs" />
     <Compile Include="VersionUtility.cs" />
-    <Page Include="AddEditProcessDialog.xaml">
+    <Page Include="Panel\AgeControl\AddEditProcessDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,11 +165,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProcessRestrictionsControl.xaml">
+    <Page Include="Panel\AgeControl\ProcessRestrictionsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProcessSelectorDialog.xaml">
+    <Page Include="Panel\AgeControl\ProcessSelectorDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

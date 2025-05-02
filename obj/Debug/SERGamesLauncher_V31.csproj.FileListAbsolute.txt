@@ -46,6 +46,7 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\S
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.AssemblyReference.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.SuggestedBindingRedirects.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe.config
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\AddEditProcessDialog.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\AddEditFolderDialog.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\FolderPermissionsControl.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Path\AddEditPathDialog.g.cs
@@ -58,11 +59,14 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\P
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Steam\SteamAccountsControl.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Path\PathConfigsControl.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\PlateformView\PlatformContentControl.g.cs
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\ProcessRestrictionsControl.g.cs
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\ProcessSelectorDialog.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\App.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31_MarkupCompile.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31_MarkupCompile.lref
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\App.baml
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\AddEditProcessDialog.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\AddEditFolderDialog.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\FolderPermissionsControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Path\AddEditPathDialog.baml
@@ -75,6 +79,8 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\P
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Steam\SteamAccountsControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\Path\PathConfigsControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\PlateformView\PlatformContentControl.baml
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\ProcessRestrictionsControl.baml
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\ProcessSelectorDialog.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.g.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.Properties.Resources.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.GenerateResource.cache
@@ -83,9 +89,3 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\S
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.Fody.RuntimeCopyLocal.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.pdb
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\AddEditProcessDialog.g.cs
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\ProcessRestrictionsControl.g.cs
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\AddEditProcessDialog.baml
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\ProcessRestrictionsControl.baml
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\ProcessSelectorDialog.g.cs
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\ProcessSelectorDialog.baml

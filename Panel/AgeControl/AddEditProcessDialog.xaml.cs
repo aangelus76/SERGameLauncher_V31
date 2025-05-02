@@ -1,5 +1,4 @@
-﻿// Panel/ProcessRestriction/AddEditProcessDialog.xaml.cs
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 

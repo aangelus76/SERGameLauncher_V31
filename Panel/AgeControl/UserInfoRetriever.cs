@@ -1,5 +1,4 @@
-﻿// Models/UserInfoRetriever.cs
-using System;
+﻿using System;
 using System.Globalization;
 
 namespace SERGamesLauncher_V31

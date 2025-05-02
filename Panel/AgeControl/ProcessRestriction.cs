@@ -1,5 +1,4 @@
-﻿// Panel/ProcessRestriction/ProcessRestriction.cs
-using System;
+﻿using System;
 
 namespace SERGamesLauncher_V31
 {
