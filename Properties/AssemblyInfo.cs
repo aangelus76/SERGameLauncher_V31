@@ -6,11 +6,11 @@ using System.Windows;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("SER-Games Launcher")]
+[assembly: AssemblyTitle("SER-Games Launcher v3.1")]
 [assembly: AssemblyDescription("Lanceur centralisé pour différentes plateformes de jeux")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Saint-Étienne-du-Rouvray")]
-[assembly: AssemblyProduct("SERGamesLauncher")]
+[assembly: AssemblyProduct("SERGamesLauncher_v3.1")]
 [assembly: AssemblyCopyright("Copyright © 2025")]
 [assembly: AssemblyTrademark("Angelus76")]
 [assembly: AssemblyCulture("")]
@@ -37,5 +37,5 @@ using System.Windows;
 //      Révision
 //
 [assembly: AssemblyVersion("3.1.0.0")]           // Version produit : 3.1.0.0 (ce qui s'affiche dans les propriétés Windows)
-[assembly: AssemblyFileVersion("3.1")]  // Semaine, Jours, Année, N° de modification (31 = V31)
-[assembly: AssemblyInformationalVersion("W18-25.A")] // Version marketing
+[assembly: AssemblyFileVersion("3.1")]  
+[assembly: AssemblyInformationalVersion("W18-25.F4")] // Semaine, Année, Jour  (A -> Lundi, B -> Mardi, C -> Mercredi ...), N° de modification 
