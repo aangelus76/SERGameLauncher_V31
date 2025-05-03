@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace SERGamesLauncher_V31
 {
@@ -21,6 +22,9 @@ namespace SERGamesLauncher_V31
 
         private ProcessMonitor processMonitor;
 
+        // Variable pour contrôler si le changement de plateforme est autorisé
+        private bool canChangePlatform = true;
+
         public MainWindow()
         {
             FolderPermissionsControl.ResetFirstLoadFlag();
@@ -39,6 +43,9 @@ namespace SERGamesLauncher_V31
             // Initialiser le contrôle de contenu de plateforme
             platformContentControl = new PlatformContentControl(steamMonitor);
             contentContainer.Child = platformContentControl;
+
+            // S'abonner à l'événement de changement d'état de navigation
+            platformContentControl.NavigationStateChanged += PlatformContentControl_NavigationStateChanged;
 
             // Initialiser le dictionnaire de boutons après l'initialisation des composants
             InitializePlatformButtons();
@@ -62,6 +69,19 @@ namespace SERGamesLauncher_V31
 
             // S'abonner à l'événement de fermeture
             this.Closing += MainWindow_Closing;
+        }
+
+        // Méthode pour gérer les changements d'état de navigation
+        private void PlatformContentControl_NavigationStateChanged(object sender, bool isNavigationAllowed)
+        {
+            // Mettre à jour l'état local de navigation
+            canChangePlatform = isNavigationAllowed;
+
+            // Mettre à jour visuellement l'état des boutons de navigation
+            foreach (var button in platformButtons.Values)
+            {
+                button.IsEnabled = isNavigationAllowed;
+            }
         }
 
         // Gestionnaire d'événement pour les mises à jour des informations utilisateur
@@ -166,6 +186,7 @@ namespace SERGamesLauncher_V31
         {
             platformButtons = new Dictionary<string, Button>
             {
+                { "Reglement", btnReglement },
                 { "Steam", btnSteam },
                 { "Epic", btnEpic },
                 { "Crazy", btnCrazy },
@@ -200,11 +221,36 @@ namespace SERGamesLauncher_V31
             }
         }
 
-        // Navigation entre plateformes
+        private void ReglementButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Vérifier si le changement de vue est autorisé
+            if (!canChangePlatform)
+            {
+                return;
+            }
+
+            // Réinitialiser la plateforme actuelle
+            currentPlatform = null;
+
+            // Afficher la vue d'information
+            platformContentControl.ShowInfoView();
+
+            // Mettre en évidence le bouton Règlement
+            HighlightSelectedButton(btnReglement);
+        }
+
+        // Navigation entre plateformes - modifiée pour vérifier si la navigation est autorisée
         private void PlatformButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is string platformName)
             {
+                // Vérifier si le changement de plateforme est autorisé
+                if (!canChangePlatform)
+                {
+                    // Ne rien faire si un lancement est en cours
+                    return;
+                }
+
                 // Mettre à jour la plateforme actuelle
                 currentPlatform = platformName;
 
@@ -219,14 +265,19 @@ namespace SERGamesLauncher_V31
         // Mettre en évidence le bouton sélectionné
         private void HighlightSelectedButton(Button selectedButton)
         {
-            // Réinitialiser tous les boutons
+            // Créer les styles
+            var normalStyle = new Style(typeof(Button), (Style)FindResource("PlatformButtonStyle"));
+            var selectedStyle = new Style(typeof(Button), (Style)FindResource("PlatformButtonStyle"));
+            selectedStyle.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(0x28, 0x80, 0x1F))));
+
+            // Appliquer les styles
             foreach (var button in platformButtons.Values)
             {
-                button.Opacity = 0.7;
+                button.Opacity = 1.0;
+                button.Style = normalStyle;
             }
 
-            // Mettre en évidence le bouton sélectionné
-            selectedButton.Opacity = 1.0;
+            selectedButton.Style = selectedStyle;
         }
     }
 }

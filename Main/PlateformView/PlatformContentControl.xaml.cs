@@ -5,6 +5,7 @@ using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using System.IO;
 using System.Collections.Generic;
+using System.Windows.Threading;
 
 namespace SERGamesLauncher_V31
 {
@@ -14,6 +15,19 @@ namespace SERGamesLauncher_V31
         private SteamActivityMonitor steamMonitor;
         private bool allowUserSteamAccounts = false;
         private bool isSteamMonitorStarted = false;
+
+        // Nouveaux champs pour la protection contre les clics multiples
+        private DispatcherTimer launchCooldownTimer;
+        private DispatcherTimer countdownTimer;
+        private string originalButtonText;
+        private bool isLaunchButtonCoolingDown = false;
+        private int remainingSeconds = 30;
+
+        // Propriété pour limiter le changement de vue
+        public bool AllowViewChange { get; private set; } = true;
+
+        // Événement lorsque l'état de navigation change
+        public event EventHandler<bool> NavigationStateChanged;
 
         public event EventHandler<string> LaunchRequested;
 
@@ -25,6 +39,67 @@ namespace SERGamesLauncher_V31
             // Utiliser le moniteur Steam externe
             steamMonitor = monitor;
             steamMonitor.UserChanged += SteamMonitor_UserChanged;
+
+            // Initialiser le timer de cooldown
+            launchCooldownTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
+            launchCooldownTimer.Tick += LaunchCooldownTimer_Tick;
+
+            // Initialiser le timer de décompte (1 seconde)
+            countdownTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+            countdownTimer.Tick += CountdownTimer_Tick;
+
+            // Stocker le texte original du bouton
+            originalButtonText = btnLaunch.Content.ToString();
+
+            // S'abonner à l'événement Unloaded pour nettoyer les ressources
+            this.Unloaded += PlatformContentControl_Unloaded;
+        }
+
+        private void PlatformContentControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // Nettoyer les timers
+            if (launchCooldownTimer != null)
+            {
+                launchCooldownTimer.Stop();
+                launchCooldownTimer.Tick -= LaunchCooldownTimer_Tick;
+            }
+
+            if (countdownTimer != null)
+            {
+                countdownTimer.Stop();
+                countdownTimer.Tick -= CountdownTimer_Tick;
+            }
+        }
+
+        // Méthode pour gérer le timer de décompte (1 seconde)
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            remainingSeconds--;
+
+            if (remainingSeconds <= 0)
+            {
+                // Le décompte est terminé, arrêter ce timer
+                countdownTimer.Stop();
+            }
+            else
+            {
+                // Mettre à jour le texte du bouton avec le nombre de secondes restantes
+                btnLaunch.Content = $"Exécution ({remainingSeconds})";
+            }
+        }
+
+        // Méthode pour gérer la fin du timer principal
+        private void LaunchCooldownTimer_Tick(object sender, EventArgs e)
+        {
+            // Réactiver le bouton et restaurer son texte
+            btnLaunch.IsEnabled = chkConsent.IsChecked ?? false;
+            btnLaunch.Content = originalButtonText;
+            launchCooldownTimer.Stop();
+            isLaunchButtonCoolingDown = false;
+
+            // Permettre à nouveau le changement de vue
+            AllowViewChange = true;
+            NavigationStateChanged?.Invoke(this, true);
         }
 
         private void SteamMonitor_UserChanged(string username)
@@ -50,6 +125,16 @@ namespace SERGamesLauncher_V31
         // Configurer et afficher une plateforme spécifique
         public void ConfigurePlatform(string platformName)
         {
+            // Vérifier si le changement de plateforme est autorisé
+            if (!AllowViewChange)
+            {
+                // Afficher un message indiquant que l'application est en cours d'exécution
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Une application est en cours de lancement.\nVeuillez attendre {remainingSeconds} secondes avant de changer de plateforme.",
+                    "Lancement en cours", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             currentPlatform = platformName;
             infoView.Visibility = Visibility.Collapsed;
             platformView.Visibility = Visibility.Visible;
@@ -128,10 +213,27 @@ namespace SERGamesLauncher_V31
             isSteamMonitorStarted = false;
         }
 
-        // Gestionnaire pour le bouton de lancement
+        // Gestionnaire pour le bouton de lancement - modifié pour gérer le cooldown
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
         {
-            if (currentPlatform == null) return;
+            if (currentPlatform == null || isLaunchButtonCoolingDown) return;
+
+            // Désactiver le bouton et changer son texte
+            originalButtonText = btnLaunch.Content.ToString();
+
+            // Initialiser le compte à rebours
+            remainingSeconds = 30;
+            btnLaunch.Content = $"Exécution ({remainingSeconds})";
+            btnLaunch.IsEnabled = false;
+            isLaunchButtonCoolingDown = true;
+
+            // Bloquer la navigation entre les vues
+            AllowViewChange = false;
+            NavigationStateChanged?.Invoke(this, false);
+
+            // Démarrer les timers
+            launchCooldownTimer.Start();
+            countdownTimer.Start();
 
             // Vérifier si la plateforme est configurée
             List<PathConfig> pathConfigs = PathConfigService.LoadPathConfigs();
