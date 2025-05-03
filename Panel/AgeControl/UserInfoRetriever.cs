@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Models/UserInfoRetriever.cs
+using System;
+using System.DirectoryServices;
 using System.Globalization;
 
 namespace SERGamesLauncher_V31
@@ -10,7 +12,7 @@ namespace SERGamesLauncher_V31
         {
             public string DisplayName { get; set; } = "John Doe";
             public string BirthDate { get; set; } = string.Empty;
-            public int Age { get; set; } = 3;
+            public int Age { get; set; } = 90;
             public bool HasValidBirthDate { get; set; } = false;
             public bool HasValidDisplayName { get; set; } = false;
         }
@@ -21,30 +23,124 @@ namespace SERGamesLauncher_V31
 
             try
             {
-                // Pour des raisons de simplicité, nous utilisons des valeurs par défaut
-                // Dans un environnement réel, il faudrait implémenter l'accès à Active Directory
-                // ou une autre source de données utilisateur
+                // Se connecter au domaine neos.lan explicitement
+                string ldapPath = "LDAP://neos.lan";
+                DirectoryEntry directoryEntry = new DirectoryEntry(ldapPath);
 
-                userInfo.DisplayName = Environment.UserName; // Utiliser le nom d'utilisateur actuel
-                userInfo.HasValidDisplayName = true;
+                // Créer la recherche
+                DirectorySearcher searcher = new DirectorySearcher(directoryEntry);
+                searcher.Filter = $"(&(objectCategory=person)(objectClass=user)(sAMAccountName={username}))";
 
-                // Simuler une date de naissance (pour test uniquement)
-                // En production, la date réelle serait récupérée depuis AD ou une DB
-                Random random = new Random();
-                int age = random.Next(80, 99); // Âge aléatoire entre 3 et 17 ans
-                userInfo.Age = age;
+                // Ajouter les propriétés à rechercher spécifiquement
+                searcher.PropertiesToLoad.Add("dateOfBirth");
+                searcher.PropertiesToLoad.Add("displayName");
 
-                // Calculer une date de naissance à partir de l'âge
-                DateTime birthDate = DateTime.Today.AddYears(-age);
-                userInfo.BirthDate = birthDate.ToString("dd/MM/yyyy");
-                userInfo.HasValidBirthDate = true;
+                // Effectuer la recherche
+                SearchResult result = searcher.FindOne();
 
-                System.Diagnostics.Debug.WriteLine($"Informations utilisateur simulées : {userInfo.DisplayName}, {userInfo.Age} ans");
+                if (result != null)
+                {
+                    // Récupérer le displayName
+                    if (result.Properties.Contains("displayName") && result.Properties["displayName"].Count > 0)
+                    {
+                        string displayNameValue = result.Properties["displayName"][0]?.ToString();
+
+                        if (!string.IsNullOrWhiteSpace(displayNameValue))
+                        {
+                            userInfo.DisplayName = displayNameValue;
+                            userInfo.HasValidDisplayName = true;
+                            System.Diagnostics.Debug.WriteLine($"DisplayName trouvé: {displayNameValue}");
+                        }
+                        else
+                        {
+                            // DisplayName vide ou null - utiliser la valeur par défaut
+                            userInfo.DisplayName = "John Doe";
+                            userInfo.HasValidDisplayName = false;
+                        }
+                    }
+                    else
+                    {
+                        // DisplayName non trouvé - utiliser la valeur par défaut
+                        userInfo.DisplayName = "John Doe";
+                        userInfo.HasValidDisplayName = false;
+                    }
+
+                    // Récupérer la date de naissance (dateOfBirth)
+                    if (result.Properties.Contains("dateOfBirth") && result.Properties["dateOfBirth"].Count > 0)
+                    {
+                        string birthDateValue = result.Properties["dateOfBirth"][0]?.ToString();
+
+                        if (!string.IsNullOrWhiteSpace(birthDateValue))
+                        {
+                            userInfo.BirthDate = birthDateValue;
+
+                            try
+                            {
+                                DateTime birthDate;
+
+                                // Tenter de parser selon différents formats
+                                if (DateTime.TryParseExact(birthDateValue, "yyyy-MM-dd", CultureInfo.InvariantCulture,
+                                                          DateTimeStyles.None, out birthDate) ||
+                                    DateTime.TryParseExact(birthDateValue, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+                                                          DateTimeStyles.None, out birthDate) ||
+                                    DateTime.TryParseExact(birthDateValue, "MM/dd/yyyy", CultureInfo.InvariantCulture,
+                                                          DateTimeStyles.None, out birthDate))
+                                {
+                                    // Calculer l'âge
+                                    userInfo.Age = CalculateAge(birthDate);
+                                    userInfo.HasValidBirthDate = true;
+
+                                    // Standardiser le format de date
+                                    userInfo.BirthDate = birthDate.ToString("dd/MM/yyyy");
+
+                                    System.Diagnostics.Debug.WriteLine($"Date de naissance standardisée: {userInfo.BirthDate}");
+                                    System.Diagnostics.Debug.WriteLine($"Âge calculé: {userInfo.Age} ans");
+                                }
+                                else
+                                {
+                                    // Si le format n'est pas reconnu, utiliser l'âge par défaut
+                                    userInfo.Age = 90;
+                                    userInfo.HasValidBirthDate = false;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Erreur lors du traitement de la date: {ex.Message}. Âge par défaut: 90 ans");
+                                userInfo.Age = 90;
+                                userInfo.HasValidBirthDate = false;
+                            }
+                        }
+                        else
+                        {
+                            // Date de naissance vide ou null - utiliser l'âge par défaut
+                            userInfo.Age = 90;
+                            userInfo.HasValidBirthDate = false;
+                        }
+                    }
+                    else
+                    {
+                        // Attribut dateOfBirth non trouvé - utiliser l'âge par défaut
+                        userInfo.Age = 90;
+                        userInfo.HasValidBirthDate = false;
+                    }
+                }
+                else
+                {
+                    // Aucun utilisateur trouvé - utiliser les valeurs par défaut
+                    userInfo.DisplayName = "John Doe";
+                    userInfo.Age = 90;
+                    userInfo.HasValidDisplayName = false;
+                    userInfo.HasValidBirthDate = false;
+                }
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Erreur lors de la récupération des informations utilisateur: {ex.Message}");
-                System.Diagnostics.Debug.WriteLine("Utilisation des valeurs par défaut.");
+                // En cas d'erreur - utiliser les valeurs par défaut
+                userInfo.DisplayName = "John Doe";
+                userInfo.Age = 90;
+                userInfo.HasValidDisplayName = false;
+                userInfo.HasValidBirthDate = false;
             }
 
             return userInfo;
