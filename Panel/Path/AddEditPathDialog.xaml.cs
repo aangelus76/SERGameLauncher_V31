@@ -12,7 +12,7 @@ namespace SERGamesLauncher_V31
         public PathConfig PathConfig { get; private set; }
 
         // Mode d'édition
-        private bool isEditMode = false;
+        //private bool isEditMode = false;
         private string originalId;
 
         // Constructeur pour l'ajout
@@ -58,7 +58,7 @@ namespace SERGamesLauncher_V31
             PreFillFields(configToEdit);
 
             // Activer le mode édition
-            isEditMode = true;
+            //isEditMode = true;
 
             // Définir le titre
             titleTextBlock.Text = "Modifier un chemin d'application";

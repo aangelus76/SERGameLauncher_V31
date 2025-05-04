@@ -14,7 +14,7 @@ namespace SERGamesLauncher_V31
         private string currentPlatform = null;
         private SteamActivityMonitor steamMonitor;
         private bool allowUserSteamAccounts = false;
-        private bool isSteamMonitorStarted = false;
+        //private bool isSteamMonitorStarted = false;
 
         // Nouveaux champs pour la protection contre les clics multiples
         private DispatcherTimer launchCooldownTimer;
@@ -119,7 +119,7 @@ namespace SERGamesLauncher_V31
             currentPlatform = null;
 
             // Ne pas arrêter le moniteur Steam, car il est géré par MainWindow
-            isSteamMonitorStarted = false;
+            //isSteamMonitorStarted = false;
         }
 
         // Configurer et afficher une plateforme spécifique
@@ -155,7 +155,7 @@ namespace SERGamesLauncher_V31
                     toggleAllowUserAccounts.Visibility = Visibility.Visible;
                     txtAllowUserAccounts.Visibility = Visibility.Visible;
                     // Indiquer que Steam est sélectionné
-                    isSteamMonitorStarted = true;
+                    //isSteamMonitorStarted = true;
                     // Mettre à jour l'état du toggle pour qu'il corresponde à l'état actuel
                     toggleAllowUserAccounts.IsChecked = steamMonitor.AllowUserAccounts;
                     allowUserSteamAccounts = steamMonitor.AllowUserAccounts;
@@ -210,7 +210,7 @@ namespace SERGamesLauncher_V31
             txtAllowUserAccounts.Visibility = Visibility.Collapsed;
 
             // Indiquer que Steam n'est plus sélectionné
-            isSteamMonitorStarted = false;
+            //isSteamMonitorStarted = false;
         }
 
         // Gestionnaire pour le bouton de lancement - modifié pour gérer le cooldown

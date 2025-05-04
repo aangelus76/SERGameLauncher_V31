@@ -11,10 +11,10 @@
         <!-- Vue par défaut (informations) -->
         <!-- Vue par défaut (informations) -->
         <Border x:Name="infoView" Visibility="Visible">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="550">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="662">
                 <TextBlock Text="Veuillez choisir votre plateforme de jeux à gauche." 
                    Style="{StaticResource HeaderTextStyle}" 
-                   FontSize="30"/>
+                   FontSize="36"/>
 
                 <TextBlock Text="Certaines plateformes demandent&#x0a;à ce que vous utilisiez votre propre compte." 
                    Style="{StaticResource SubHeaderTextStyle}" 
@@ -67,7 +67,7 @@
                    FontSize="18"
                    FontStyle="Italic"
                    HorizontalAlignment="Center"
-                   Margin="0,25,0,0"/>
+                   Margin="0,125,0,0"/>
             </StackPanel>
         </Border>
 

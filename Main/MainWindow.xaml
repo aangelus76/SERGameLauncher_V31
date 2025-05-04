@@ -75,10 +75,10 @@
                 <!-- Informations utilisateur en bas -->
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20">
                     <TextBlock x:Name="txtUserName" Text="Utilisateur : John Doe" 
-                               Foreground="White" FontSize="14" HorizontalAlignment="Center" 
+                               Foreground="#bbbdbb" FontSize="14" HorizontalAlignment="Center" 
                                TextAlignment="Center" Margin="0,0,0,5"/>
                     <TextBlock x:Name="txtUserAge" Text="Âge : 3 ans" 
-                               Foreground="White" FontSize="14" HorizontalAlignment="Center"
+                               Foreground="#bbbdbb" FontSize="14" HorizontalAlignment="Center"
                                TextAlignment="Center"/>
                 </StackPanel>
             </Grid>
