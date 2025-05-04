@@ -26,6 +26,9 @@ namespace SERGamesLauncher_V31
         // Propriété pour limiter le changement de vue
         public bool AllowViewChange { get; private set; } = true;
 
+        // Propriété pour gérer l'état du cooldown
+        private bool IsCooldownActive { get; set; } = false;
+
         // Événement lorsque l'état de navigation change
         public event EventHandler<bool> NavigationStateChanged;
 
@@ -51,6 +54,10 @@ namespace SERGamesLauncher_V31
             // Stocker le texte original du bouton
             originalButtonText = btnLaunch.Content.ToString();
 
+            // S'abonner aux changements de la checkbox
+            chkConsent.Checked += OnCheckboxChanged;
+            chkConsent.Unchecked += OnCheckboxChanged;
+
             // S'abonner à l'événement Unloaded pour nettoyer les ressources
             this.Unloaded += PlatformContentControl_Unloaded;
         }
@@ -69,6 +76,27 @@ namespace SERGamesLauncher_V31
                 countdownTimer.Stop();
                 countdownTimer.Tick -= CountdownTimer_Tick;
             }
+
+            if (chkConsent != null)
+            {
+                chkConsent.Checked -= OnCheckboxChanged;
+                chkConsent.Unchecked -= OnCheckboxChanged;
+            }
+        }
+
+        // Event handler pour la checkbox
+        private void OnCheckboxChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateButtonState();
+        }
+
+        // Méthode complète pour gérer l'état du bouton
+        private void UpdateButtonState()
+        {
+            // Le bouton est activé uniquement si :
+            // 1. La checkbox est cochée
+            // 2. Aucun cooldown en cours
+            btnLaunch.IsEnabled = (chkConsent.IsChecked ?? false) && !IsCooldownActive;
         }
 
         // Méthode pour gérer le timer de décompte (1 seconde)
@@ -91,11 +119,19 @@ namespace SERGamesLauncher_V31
         // Méthode pour gérer la fin du timer principal
         private void LaunchCooldownTimer_Tick(object sender, EventArgs e)
         {
-            // Réactiver le bouton et restaurer son texte
-            btnLaunch.IsEnabled = chkConsent.IsChecked ?? false;
+            // Restaurer le texte du bouton
             btnLaunch.Content = originalButtonText;
             launchCooldownTimer.Stop();
             isLaunchButtonCoolingDown = false;
+
+            // Marquer que le cooldown est terminé
+            IsCooldownActive = false;
+
+            // Réactiver la checkbox
+            chkConsent.IsEnabled = true;
+
+            // Mettre à jour l'état du bouton
+            UpdateButtonState();
 
             // Permettre à nouveau le changement de vue
             AllowViewChange = true;
@@ -224,8 +260,16 @@ namespace SERGamesLauncher_V31
             // Initialiser le compte à rebours
             remainingSeconds = 30;
             btnLaunch.Content = $"Exécution ({remainingSeconds})";
-            btnLaunch.IsEnabled = false;
+
+            // Marquer que le cooldown est actif
+            IsCooldownActive = true;
+            // Mettre à jour l'état du bouton
+            UpdateButtonState();
+
             isLaunchButtonCoolingDown = true;
+
+            // Désactiver la checkbox pendant le cooldown
+            chkConsent.IsEnabled = false;
 
             // Bloquer la navigation entre les vues
             AllowViewChange = false;

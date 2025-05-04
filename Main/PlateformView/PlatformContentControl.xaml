@@ -123,8 +123,12 @@
                     <!-- Bouton de lancement -->
                     <Button x:Name="btnLaunch" Content="Lancer" 
                             Style="{StaticResource LaunchButtonStyle}"
-                            IsEnabled="{Binding ElementName=chkConsent, Path=IsChecked}"
+                            IsEnabled="false"
                             Click="LaunchButton_Click"/>
+                    <!--<Button x:Name="btnLaunch" Content="Lancer" 
+        Style="{StaticResource LaunchButtonStyle}"
+        IsEnabled="{Binding ElementName=chkConsent, Path=IsChecked}"
+        Click="LaunchButton_Click"/>-->
                 </StackPanel>
 
                 <!-- Toggle pour Steam uniquement -->
