@@ -3,9 +3,9 @@
   <Paths>
     <Path id="b76e023a-5d0b-4269-8926-d1b7687fa99a">
       <PlatformName>Roblox</PlatformName>
-      <Path>C:\Users\Admin\AppData\Local\Roblox\Versions\version-a9a5d0b275a34ffb\RobloxPlayerBeta.exe</Path>
+      <Path>C:\Program Files (x86)\Roblox\Versions\version-c3c1514fd260482e\RobloxPlayerBeta.exe</Path>
       <IsUrl>false</IsUrl>
-      <LaunchArguments>--app</LaunchArguments>
+      <LaunchArguments>--fast</LaunchArguments>
     </Path>
     <Path id="f5c7cc05-cedf-4f10-b686-18cfc6a73c20">
       <PlatformName>BGA</PlatformName>

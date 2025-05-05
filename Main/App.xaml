@@ -232,32 +232,6 @@
                                                     </Button.Triggers>
                                                 </Button>
 
-                                                <!-- Bouton minimiser -->
-                                                <Button x:Name="MinimizeButton" Style="{StaticResource IconButtonStyle}" 
-                                        ToolTip="Minimiser la fenêtre">
-                                                    <Image x:Name="miniImage" Source="{StaticResource MiniNormal}" Width="26" Height="26"/>
-                                                    <Button.Triggers>
-                                                        <EventTrigger RoutedEvent="Button.MouseEnter">
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="miniImage" Storyboard.TargetProperty="Source">
-                                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource MiniOver}"/>
-                                                                    </ObjectAnimationUsingKeyFrames>
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </EventTrigger>
-                                                        <EventTrigger RoutedEvent="Button.MouseLeave">
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="miniImage" Storyboard.TargetProperty="Source">
-                                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource MiniNormal}"/>
-                                                                    </ObjectAnimationUsingKeyFrames>
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </EventTrigger>
-                                                    </Button.Triggers>
-                                                </Button>
-
                                                 <!-- Bouton fermer -->
                                                 <Button x:Name="CloseButton" Style="{StaticResource IconButtonStyle}" 
                                         ToolTip="Forcer la fermeture">
@@ -277,6 +251,32 @@
                                                                 <Storyboard>
                                                                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="forceImage" Storyboard.TargetProperty="Source">
                                                                         <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource ForceNormal}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </Button.Triggers>
+                                                </Button>
+
+                                                <!-- Bouton minimiser -->
+                                                <Button x:Name="MinimizeButton" Style="{StaticResource IconButtonStyle}" 
+                                                            ToolTip="Minimiser la fenêtre">
+                                                    <Image x:Name="miniImage" Source="{StaticResource MiniNormal}" Width="26" Height="26"/>
+                                                    <Button.Triggers>
+                                                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="miniImage" Storyboard.TargetProperty="Source">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource MiniOver}"/>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="miniImage" Storyboard.TargetProperty="Source">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource MiniNormal}"/>
                                                                     </ObjectAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </BeginStoryboard>

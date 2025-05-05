@@ -38,4 +38,4 @@ using System.Windows;
 //
 [assembly: AssemblyVersion("3.1.0.0")]           // Version produit : 3.1.0.0 (ce qui s'affiche dans les propriétés Windows)
 [assembly: AssemblyFileVersion("3.1")]  
-[assembly: AssemblyInformationalVersion("W18-25.F4")] // Semaine, Année, Jour  (A -> Lundi, B -> Mardi, C -> Mercredi ...), N° de modification 
+[assembly: AssemblyInformationalVersion("W19-25.A1")] // Semaine, Année, Jour  (A -> Lundi, B -> Mardi, C -> Mercredi ...), N° de modification 
