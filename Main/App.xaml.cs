@@ -62,6 +62,10 @@ namespace SERGamesLauncher_V31
 
             // Si aucune instance n'est en cours, lancer normalement
             base.OnStartup(e);
+
+            // Vérifier et créer le raccourci sur le bureau si nécessaire
+            ShortcutUtility.EnsureDesktopShortcutExists();
+
             // Placer la fenêtre au premier plan
             this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
             {

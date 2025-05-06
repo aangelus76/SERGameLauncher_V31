@@ -48,6 +48,8 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\S
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.AssemblyReference.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.SuggestedBindingRedirects.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe.config
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.ResolveComReference.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\AddEditProcessDialog.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\AddEditFolderDialog.g.cs
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\FolderPermissionsControl.g.cs
@@ -83,6 +85,7 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\P
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Main\PlateformView\PlatformContentControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\ProcessRestrictionsControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\ProcessSelectorDialog.baml
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.g.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.Properties.Resources.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.CoreCompileInputs.cache
@@ -92,4 +95,3 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\S
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.application
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.pdb
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.g.resources

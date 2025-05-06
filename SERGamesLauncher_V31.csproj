@@ -86,6 +86,15 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="Main\App.xaml">
@@ -131,6 +140,7 @@
     </Compile>
     <Compile Include="Panel\AgeControl\ProcessRestrictionService.cs" />
     <Compile Include="Custom\VersionUtility.cs" />
+    <Compile Include="Custom\ShortcutUtility.cs" />
     <Page Include="Panel\AgeControl\AddEditProcessDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
