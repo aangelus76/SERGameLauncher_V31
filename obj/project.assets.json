@@ -9,7 +9,7 @@
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard1.0/_._": {
+          "lib/netstandard1.0/Costura.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -64,7 +64,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/Microsoft.Win32.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
@@ -125,7 +125,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/net463/System.AppContext.dll": {}
@@ -178,7 +178,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Console.dll": {}
         },
         "runtime": {
           "lib/net46/System.Console.dll": {}
@@ -227,7 +227,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Diagnostics.Tracing.dll": {}
         },
         "runtime": {
           "lib/net462/System.Diagnostics.Tracing.dll": {}
@@ -265,7 +265,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Globalization.Calendars.dll": {}
         },
         "runtime": {
           "lib/net46/System.Globalization.Calendars.dll": {}
@@ -278,7 +278,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.IO.dll": {}
         },
         "runtime": {
           "lib/net462/System.IO.dll": {}
@@ -291,7 +291,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.dll": {}
@@ -314,7 +314,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.ZipFile.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
@@ -329,7 +329,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.dll": {}
@@ -367,7 +367,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.Primitives.dll": {}
@@ -401,7 +401,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.dll": {}
@@ -414,7 +414,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.Expressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.Expressions.dll": {}
@@ -454,7 +454,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {
+          "ref/net46/System.Net.Http.dll": {
             "related": ".xml"
           }
         },
@@ -491,7 +491,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Net.Sockets.dll": {}
         },
         "runtime": {
           "lib/net46/System.Net.Sockets.dll": {}
@@ -532,7 +532,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Reflection.dll": {}
         },
         "runtime": {
           "lib/net462/System.Reflection.dll": {}
@@ -574,7 +574,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.dll": {}
@@ -603,7 +603,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.Extensions.dll": {}
@@ -632,7 +632,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Runtime.InteropServices.dll": {}
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
@@ -641,7 +641,7 @@
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtime": {
           "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
@@ -704,7 +704,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "lib/net463/System.Security.Cryptography.Algorithms.dll": {}
@@ -731,7 +731,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Encoding.dll": {}
@@ -753,7 +753,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Primitives.dll": {}
@@ -771,7 +771,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net461/_._": {}
+          "ref/net461/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtime": {
           "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
@@ -882,7 +882,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Text.RegularExpressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Text.RegularExpressions.dll": {}
@@ -962,7 +962,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Xml.ReaderWriter.dll": {}
         },
         "runtime": {
           "lib/net46/System.Xml.ReaderWriter.dll": {}
@@ -989,7 +989,7 @@
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard1.0/_._": {
+          "lib/netstandard1.0/Costura.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -1044,7 +1044,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/Microsoft.Win32.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
@@ -1105,7 +1105,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/net463/System.AppContext.dll": {}
@@ -1158,7 +1158,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Console.dll": {}
         },
         "runtime": {
           "lib/net46/System.Console.dll": {}
@@ -1207,7 +1207,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Diagnostics.Tracing.dll": {}
         },
         "runtime": {
           "lib/net462/System.Diagnostics.Tracing.dll": {}
@@ -1245,7 +1245,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Globalization.Calendars.dll": {}
         },
         "runtime": {
           "lib/net46/System.Globalization.Calendars.dll": {}
@@ -1258,7 +1258,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.IO.dll": {}
         },
         "runtime": {
           "lib/net462/System.IO.dll": {}
@@ -1271,7 +1271,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net46/System.IO.Compression.dll": {}
@@ -1284,7 +1284,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.ZipFile.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
@@ -1299,7 +1299,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.dll": {}
@@ -1331,7 +1331,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.Primitives.dll": {}
@@ -1365,7 +1365,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.dll": {}
@@ -1378,7 +1378,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.Expressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.Expressions.dll": {}
@@ -1418,7 +1418,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {
+          "ref/net46/System.Net.Http.dll": {
             "related": ".xml"
           }
         },
@@ -1445,7 +1445,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Net.Sockets.dll": {}
         },
         "runtime": {
           "lib/net46/System.Net.Sockets.dll": {}
@@ -1486,7 +1486,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Reflection.dll": {}
         },
         "runtime": {
           "lib/net462/System.Reflection.dll": {}
@@ -1528,7 +1528,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.dll": {}
@@ -1557,7 +1557,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.Extensions.dll": {}
@@ -1586,7 +1586,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Runtime.InteropServices.dll": {}
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
@@ -1595,7 +1595,7 @@
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
@@ -1642,7 +1642,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net463/System.Security.Cryptography.Algorithms.dll": {}
@@ -1655,7 +1655,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net46/System.Security.Cryptography.Encoding.dll": {}
@@ -1667,7 +1667,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Primitives.dll": {}
@@ -1685,7 +1685,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net461/_._": {}
+          "ref/net461/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
@@ -1780,7 +1780,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Text.RegularExpressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Text.RegularExpressions.dll": {}
@@ -1860,7 +1860,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Xml.ReaderWriter.dll": {}
         },
         "runtime": {
           "lib/net46/System.Xml.ReaderWriter.dll": {}
@@ -1887,7 +1887,7 @@
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard1.0/_._": {
+          "lib/netstandard1.0/Costura.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -1942,7 +1942,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/Microsoft.Win32.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
@@ -2003,7 +2003,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/net463/System.AppContext.dll": {}
@@ -2056,7 +2056,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Console.dll": {}
         },
         "runtime": {
           "lib/net46/System.Console.dll": {}
@@ -2105,7 +2105,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Diagnostics.Tracing.dll": {}
         },
         "runtime": {
           "lib/net462/System.Diagnostics.Tracing.dll": {}
@@ -2143,7 +2143,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Globalization.Calendars.dll": {}
         },
         "runtime": {
           "lib/net46/System.Globalization.Calendars.dll": {}
@@ -2156,7 +2156,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.IO.dll": {}
         },
         "runtime": {
           "lib/net462/System.IO.dll": {}
@@ -2169,7 +2169,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.dll": {}
@@ -2182,7 +2182,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.ZipFile.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
@@ -2197,7 +2197,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.dll": {}
@@ -2229,7 +2229,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.Primitives.dll": {}
@@ -2263,7 +2263,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.dll": {}
@@ -2276,7 +2276,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.Expressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.Expressions.dll": {}
@@ -2316,7 +2316,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {
+          "ref/net46/System.Net.Http.dll": {
             "related": ".xml"
           }
         },
@@ -2343,7 +2343,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Net.Sockets.dll": {}
         },
         "runtime": {
           "lib/net46/System.Net.Sockets.dll": {}
@@ -2384,7 +2384,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Reflection.dll": {}
         },
         "runtime": {
           "lib/net462/System.Reflection.dll": {}
@@ -2426,7 +2426,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.dll": {}
@@ -2455,7 +2455,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.Extensions.dll": {}
@@ -2484,7 +2484,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Runtime.InteropServices.dll": {}
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
@@ -2493,7 +2493,7 @@
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtime": {
           "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
@@ -2540,7 +2540,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "lib/net463/System.Security.Cryptography.Algorithms.dll": {}
@@ -2553,7 +2553,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Encoding.dll": {}
@@ -2565,7 +2565,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Primitives.dll": {}
@@ -2583,7 +2583,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net461/_._": {}
+          "ref/net461/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtime": {
           "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
@@ -2678,7 +2678,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Text.RegularExpressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Text.RegularExpressions.dll": {}
@@ -2758,7 +2758,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Xml.ReaderWriter.dll": {}
         },
         "runtime": {
           "lib/net46/System.Xml.ReaderWriter.dll": {}
@@ -2785,7 +2785,7 @@
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard1.0/_._": {
+          "lib/netstandard1.0/Costura.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -2840,7 +2840,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/Microsoft.Win32.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
@@ -2901,7 +2901,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/net463/System.AppContext.dll": {}
@@ -2954,7 +2954,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Console.dll": {}
         },
         "runtime": {
           "lib/net46/System.Console.dll": {}
@@ -3003,7 +3003,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Diagnostics.Tracing.dll": {}
         },
         "runtime": {
           "lib/net462/System.Diagnostics.Tracing.dll": {}
@@ -3041,7 +3041,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Globalization.Calendars.dll": {}
         },
         "runtime": {
           "lib/net46/System.Globalization.Calendars.dll": {}
@@ -3054,7 +3054,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.IO.dll": {}
         },
         "runtime": {
           "lib/net462/System.IO.dll": {}
@@ -3067,7 +3067,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net46/System.IO.Compression.dll": {}
@@ -3080,7 +3080,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.ZipFile.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
@@ -3095,7 +3095,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.dll": {}
@@ -3127,7 +3127,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.Primitives.dll": {}
@@ -3161,7 +3161,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.dll": {}
@@ -3174,7 +3174,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.Expressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.Expressions.dll": {}
@@ -3214,7 +3214,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {
+          "ref/net46/System.Net.Http.dll": {
             "related": ".xml"
           }
         },
@@ -3241,7 +3241,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Net.Sockets.dll": {}
         },
         "runtime": {
           "lib/net46/System.Net.Sockets.dll": {}
@@ -3282,7 +3282,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Reflection.dll": {}
         },
         "runtime": {
           "lib/net462/System.Reflection.dll": {}
@@ -3324,7 +3324,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.dll": {}
@@ -3353,7 +3353,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.Extensions.dll": {}
@@ -3382,7 +3382,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Runtime.InteropServices.dll": {}
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
@@ -3391,7 +3391,7 @@
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
@@ -3438,7 +3438,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net463/System.Security.Cryptography.Algorithms.dll": {}
@@ -3451,7 +3451,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net46/System.Security.Cryptography.Encoding.dll": {}
@@ -3463,7 +3463,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Primitives.dll": {}
@@ -3481,7 +3481,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net461/_._": {}
+          "ref/net461/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
@@ -3576,7 +3576,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Text.RegularExpressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Text.RegularExpressions.dll": {}
@@ -3656,7 +3656,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Xml.ReaderWriter.dll": {}
         },
         "runtime": {
           "lib/net46/System.Xml.ReaderWriter.dll": {}
@@ -3683,7 +3683,7 @@
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard1.0/_._": {
+          "lib/netstandard1.0/Costura.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -3738,7 +3738,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/Microsoft.Win32.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
@@ -3799,7 +3799,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/net463/System.AppContext.dll": {}
@@ -3852,7 +3852,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Console.dll": {}
         },
         "runtime": {
           "lib/net46/System.Console.dll": {}
@@ -3901,7 +3901,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Diagnostics.Tracing.dll": {}
         },
         "runtime": {
           "lib/net462/System.Diagnostics.Tracing.dll": {}
@@ -3939,7 +3939,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Globalization.Calendars.dll": {}
         },
         "runtime": {
           "lib/net46/System.Globalization.Calendars.dll": {}
@@ -3952,7 +3952,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.IO.dll": {}
         },
         "runtime": {
           "lib/net462/System.IO.dll": {}
@@ -3965,7 +3965,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net46/System.IO.Compression.dll": {}
@@ -3978,7 +3978,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.Compression.ZipFile.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
@@ -3993,7 +3993,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.dll": {}
@@ -4025,7 +4025,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.IO.FileSystem.Primitives.dll": {}
@@ -4059,7 +4059,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.dll": {}
@@ -4072,7 +4072,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Linq.Expressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Linq.Expressions.dll": {}
@@ -4112,7 +4112,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {
+          "ref/net46/System.Net.Http.dll": {
             "related": ".xml"
           }
         },
@@ -4139,7 +4139,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Net.Sockets.dll": {}
         },
         "runtime": {
           "lib/net46/System.Net.Sockets.dll": {}
@@ -4180,7 +4180,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Reflection.dll": {}
         },
         "runtime": {
           "lib/net462/System.Reflection.dll": {}
@@ -4222,7 +4222,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.dll": {}
@@ -4251,7 +4251,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net462/_._": {}
+          "ref/net462/System.Runtime.Extensions.dll": {}
         },
         "runtime": {
           "lib/net462/System.Runtime.Extensions.dll": {}
@@ -4280,7 +4280,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Runtime.InteropServices.dll": {}
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
@@ -4289,7 +4289,7 @@
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
@@ -4336,7 +4336,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net463/System.Security.Cryptography.Algorithms.dll": {}
@@ -4349,7 +4349,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net46/System.Security.Cryptography.Encoding.dll": {}
@@ -4361,7 +4361,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Security.Cryptography.Primitives.dll": {}
         },
         "runtime": {
           "lib/net46/System.Security.Cryptography.Primitives.dll": {}
@@ -4379,7 +4379,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net461/_._": {}
+          "ref/net461/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
@@ -4474,7 +4474,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net463/_._": {}
+          "ref/net463/System.Text.RegularExpressions.dll": {}
         },
         "runtime": {
           "lib/net463/System.Text.RegularExpressions.dll": {}
@@ -4554,7 +4554,7 @@
           "mscorlib"
         ],
         "compile": {
-          "ref/net46/_._": {}
+          "ref/net46/System.Xml.ReaderWriter.dll": {}
         },
         "runtime": {
           "lib/net46/System.Xml.ReaderWriter.dll": {}
@@ -7898,7 +7898,6 @@
       "net48": {
         "dependencies": {
           "Costura.Fody": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.7.0, )"

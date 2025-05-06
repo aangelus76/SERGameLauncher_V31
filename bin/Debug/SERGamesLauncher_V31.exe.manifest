@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SERGamesLauncher_V31.exe" size="1129440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SERGamesLauncher_V31.exe" size="1130464">
       <assemblyIdentity name="SERGamesLauncher_V31" version="3.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>G2DqrW1Zq2YmI0Qqr+zNSQTsA6XbTmPxelwplQXb2ew=</dsig:DigestValue>
+        <dsig:DigestValue>KyxqZe4pB4aScQSVpqETbQDch7aGcOO1xPyK5PjnmiE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
