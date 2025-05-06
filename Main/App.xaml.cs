@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Runtime.InteropServices;
 using System.Linq;
+using System.Windows.Interop;
+using System.Windows.Threading;
 
 namespace SERGamesLauncher_V31
 {
@@ -60,6 +62,25 @@ namespace SERGamesLauncher_V31
 
             // Si aucune instance n'est en cours, lancer normalement
             base.OnStartup(e);
+            // Placer la fenêtre au premier plan
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+            {
+                MainWindow mainWindow = this.MainWindow as MainWindow;
+                if (mainWindow != null)
+                {
+                    // S'assurer que la fenêtre est visible
+                    mainWindow.WindowState = WindowState.Normal;
+
+                    // Activer la fenêtre (rendre active)
+                    mainWindow.Activate();
+
+                    // Forcer le focus sur la fenêtre
+                    mainWindow.Focus();
+
+                    // Utiliser l'API Windows pour forcer la fenêtre au premier plan
+                    SetForegroundWindow(new WindowInteropHelper(mainWindow).Handle);
+                }
+            }));
         }
 
         protected override void OnExit(ExitEventArgs e)

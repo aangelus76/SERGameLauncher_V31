@@ -41,6 +41,8 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\obj\Debug\AddEditAccountDialog.
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\obj\Debug\SteamAccountsControl.baml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\obj\Debug\SERGames.DF50B8DC.Up2Date
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.exe.config
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.exe.manifest
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.application
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.exe
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.pdb
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.AssemblyReference.cache
@@ -85,11 +87,9 @@ C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\S
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.Properties.Resources.resources
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.CoreCompileInputs.cache
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.pdb
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.csproj.Fody.CopyLocal.cache
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.exe.manifest
-C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\bin\Debug\SERGamesLauncher_V31.application
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.TrustInfo.xml
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe.manifest
 C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.application
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe
+C:\Users\Admin\source\repos\SERGamesLauncher_V31\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.pdb
