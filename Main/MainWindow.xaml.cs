@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Windows.Threading;
+using System.Windows.Interop;
 
 namespace SERGamesLauncher_V31
 {
@@ -24,6 +28,40 @@ namespace SERGamesLauncher_V31
 
         // Variable pour contrôler si le changement de plateforme est autorisé
         private bool canChangePlatform = true;
+
+        // Importation des API Windows pour le forçage du focus
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        private static extern bool IsIconic(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool FlashWindow(IntPtr hwnd, bool bInvert);
+
+        [DllImport("user32.dll")]
+        private static extern bool BringWindowToTop(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern int GetWindowLong(IntPtr hwnd, int index);
+
+        [DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
+
+        private const int GWL_EXSTYLE = -20;
+        private const int WS_EX_APPWINDOW = 0x00040000;
+        private const int SW_SHOWNORMAL = 1;
+        private const int SW_SHOW = 5;
+        private const int SW_RESTORE = 9;
+        private bool hasFocusBeenForced = false;
 
         public MainWindow()
         {
@@ -69,6 +107,116 @@ namespace SERGamesLauncher_V31
 
             // S'abonner à l'événement de fermeture
             this.Closing += MainWindow_Closing;
+
+            // Timer agressif qui essaie de forcer le focus
+            DispatcherTimer focusTimer = new DispatcherTimer();
+            focusTimer.Interval = TimeSpan.FromSeconds(1);
+            int attemptCount = 0;
+            const int MAX_ATTEMPTS = 10;
+
+            focusTimer.Tick += (s, e) =>
+            {
+                // Incrémenter le compteur de tentatives
+                attemptCount++;
+
+                // Forcer le focus avec les API Windows
+                ForceWindowFocusAndVisibility();
+
+                // Vérifier si la fenêtre a le focus ou si on a atteint le nombre maximum de tentatives
+                if (this.IsActive || attemptCount >= MAX_ATTEMPTS || hasFocusBeenForced)
+                {
+                    focusTimer.Stop();
+                }
+            };
+
+            // Démarrer le timer après le chargement de la fenêtre
+            this.Loaded += (s, e) =>
+            {
+                HighlightSelectedButton(btnReglement);
+                // S'assurer que la fenêtre est affichée dans la barre des tâches
+                ForceTaskbarIcon();
+
+                // Attendre un court instant avant de commencer à forcer le focus
+                Task.Delay(500).ContinueWith(t =>
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        focusTimer.Start();
+                    });
+                });
+            };
+        }
+
+        // Méthode pour forcer l'affichage de l'icône dans la barre des tâches
+        private void ForceTaskbarIcon()
+        {
+            try
+            {
+                // Accéder au handle de la fenêtre
+                IntPtr hwnd = new WindowInteropHelper(this).Handle;
+
+                // Modifier le style de la fenêtre pour forcer l'affichage dans la barre des tâches
+                int exStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+                SetWindowLong(hwnd, GWL_EXSTYLE, exStyle | WS_EX_APPWINDOW);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur lors du forçage de l'icône dans la barre des tâches: {ex.Message}");
+            }
+        }
+
+        // Méthode pour forcer le focus et la visibilité de la fenêtre
+        private void ForceWindowFocusAndVisibility()
+        {
+            try
+            {
+                var hwnd = new WindowInteropHelper(this).Handle;
+
+                // Si la fenêtre est minimisée, la restaurer
+                if (IsIconic(hwnd))
+                {
+                    ShowWindow(hwnd, SW_RESTORE);
+                }
+
+                // Essayer plusieurs techniques pour forcer la fenêtre au premier plan
+                ShowWindow(hwnd, SW_SHOW);
+                BringWindowToTop(hwnd);
+
+                // Faire clignoter la fenêtre pour attirer l'attention
+                FlashWindow(hwnd, true);
+
+                // Forcer la fenêtre au premier plan
+                SetForegroundWindow(hwnd);
+
+                // S'assurer que la fenêtre est visible
+                this.Visibility = Visibility.Visible;
+                this.WindowState = WindowState.Normal;
+                this.ShowInTaskbar = true;
+                this.Topmost = true;
+
+                // Permettre aux événements de se propager
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke(
+                    System.Windows.Threading.DispatcherPriority.Background,
+                    new Action(delegate { }));
+
+                // Désactiver Topmost après un court délai
+                Task.Delay(500).ContinueWith(t =>
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        this.Topmost = false;
+                        this.Activate();
+
+                        // Marquer que le focus a été forcé
+                        hasFocusBeenForced = true;
+                    });
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur lors du forçage du focus: {ex.Message}");
+            }
+
         }
 
         // Méthode pour gérer les changements d'état de navigation
