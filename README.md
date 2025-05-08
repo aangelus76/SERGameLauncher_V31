@@ -1,12 +1,12 @@
 # SERGamesLauncher_V31
 
-Un lanceur unifié pour différentes plateformes de jeux, développé en C# avec WPF.
+Un lanceur unifié pour différentes plateformes de jeux, développé en C# avec WPF pour Saint-Étienne-du-Rouvray.
 
 ![Logo du Launcher](Images/IconeLauncher.ico)
 
 ## Contexte du projet
 
-Le SERGamesLauncher est un launcher centralisé qui permet d'accéder à différentes plateformes de jeux depuis une interface unique. Ce projet a été développé pour Saint-Étienne-du-Rouvray afin de faciliter la gestion et l'accès aux jeux dans un environnement contrôlé. 
+Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différentes plateformes de jeux depuis une interface unique. Ce projet a été développé pour Saint-Étienne-du-Rouvray afin de faciliter la gestion et l'accès aux jeux dans un environnement contrôlé. 
 
 Le launcher intègre les plateformes suivantes :
 - Steam
@@ -16,7 +16,7 @@ Le launcher intègre les plateformes suivantes :
 - BoardGameArena (site web)
 - Xbox Game Pass
 
-## Principe de fonctionnement
+## Fonctionnalités principales
 
 Le launcher fonctionne selon deux principes clés :
 
@@ -24,13 +24,27 @@ Le launcher fonctionne selon deux principes clés :
    - Interface simple permettant de lancer les différentes plateformes
    - Certaines plateformes peuvent utiliser des identifiants pré-configurés (ex: Steam)
    - D'autres requièrent l'utilisation d'un compte personnel (ex: Epic Games)
+   - Système de contrôle parental par âge pour restreindre l'accès à certaines applications
+   - Gestion des règles d'utilisation et acceptation de conditions
 
 2. **Mode administrateur** :
    - Protégé par mot de passe
-   - Permet la gestion des comptes Steam pour l'injection automatique
+   - Gestion des comptes Steam pour l'injection automatique des identifiants
    - Configuration de la visibilité des plateformes dans l'interface
    - Gestion des chemins d'applications
-   - Gestion des permissions de dossiers (à implémenter)
+   - Gestion des permissions de dossiers pour protéger les fichiers système
+   - Contrôle d'âge pour les applications
+
+## Fonctionnalités de sécurité
+
+Le launcher intègre plusieurs mécanismes de sécurité avancés :
+
+- **Authentification administrateur** : Accès protégé par mot de passe pour toutes les fonctions d'administration
+- **Protection de session Steam** : Surveillance active des sessions Steam avec réauthentification automatique en cas de déconnexion
+- **Gestion des permissions de dossiers** : Protection en lecture seule, anti-suppression ou anti-création pour les dossiers sensibles
+- **Contrôle parental par âge** : Restriction d'accès aux applications basée sur l'âge de l'utilisateur connecté
+- **Prévention multi-instances** : Une seule instance du launcher peut être exécutée à la fois
+- **Chiffrement des données sensibles** : Cryptage AES pour les mots de passe des comptes Steam
 
 ## Structure du projet
 
@@ -46,12 +60,14 @@ SERGamesLauncher_V31/
 │   ├── CustomMessageBox.xaml # Boîte de dialogue personnalisée
 │   ├── CustomWindow.cs       # Classe de base pour fenêtres personnalisées
 │   ├── PasswordDialog.xaml   # Dialogue de mot de passe
-│   └── PasswordDialog.xaml.cs
+│   └── VersionUtility.cs     # Utilitaire de gestion de version
 ├── Panel/                    # Panneau d'administration
 │   ├── AdminPanelWindow.xaml # Fenêtre principale d'administration
+│   ├── AgeControl/           # Gestion du contrôle parental par âge
 │   ├── ButtonView/           # Gestion de la visibilité des boutons
-│   ├── Steam/                # Gestion des comptes Steam
-│   └── Path/                 # Gestion des chemins d'applications
+│   ├── PermissionFolders/    # Gestion des permissions de dossiers
+│   ├── Path/                 # Gestion des chemins d'applications
+│   └── Steam/                # Gestion des comptes Steam
 ├── Images/                   # Ressources d'images
 └── Properties/               # Propriétés du projet
 ```
@@ -91,80 +107,72 @@ Le projet utilise une architecture visuelle cohérente avec :
 - Hachage SHA-256 pour le stockage du mot de passe administrateur
 - Chiffrement AES pour les mots de passe des comptes Steam
 - Permissions contrôlées pour les dossiers sensibles
+- Surveillance active des processus pour le contrôle parental
 
 ### Stockage des données
 
-- Utilisation de fichiers XML pour les configurations de visibilité et de chemins
+- Utilisation de fichiers XML pour les configurations de visibilité, chemins et permissions
 - Utilisation de JSON pour les comptes Steam (cryptés)
 - Stockage dans un dossier `Config` à côté de l'exécutable
+- Séparation des configurations par type de données
 
 ### Injection d'identifiants
 
-Fonctionnalité permettant de démarrer automatiquement Steam avec des identifiants préconfigurés, associés au nom de l'ordinateur.
+- Fonctionnalité permettant de démarrer automatiquement Steam avec des identifiants préconfigurés
+- Association des comptes au nom de l'ordinateur
+- Surveillance de session pour prévenir les déconnexions non autorisées
+- Option de basculement en mode comptes personnels (protégée par mot de passe)
 
-## Étapes réalisées
+### Contrôle parental
 
-1. **Interface principale** :
-   - Design complet de l'interface avec thème sombre personnalisé
-   - Système de navigation entre les différentes plateformes
-   - Affichage conditionnel des messages selon la plateforme
+- Récupération des informations utilisateur depuis l'Active Directory
+- Restrictions d'accès basées sur l'âge pour les applications
+- Surveillance en temps réel des processus en cours d'exécution
+- Fermeture automatique des applications non autorisées pour l'âge de l'utilisateur
 
-2. **Système d'authentification** :
-   - Dialogue de mot de passe sécurisé pour l'administration
-   - Protection des opérations sensibles (modification, suppression)
-   - Authentification requise pour la fermeture de l'application
-
-3. **Panneau d'administration** :
-   - Interface de gestion avec navigation par onglets
-   - Gestion des comptes Steam avec chiffrement
-   - Configuration de la visibilité des plateformes
-   - Gestion des chemins d'applications
-
-4. **Composants personnalisés** :
-   - Fenêtres sans bordures avec style unifié
-   - Boîtes de dialogue personnalisées
-   - Styles réutilisables pour l'ensemble de l'application
-
-## Étapes à réaliser
-
-1. **Système de lancement des applications** :
-   - Implémentation complète du lancement des applications locales
-   - Intégration avec les chemins d'applications configurés
-   - Injection automatique des identifiants Steam
-
-2. **Gestion des permissions dossier** :
-   - Interface pour la configuration des permissions
-   - Application des restrictions sur les dossiers spécifiés
-   - Vérification des droits d'accès
-
-3. **Détection automatique des installations** :
-   - Recherche automatique des chemins d'installation des jeux
-   - Détection des plateformes installées
-   - Proposition d'ajout automatique
-
-4. **Améliorations futures** :
-   - Système de plugins pour ajouter facilement de nouvelles plateformes
-   - Statistiques d'utilisation
-   - Mise à jour automatique du launcher
-   - Personnalisation avancée de l'interface
-
-## Utilisation du projet
+## Installation et prérequis
 
 ### Prérequis
 - .NET Framework 4.8
 - Windows 7 ou supérieur
 - Visual Studio 2019 ou supérieur pour le développement
+- Accès administrateur pour certaines fonctionnalités (permissions de dossiers)
 
-### Compilation
-1. Ouvrir la solution `SERGamesLauncher_V31.sln` dans Visual Studio
-2. Restaurer les packages NuGet si nécessaire
-3. Compiler la solution en mode Debug ou Release
+### Installation
+1. Télécharger la dernière version du SERGamesLauncher
+2. Exécuter l'installateur et suivre les instructions
+3. Configurer les chemins d'accès aux plateformes dans le panneau d'administration
+4. Configurer les comptes Steam si nécessaire
 
 ### Authentification administrateur
 Le mot de passe par défaut pour l'accès administrateur est : `admin`
 
+## Détails d'implémentation
+
+### Module de monitoring Steam
+Le launcher intègre un système sophistiqué de surveillance des sessions Steam qui :
+- Détecte le lancement et l'arrêt de Steam
+- Identifie le compte connecté via l'analyse du fichier loginusers.vdf
+- Force l'utilisation du compte configuré pour le poste si nécessaire
+- Propose un mode administrateur permettant les comptes personnels
+
+### Système de permissions de dossiers
+Le système de protection de dossiers permet de :
+- Appliquer une protection en lecture seule sur les dossiers sensibles
+- Empêcher la suppression de fichiers et dossiers critiques
+- Empêcher la création de nouveaux fichiers dans certains dossiers
+- Restaurer automatiquement les protections au démarrage
+- Vérifier périodiquement l'état des protections
+
+### Contrôle d'âge des applications
+- Surveillance constante des processus en cours d'exécution
+- Comparaison avec une base de données d'applications restreintes par âge
+- Détection de l'âge de l'utilisateur via Active Directory
+- Fermeture automatique des applications non autorisées
+- Interface d'administration pour configurer les restrictions
+
 ## Licence et crédits
 
-Développé par Belcomb pour Saint-Étienne-du-Rouvray.
+Développé par Angelus76 pour Saint-Étienne-du-Rouvray.
 
 © 2025 Tous droits réservés.
