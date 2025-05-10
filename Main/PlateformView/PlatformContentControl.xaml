@@ -114,10 +114,11 @@
                 <!-- Contrôles bas de page -->
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,20,0,60">
                     <!-- Consentement -->
-                    <CheckBox x:Name="chkConsent" Margin="0,0,0,20" HorizontalAlignment="Center" Style="{StaticResource CustomCheckBoxStyle}">
-                        <TextBlock Text="Je m'engage à respecter les règles liées aux jeux vidéo de la structure." 
-                                   Foreground="#b5b5b5" TextWrapping="Wrap" Width="500" TextAlignment="Center"
-                                   FontSize="16"/>
+                    <!--<CheckBox x:Name="chkConsent" Margin="0,0,0,20" HorizontalAlignment="Center" Style="{StaticResource CustomCheckBoxStyle}">-->
+                    <CheckBox x:Name="chkConsent" Margin="0,0,0,5" HorizontalAlignment="Center" Style="{StaticResource LargeCheckBoxStyle}">
+                            <TextBlock Text="Je m'engage à respecter les règles liées aux jeux vidéo de la structure." 
+                                   Foreground="#e8ebe8" TextWrapping="Wrap" Width="650" TextAlignment="Center"
+                                   FontSize="20" Margin="0,0,0,10"/>
                     </CheckBox>
 
                     <!-- Bouton de lancement -->

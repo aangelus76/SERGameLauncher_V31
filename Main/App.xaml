@@ -336,6 +336,65 @@
             <Setter Property="Foreground" Value="#b5b5b5"/>
             <Setter Property="Margin" Value="0,5"/>
         </Style>
+        <!-- Large ChackBox-->
+        <Style x:Key="LargeCheckBoxStyle" TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#b5b5b5"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Case à cocher plus grande -->
+                            <Border x:Name="checkBoxBorder" 
+                            Width="25" Height="25" 
+                            Background="#ededed" 
+                            BorderBrush="#444444" 
+                            BorderThickness="1" 
+                            CornerRadius="3"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,10">
+
+                                <!-- Utilisation d'un Grid pour un centrage parfait -->
+                                <Grid>
+                                    <Viewbox x:Name="checkMarkContainer"
+                                    Width="18" Height="18"
+                                    Visibility="Collapsed">
+                                        <Path x:Name="checkMark" 
+                                    Fill="White"  
+                                    Data="M 1 6 L 2 8 L 5 4 L 6 5 L 2 10 L 0 7 Z"
+                                    Stretch="Uniform"/>
+                                    </Viewbox>
+                                </Grid>
+                            </Border>
+
+                            <!-- Contenu avec texte -->
+                            <ContentPresenter Grid.Column="1" 
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center"
+                                    RecognizesAccessKey="True"/>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkMarkContainer" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="checkBoxBorder" Property="Background" Value="#268531"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#666666"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="checkBoxBorder" Property="Background" Value="#555555"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
         <!-- Style pour ToggleButton -->
         <Style x:Key="ToggleSwitchStyle" TargetType="ToggleButton">

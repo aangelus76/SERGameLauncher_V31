@@ -1,4 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <Folders />
+  <Folders>
+    <Folder id="2fd8633a-eceb-41f2-82b7-211fdb914a43">
+      <Name>qdsqsd</Name>
+      <FolderPath>C:\Users\Admin\Pictures\Easter</FolderPath>
+      <IsProtectionEnabled>true</IsProtectionEnabled>
+      <EnableOnStartup>true</EnableOnStartup>
+      <ProtectionLevel>ReadOnly</ProtectionLevel>
+      <LastModified>10/05/2025 13:25:36</LastModified>
+    </Folder>
+  </Folders>
 </Configuration>
