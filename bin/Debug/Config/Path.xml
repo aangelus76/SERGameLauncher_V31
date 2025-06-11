@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Paths>
+    <Path id="b76e023a-5d0b-4269-8926-d1b7687fa99a">
+      <PlatformName>Roblox</PlatformName>
+      <Path>C:\Program Files (x86)\Roblox\Versions\version-c3c1514fd260482e\RobloxPlayerBeta.exe</Path>
+      <IsUrl>false</IsUrl>
+      <LaunchArguments>--fast</LaunchArguments>
+    </Path>
+    <Path id="f5c7cc05-cedf-4f10-b686-18cfc6a73c20">
+      <PlatformName>BGA</PlatformName>
+      <Path>https://boardgamearena.com/</Path>
+      <IsUrl>true</IsUrl>
+      <LaunchArguments></LaunchArguments>
+    </Path>
+    <Path id="288f27d2-94ed-4a5c-89b6-53eaa18ad839">
+      <PlatformName>Crazy</PlatformName>
+      <Path>https://www.crazygames.fr/</Path>
+      <IsUrl>true</IsUrl>
+      <LaunchArguments></LaunchArguments>
+    </Path>
+    <Path id="1e62d072-d44e-4acd-adf3-d80cba0538d6">
+      <PlatformName>Steam</PlatformName>
+      <Path>C:\Program Files (x86)\Steam\steam.exe</Path>
+      <IsUrl>false</IsUrl>
+      <LaunchArguments></LaunchArguments>
+    </Path>
+  </Paths>
+</Configuration>

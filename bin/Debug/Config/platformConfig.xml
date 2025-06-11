@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <PlatformVisibility>
+    <Platform name="Steam" visible="true" />
+    <Platform name="Epic" visible="true" />
+    <Platform name="Crazy" visible="true" />
+    <Platform name="Roblox" visible="true" />
+    <Platform name="BGA" visible="true" />
+    <Platform name="Xbox" visible="false" />
+  </PlatformVisibility>
+</Configuration>
