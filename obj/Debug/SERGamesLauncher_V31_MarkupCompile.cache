@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Dev\VisualStudio\SERGameLauncher\SERGameLauncher_V31-077395a57d1b0f0b90bfc11bf39a0f20ceb7646b\obj\Debug\
+C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\
 SERGamesLauncher_V31
 none
 false
 DEBUG;TRACE
-D:\Dev\VisualStudio\SERGameLauncher\SERGameLauncher_V31-077395a57d1b0f0b90bfc11bf39a0f20ceb7646b\Main\App.xaml
+C:\Users\Admin\Source\Repos\SERGameLauncher_V31\Main\App.xaml
 15570986524
 
 38374306329
 137-1946586803
 Panel\AgeControl\AddEditProcessDialog.xaml;Panel\PermissionFolders\AddEditFolderDialog.xaml;Panel\PermissionFolders\FolderPermissionsControl.xaml;Panel\Path\AddEditPathDialog.xaml;Panel\Steam\AddEditAccountDialog.xaml;Panel\AdminPanelWindow.xaml;Custom\CustomMessageBox.xaml;Main\MainWindow.xaml;Custom\PasswordDialog.xaml;Panel\ButtonView\PlatformVisibilityControl.xaml;Panel\Steam\SteamAccountsControl.xaml;Panel\Path\PathConfigsControl.xaml;Main\PlateformView\PlatformContentControl.xaml;Panel\AgeControl\ProcessRestrictionsControl.xaml;Panel\AgeControl\ProcessSelectorDialog.xaml;
 
-True
+False
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k+eBD/eWA3Q=",
+  "dgSpecHash": "RwXyN3jW34w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\source\\repos\\SERGamesLauncher_V31\\SERGameLauncher_V31\\SERGamesLauncher_V31.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Source\\Repos\\SERGameLauncher_V31\\SERGamesLauncher_V31.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\costura.fody\\5.7.0\\costura.fody.5.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fody\\6.5.5\\fody.6.5.5.nupkg.sha512",
