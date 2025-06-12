@@ -122,6 +122,11 @@
       <DependentUpon>AddEditPathDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panel\Path\BoolToPathTypeConverter.cs" />
+    <Compile Include="Panel\SilentMode\SilentModeSchedule.cs" />
+    <Compile Include="Panel\SilentMode\SilentModeScheduleControl.xaml.cs">
+      <DependentUpon>SilentModeScheduleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\SilentMode\SilentModeScheduleService.cs" />
     <Compile Include="Panel\Steam\AddEditAccountDialog.xaml.cs">
       <DependentUpon>AddEditAccountDialog.xaml</DependentUpon>
     </Compile>
@@ -155,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Panel\Path\AddEditPathDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panel\SilentMode\SilentModeScheduleControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,7 +264,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SERGamesLauncher_V31_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Main\App.config" />

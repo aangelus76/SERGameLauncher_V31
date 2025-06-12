@@ -18,6 +18,9 @@ namespace SERGamesLauncher_V31
         // Référence au mutex pour assurer l'unicité de l'instance
         private System.Threading.Mutex mutex;
 
+        // Flag pour indiquer si on est en mode silencieux
+        private bool isSilentMode = false;
+
         // Importer les fonctions Win32 nécessaires
         [DllImport("User32.dll")]
         private static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
@@ -64,6 +67,9 @@ namespace SERGamesLauncher_V31
             // S'assurer que la configuration par défaut existe
             StartupConfigService.EnsureDefaultConfigExists();
 
+            // Vérifier si on est en mode silencieux
+            CheckSilentMode();
+
             // Détecter si l'application est lancée au démarrage de session
             bool isStartupLaunch = IsLaunchedAtStartup();
 
@@ -83,6 +89,23 @@ namespace SERGamesLauncher_V31
             {
                 // Affichage immédiat si lancé manuellement
                 ShowMainWindowImmediately();
+            }
+        }
+
+        /// <summary>
+        /// Vérifie si on est dans une plage horaire de mode silencieux
+        /// </summary>
+        private void CheckSilentMode()
+        {
+            try
+            {
+                isSilentMode = SilentModeScheduleService.IsCurrentlyInSilentMode();
+                System.Diagnostics.Debug.WriteLine($"Mode silencieux: {(isSilentMode ? "Activé" : "Désactivé")}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur lors de la vérification du mode silencieux: {ex.Message}");
+                isSilentMode = false; // Par défaut, mode normal
             }
         }
 
@@ -160,7 +183,7 @@ namespace SERGamesLauncher_V31
                 // Vérifier si l'application n'a pas été fermée pendant l'attente
                 if (MainWindow != null && !this.ShutdownMode.HasFlag(ShutdownMode.OnExplicitShutdown))
                 {
-                    // Afficher la fenêtre avec focus agressif
+                    // Afficher la fenêtre avec ou sans focus selon le mode silencieux
                     this.Dispatcher.Invoke(() =>
                     {
                         ShowMainWindowWithFocus();
@@ -188,7 +211,7 @@ namespace SERGamesLauncher_V31
         }
 
         /// <summary>
-        /// Méthode centralisée pour afficher la fenêtre avec focus
+        /// Méthode centralisée pour afficher la fenêtre avec ou sans focus selon le mode silencieux
         /// </summary>
         private void ShowMainWindowWithFocus()
         {
@@ -197,23 +220,36 @@ namespace SERGamesLauncher_V31
             {
                 // Restaurer et afficher la fenêtre
                 mainWindow.Visibility = Visibility.Visible;
-                mainWindow.WindowState = WindowState.Normal;
                 mainWindow.ShowInTaskbar = true;
 
-                // Activer la fenêtre (rendre active)
-                mainWindow.Activate();
-
-                // Forcer le focus sur la fenêtre
-                mainWindow.Focus();
-
-                // Démarrer le timer de focus agressif
-                mainWindow.StartFocusTimer();
-
-                // Utiliser l'API Windows pour forcer la fenêtre au premier plan
-                IntPtr handle = new WindowInteropHelper(mainWindow).Handle;
-                if (handle != IntPtr.Zero)
+                if (isSilentMode)
                 {
-                    SetForegroundWindow(handle);
+                    // Mode silencieux: démarrer minimisé, pas de focus forcé
+                    mainWindow.WindowState = WindowState.Minimized;
+                    System.Diagnostics.Debug.WriteLine("Application lancée en mode silencieux (minimisée)");
+                }
+                else
+                {
+                    // Mode normal: fenêtre normale avec focus
+                    mainWindow.WindowState = WindowState.Normal;
+
+                    // Activer la fenêtre (rendre active)
+                    mainWindow.Activate();
+
+                    // Forcer le focus sur la fenêtre
+                    mainWindow.Focus();
+
+                    // Démarrer le timer de focus agressif
+                    mainWindow.StartFocusTimer();
+
+                    // Utiliser l'API Windows pour forcer la fenêtre au premier plan
+                    IntPtr handle = new WindowInteropHelper(mainWindow).Handle;
+                    if (handle != IntPtr.Zero)
+                    {
+                        SetForegroundWindow(handle);
+                    }
+
+                    System.Diagnostics.Debug.WriteLine("Application lancée en mode normal");
                 }
             }
         }

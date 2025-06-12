@@ -16,6 +16,9 @@ namespace SERGamesLauncher_V31
         // Instance du contrôle utilisateur pour les restrictions de processus
         private ProcessRestrictionsControl processRestrictionsControl;
 
+        // Instance du contrôle utilisateur pour le planning silencieux
+        private SilentModeScheduleControl silentModeScheduleControl;
+
         public AdminPanelWindow()
         {
             InitializeComponent();
@@ -49,6 +52,9 @@ namespace SERGamesLauncher_V31
 
             // Créer une instance du contrôle de gestion des restrictions de processus
             processRestrictionsControl = new ProcessRestrictionsControl();
+
+            // Créer une instance du contrôle de gestion du planning silencieux
+            silentModeScheduleControl = new SilentModeScheduleControl();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -115,6 +121,12 @@ namespace SERGamesLauncher_V31
         {
             // Afficher le contrôle de gestion des restrictions de processus
             contentPresenter.Content = processRestrictionsControl;
+        }
+
+        private void btnSilentModeSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            // Afficher le contrôle de gestion du planning silencieux
+            contentPresenter.Content = silentModeScheduleControl;
         }
     }
 }

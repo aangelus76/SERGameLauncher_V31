@@ -122,6 +122,10 @@
                             <Button x:Name="btnProcessRestrictions" Style="{StaticResource PlatformButtonStyle}" Click="btnProcessRestrictions_Click">
                                 <TextBlock Text="Restrictions d'âge" Foreground="White" FontSize="18" VerticalAlignment="Center" Width="186"/>
                             </Button>
+
+                            <Button x:Name="btnSilentModeSchedule" Style="{StaticResource PlatformButtonStyle}" Click="btnSilentModeSchedule_Click">
+                                <TextBlock Text="Planning silencieux" Foreground="White" FontSize="18" VerticalAlignment="Center" Width="186"/>
+                            </Button>
                         </StackPanel>
                     </Border>
 

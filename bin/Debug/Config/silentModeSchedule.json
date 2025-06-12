@@ -1,0 +1,86 @@
+{
+  "monday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  },
+  "tuesday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  },
+  "wednesday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  },
+  "thursday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  },
+  "friday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  },
+  "saturday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  },
+  "sunday": {
+    "morning": {
+      "enabled": false,
+      "start": "08:00",
+      "end": "13:00"
+    },
+    "afternoon": {
+      "enabled": false,
+      "start": "13:00",
+      "end": "00:00"
+    }
+  }
+}
