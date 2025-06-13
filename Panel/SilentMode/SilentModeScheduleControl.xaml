@@ -5,22 +5,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SERGamesLauncher_V31"
-             mc:Ignorable="d">
+             mc:Ignorable="d" Height="703">
 
-    <Grid Width="803" Height="572">
+    <Grid Width="873" Margin="0,10,0,29">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" MinHeight="71.923"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!-- Titre -->
         <TextBlock Grid.Row="0" Text="Planning du mode silence" 
                    Foreground="White" FontSize="24" FontWeight="Bold"
-                   HorizontalAlignment="Center" Margin="0,20,0,20"/>
+                   HorizontalAlignment="Center" Margin="0,4,0,36" Width="289"/>
 
         <!-- Contenu principal -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="21,43,20,81">
-            <StackPanel Width="753" Height="376">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,0,41,18">
+            <StackPanel Width="753" Height="567">
                 <!-- Lundi -->
                 <Grid Margin="0,10">
                     <Grid.ColumnDefinitions>
@@ -42,22 +42,31 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkMondayMorning" Content="matin" Foreground="White" VerticalAlignment="Center" 
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtMondayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtMondayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkMondayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,74,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkMondayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtMondayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayAfternoon|Start" Margin="51,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtMondayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="MondayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
+
+                <!-- Séparateur -->
+                <Border Height="1" Background="#444444" Margin="0,10,0,10"/>
 
                 <!-- Mardi -->
                 <Grid Margin="0,10">
@@ -80,22 +89,31 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkTuesdayMorning" Content="matin" Foreground="White" VerticalAlignment="Center"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtTuesdayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtTuesdayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkTuesdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,73,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkTuesdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtTuesdayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayAfternoon|Start" Margin="52,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtTuesdayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="TuesdayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
+
+                <!-- Séparateur -->
+                <Border Height="1" Background="#444444" Margin="0,10,0,10"/>
 
                 <!-- Mercredi -->
                 <Grid Margin="0,10">
@@ -118,22 +136,31 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkWednesdayMorning" Content="matin" Foreground="White" VerticalAlignment="Center"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtWednesdayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtWednesdayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkWednesdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,73,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkWednesdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtWednesdayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayAfternoon|Start" Margin="52,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtWednesdayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="WednesdayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
+
+                <!-- Séparateur -->
+                <Border Height="1" Background="#444444" Margin="0,10,0,10"/>
 
                 <!-- Jeudi -->
                 <Grid Margin="0,10">
@@ -156,22 +183,31 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkThursdayMorning" Content="matin" Foreground="White" VerticalAlignment="Center"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtThursdayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtThursdayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkThursdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,73,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkThursdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtThursdayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayAfternoon|Start" Margin="52,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtThursdayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="ThursdayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
+
+                <!-- Séparateur -->
+                <Border Height="1" Background="#444444" Margin="0,10,0,10"/>
 
                 <!-- Vendredi -->
                 <Grid Margin="0,10">
@@ -194,22 +230,31 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkFridayMorning" Content="matin" Foreground="White" VerticalAlignment="Center"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtFridayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtFridayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkFridayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,73,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkFridayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtFridayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayAfternoon|Start" Margin="52,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtFridayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="FridayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
+
+                <!-- Séparateur -->
+                <Border Height="1" Background="#444444" Margin="0,10,0,10"/>
 
                 <!-- Samedi -->
                 <Grid Margin="0,10">
@@ -232,22 +277,31 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkSaturdayMorning" Content="matin" Foreground="White" VerticalAlignment="Center"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtSaturdayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtSaturdayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkSaturdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,73,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkSaturdayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtSaturdayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayAfternoon|Start" Margin="52,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtSaturdayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SaturdayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
+
+                <!-- Séparateur -->
+                <Border Height="1" Background="#444444" Margin="0,10,0,10"/>
 
                 <!-- Dimanche -->
                 <Grid Margin="0,10,0,30">
@@ -270,21 +324,27 @@
 
                     <!-- Matin -->
                     <CheckBox Grid.Column="1" x:Name="chkSundayMorning" Content="matin" Foreground="White" VerticalAlignment="Center"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="18,0,0,0" FontSize="14"/>
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Margin="20,0,65,0" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="2" x:Name="txtSundayMorningStart" Text="08:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayMorning|Start"/>
-                    <TextBlock Grid.Column="3" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayMorning|Start" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,5,1"/>
+                    <TextBlock Grid.Column="4" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"/>
                     <TextBox Grid.Column="4" x:Name="txtSundayMorningEnd" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayMorning|End"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayMorning|End" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="15,1,65,1"/>
 
                     <!-- Après-midi -->
-                    <CheckBox Grid.Column="5" x:Name="chkSundayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="30,0,73,0"
-                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" Grid.ColumnSpan="2" FontSize="14"/>
+                    <CheckBox Grid.Column="5" x:Name="chkSundayAfternoon" Content="après-midi" Foreground="White" VerticalAlignment="Center" Margin="49,0,26,0"
+                              Checked="TimeSlot_Changed" Unchecked="TimeSlot_Changed" FontSize="20" 
+                              VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="6" x:Name="txtSundayAfternoonStart" Text="13:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayAfternoon|Start" Margin="52,3,6,4" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayAfternoon|Start" Margin="94,1,27,1" Grid.ColumnSpan="3" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="à" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="58,0,0,0"/>
                     <TextBox Grid.Column="8" x:Name="txtSundayAfternoonEnd" Text="00:00" Style="{StaticResource AdminTextBoxStyle}" 
-                             Height="25" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayAfternoon|End" Grid.ColumnSpan="2" Margin="14,3,66,4"/>
+                             Height="30" TextAlignment="Center" TextChanged="TimeChanged" Tag="SundayAfternoon|End" Grid.ColumnSpan="2" Margin="73,1,7,1" FontSize="16" 
+                             Foreground="White" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

@@ -58,7 +58,7 @@
                 <StackPanel HorizontalAlignment="Center" Width="478" Margin="0,-20,0,0">
                     <TextBlock Text="- Pas d'arme réaliste." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
                     <TextBlock Text="- Pas de projection de sang." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
-                    <TextBlock Text="- Pas de découpe de perssonage ou jeux horrifique." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
+                    <TextBlock Text="- Pas de découpe de personnage ou jeux horrifique." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
                     <TextBlock Text="- Aucun téléchargement de jeux/logiciels sans accord." Foreground="#abaaa9" FontSize="20" Margin="0,5"/>
                 </StackPanel>
 

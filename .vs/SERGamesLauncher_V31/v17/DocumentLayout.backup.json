@@ -3,7 +3,35 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\panel\\silentmode\\silentmodeschedulecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\custom\\versionutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:custom\\versionutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\main\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\main\\plateformview\\platformcontentcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\plateformview\\platformcontentcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\main\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\panel\\silentmode\\silentmodeschedulecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:panel\\silentmode\\silentmodeschedulecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -11,7 +39,7 @@
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\panel\\silentmode\\silentmodescheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\panel\\silentmode\\silentmodescheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:panel\\silentmode\\silentmodescheduleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -38,11 +66,99 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Properties\\AssemblyInfo.cs*",
+              "RelativeToolTip": "Properties\\AssemblyInfo.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T01:24:47.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "VersionUtility.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Custom\\VersionUtility.cs",
+              "RelativeDocumentMoniker": "Custom\\VersionUtility.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Custom\\VersionUtility.cs",
+              "RelativeToolTip": "Custom\\VersionUtility.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAA4wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T01:22:40.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\App.config",
+              "RelativeDocumentMoniker": "Main\\App.config",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\App.config",
+              "RelativeToolTip": "Main\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-13T01:22:30.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "app.config",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\app.config",
+              "RelativeDocumentMoniker": "app.config",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\app.config",
+              "RelativeToolTip": "app.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-13T01:22:18.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlatformContentControl.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml",
+              "RelativeDocumentMoniker": "Main\\PlateformView\\PlatformContentControl.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml",
+              "RelativeToolTip": "Main\\PlateformView\\PlatformContentControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-13T01:19:58.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Source\\Repos\\SERGameLauncher_V31\\Main\\App.xaml",
+              "RelativeDocumentMoniker": "Main\\App.xaml",
+              "ToolTip": "C:\\Users\\Admin\\Source\\Repos\\SERGameLauncher_V31\\Main\\App.xaml",
+              "RelativeToolTip": "Main\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-13T01:18:53.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Main\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\MainWindow.xaml",
+              "RelativeToolTip": "Main\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-13T01:18:20.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\App.xaml.cs",
               "RelativeDocumentMoniker": "Main\\App.xaml.cs",
@@ -50,12 +166,11 @@
               "RelativeToolTip": "Main\\App.xaml.cs",
               "ViewState": "AgIAAAIBAAAAAAAAAAAqwCUBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T21:31:03.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T21:31:03.271Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "AdminPanelWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\AdminPanelWindow.xaml.cs",
               "RelativeDocumentMoniker": "Panel\\AdminPanelWindow.xaml.cs",
@@ -67,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "AdminPanelWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\AdminPanelWindow.xaml",
               "RelativeDocumentMoniker": "Panel\\AdminPanelWindow.xaml",
@@ -78,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "SilentModeScheduleControl.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\SilentMode\\SilentModeScheduleControl.xaml.cs",
               "RelativeDocumentMoniker": "Panel\\SilentMode\\SilentModeScheduleControl.xaml.cs",
@@ -90,19 +205,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "SilentModeScheduleControl.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\SilentMode\\SilentModeScheduleControl.xaml",
               "RelativeDocumentMoniker": "Panel\\SilentMode\\SilentModeScheduleControl.xaml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\SilentMode\\SilentModeScheduleControl.xaml*",
-              "RelativeToolTip": "Panel\\SilentMode\\SilentModeScheduleControl.xaml*",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\SilentMode\\SilentModeScheduleControl.xaml",
+              "RelativeToolTip": "Panel\\SilentMode\\SilentModeScheduleControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-06-12T21:25:57.012Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "SilentModeScheduleService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\SilentMode\\SilentModeScheduleService.cs",
               "RelativeDocumentMoniker": "Panel\\SilentMode\\SilentModeScheduleService.cs",
@@ -110,12 +225,11 @@
               "RelativeToolTip": "Panel\\SilentMode\\SilentModeScheduleService.cs",
               "ViewState": "AgIAAPoAAAAAAAAAAAAqwB0BAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T21:25:27.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T21:25:27.933Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "SilentModeSchedule.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Panel\\SilentMode\\SilentModeSchedule.cs",
               "RelativeDocumentMoniker": "Panel\\SilentMode\\SilentModeSchedule.cs",

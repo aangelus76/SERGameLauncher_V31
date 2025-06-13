@@ -109,6 +109,7 @@ C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\AddEd
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\AddEditFolderDialog.g.cs
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\FolderPermissionsControl.g.cs
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\Path\AddEditPathDialog.g.cs
+C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\SilentMode\SilentModeScheduleControl.g.cs
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\Steam\AddEditAccountDialog.g.cs
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\AdminPanelWindow.g.cs
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Custom\CustomMessageBox.g.cs
@@ -129,6 +130,7 @@ C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\AgeControl\AddEd
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\AddEditFolderDialog.baml
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\PermissionFolders\FolderPermissionsControl.baml
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\Path\AddEditPathDialog.baml
+C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\SilentMode\SilentModeScheduleControl.baml
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\Steam\AddEditAccountDialog.baml
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\AdminPanelWindow.baml
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Custom\CustomMessageBox.baml
@@ -150,5 +152,3 @@ C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.e
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.application
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.pdb
-C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\SilentMode\SilentModeScheduleControl.g.cs
-C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\SilentMode\SilentModeScheduleControl.baml

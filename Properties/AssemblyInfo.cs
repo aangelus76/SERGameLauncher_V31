@@ -23,4 +23,4 @@ using System.Windows;
 // Les informations de version
 [assembly: AssemblyVersion("3.1.0.0")]
 [assembly: AssemblyFileVersion("3.1")]  
-[assembly: AssemblyInformationalVersion("W23-25.F2")] // Semaine, Année, Jour  (A -> Lundi, B -> Mardi, C -> Mercredi ...), N° de modification 
+[assembly: AssemblyInformationalVersion("W24-25.E2")] // Semaine, Année, Jour  (A -> Lundi, B -> Mardi, C -> Mercredi ...), N° de modification 
