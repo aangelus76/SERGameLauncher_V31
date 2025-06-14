@@ -7,7 +7,15 @@
       <IsProtectionEnabled>true</IsProtectionEnabled>
       <EnableOnStartup>true</EnableOnStartup>
       <ProtectionLevel>ReadOnly</ProtectionLevel>
-      <LastModified>13/06/2025 03:26:18</LastModified>
+      <LastModified>14/06/2025 12:31:50</LastModified>
+    </Folder>
+    <Folder id="d3fbd948-5b27-4eea-8423-f63513790799">
+      <Name>Download Steam</Name>
+      <FolderPath>C:\Program Files (x86)\Steam\steamapps\downloading</FolderPath>
+      <IsProtectionEnabled>true</IsProtectionEnabled>
+      <EnableOnStartup>true</EnableOnStartup>
+      <ProtectionLevel>ReadOnly</ProtectionLevel>
+      <LastModified>14/06/2025 12:31:50</LastModified>
     </Folder>
   </Folders>
 </Configuration>

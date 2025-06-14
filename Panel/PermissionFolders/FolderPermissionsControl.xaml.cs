@@ -1,5 +1,4 @@
-﻿// Panel/Folder/FolderPermissionsControl.xaml.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,22 +13,12 @@ namespace SERGamesLauncher_V31
 {
     public partial class FolderPermissionsControl : UserControl, INotifyPropertyChanged
     {
-        // Collection observable des dossiers
         private ObservableCollection<FolderPermissionViewModel> foldersDisplay;
-
-        // Liste brute pour les opérations
         private List<FolderPermission> folders;
-
-        // Timer pour le rafraîchissement automatique de l'état des dossiers
         private System.Windows.Threading.DispatcherTimer statusRefreshTimer;
-
-        // Flag pour éviter les boucles infinies lors du changement d'état du ToggleSwitch
         private bool isUpdatingToggle = false;
-
-        // Flag pour indiquer si c'est le premier chargement du contrôle
         private static bool isFirstLoad = true;
 
-        // ViewModel pour l'affichage des permissions dans le DataGrid
         public class FolderPermissionViewModel : INotifyPropertyChanged
         {
             private FolderPermission _permission;
@@ -146,7 +135,6 @@ namespace SERGamesLauncher_V31
             }
 
             public DateTime LastModified => _permission.LastModified;
-
             public string LastModifiedDisplay => LastModified.ToString("dd/MM/yyyy HH:mm:ss");
 
             public FolderPermissionViewModel(FolderPermission permission)
@@ -175,13 +163,11 @@ namespace SERGamesLauncher_V31
             UpdateToggleState();
             StartStatusRefreshTimer();
 
-            // S'abonner à l'événement Unloaded
             this.Unloaded += FolderPermissionsControl_Unloaded;
         }
 
         private void FolderPermissionsControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            // Arrêter le timer quand le contrôle est déchargé
             if (statusRefreshTimer != null)
             {
                 statusRefreshTimer.Stop();
@@ -189,33 +175,26 @@ namespace SERGamesLauncher_V31
             }
         }
 
-        // Démarrer le timer pour actualiser l'état des dossiers
         private void StartStatusRefreshTimer()
         {
-            // Créer et configurer le timer
             statusRefreshTimer = new System.Windows.Threading.DispatcherTimer();
-            statusRefreshTimer.Interval = TimeSpan.FromSeconds(5); // Actualiser toutes les 5 secondes
+            statusRefreshTimer.Interval = TimeSpan.FromSeconds(5);
             statusRefreshTimer.Tick += (s, e) =>
             {
-                // Actualiser l'état de tous les dossiers
                 foreach (var folderVM in foldersDisplay)
                 {
                     folderVM.UpdateStatus();
                 }
-                // Mettre à jour l'état du toggle global
                 UpdateToggleState();
             };
 
-            // Démarrer le timer
             statusRefreshTimer.Start();
         }
 
-        // Mettre à jour l'état du toggle global en fonction des dossiers
         private void UpdateToggleState()
         {
             if (folders == null || folders.Count == 0)
             {
-                // S'il n'y a pas de dossiers, désactiver le toggle
                 isUpdatingToggle = true;
                 toggleLockAll.IsEnabled = false;
                 toggleLockAll.IsChecked = false;
@@ -223,26 +202,20 @@ namespace SERGamesLauncher_V31
                 return;
             }
 
-            // Activer le toggle
             toggleLockAll.IsEnabled = true;
 
-            // Vérifier l'état de tous les dossiers
             bool allProtected = folders.All(f => f.IsProtectionEnabled);
             bool noneProtected = folders.All(f => !f.IsProtectionEnabled);
 
-            // Mettre à jour l'état du toggle sans déclencher l'événement
             isUpdatingToggle = true;
             toggleLockAll.IsChecked = allProtected;
             isUpdatingToggle = false;
         }
 
-        // Charger les dossiers depuis le service
         private void LoadFolders()
         {
-            // Charger les dossiers
             folders = FolderPermissionService.LoadFolderPermissions();
 
-            // Appliquer la protection à tous les dossiers uniquement au premier chargement
             if (isFirstLoad)
             {
                 foreach (var folder in folders)
@@ -254,18 +227,15 @@ namespace SERGamesLauncher_V31
                 isFirstLoad = false;
             }
 
-            // Créer les modèles d'affichage
             foldersDisplay = new ObservableCollection<FolderPermissionViewModel>();
             foreach (var folder in folders)
             {
                 foldersDisplay.Add(new FolderPermissionViewModel(folder));
             }
 
-            // Lier au DataGrid
             foldersDataGrid.ItemsSource = foldersDisplay;
         }
 
-        // Mettre à jour l'affichage
         private void RefreshDisplay()
         {
             foldersDisplay.Clear();
@@ -276,7 +246,6 @@ namespace SERGamesLauncher_V31
             UpdateToggleState();
         }
 
-        // Sauvegarder les changements
         private void SaveFolders()
         {
             bool success = FolderPermissionService.SaveFolderPermissions(folders);
@@ -289,16 +258,56 @@ namespace SERGamesLauncher_V31
             }
         }
 
-        // Ajouter un nouveau dossier protégé
+        // NOUVELLE MÉTHODE STATIQUE : Utilisée par PlatformContentControl
+        public static void SetProtectionForAllFolders(bool enableProtection)
+        {
+            try
+            {
+                var folders = FolderPermissionService.LoadFolderPermissions();
+
+                foreach (var folder in folders)
+                {
+                    folder.IsProtectionEnabled = enableProtection;
+
+                    if (enableProtection)
+                    {
+                        FolderPermissionService.ApplyProtection(folder);
+                    }
+                    else
+                    {
+                        FolderPermissionService.RemoveProtection(folder);
+                    }
+                }
+
+                FolderPermissionService.SaveFolderPermissions(folders);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur SetProtectionForAllFolders: {ex.Message}");
+            }
+        }
+
+        // NOUVELLE MÉTHODE : Rafraîchir depuis l'extérieur
+        public void RefreshFromExternalChange()
+        {
+            try
+            {
+                folders = FolderPermissionService.LoadFolderPermissions();
+                RefreshDisplay();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur RefreshFromExternalChange: {ex.Message}");
+            }
+        }
+
         private void AddFolder_Click(object sender, RoutedEventArgs e)
         {
-            // Créer la boîte de dialogue
             AddEditFolderDialog dialog = new AddEditFolderDialog();
             dialog.Owner = Window.GetWindow(this);
 
             if (dialog.ShowDialog() == true && dialog.FolderPermission != null)
             {
-                // Vérifier si un dossier avec le même nom existe déjà
                 if (FolderPermissionService.FolderNameExists(folders, dialog.FolderPermission.Name))
                 {
                     CustomMessageBox.Show(Window.GetWindow(this),
@@ -307,15 +316,12 @@ namespace SERGamesLauncher_V31
                     return;
                 }
 
-                // Par défaut, activer la protection selon l'état actuel du toggle
                 dialog.FolderPermission.IsProtectionEnabled = toggleLockAll.IsChecked ?? true;
 
-                // Ajouter à la liste
                 folders.Add(dialog.FolderPermission);
                 var viewModel = new FolderPermissionViewModel(dialog.FolderPermission);
                 foldersDisplay.Add(viewModel);
 
-                // Appliquer la protection si nécessaire
                 if (dialog.FolderPermission.IsProtectionEnabled)
                 {
                     if (!FolderPermissionService.ApplyProtection(dialog.FolderPermission))
@@ -327,33 +333,23 @@ namespace SERGamesLauncher_V31
                     viewModel.UpdateStatus();
                 }
 
-                // Sauvegarder les changements
                 SaveFolders();
-
-                // Mettre à jour l'état du toggle global
                 UpdateToggleState();
             }
         }
 
-        // Modifier un dossier existant - SUPPRESSION DE L'AUTHENTIFICATION
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is string folderId)
             {
-                // SUPPRIMÉ : Demande de mot de passe d'administration
-                // On est déjà dans le panel admin, pas besoin de re-authentifier
-
-                // Trouver le dossier
                 var folder = folders.FirstOrDefault(f => f.Id == folderId);
                 if (folder == null) return;
 
-                // Créer la boîte de dialogue et pré-remplir les champs
                 AddEditFolderDialog dialog = new AddEditFolderDialog(folder);
                 dialog.Owner = Window.GetWindow(this);
 
                 if (dialog.ShowDialog() == true && dialog.FolderPermission != null)
                 {
-                    // Vérifier si le nouveau nom existe déjà
                     if (folder.Name != dialog.FolderPermission.Name &&
                         FolderPermissionService.FolderNameExists(folders, dialog.FolderPermission.Name, folderId))
                     {
@@ -363,85 +359,72 @@ namespace SERGamesLauncher_V31
                         return;
                     }
 
-                    // Mettre à jour les champs
                     folder.Name = dialog.FolderPermission.Name;
                     folder.FolderPath = dialog.FolderPermission.FolderPath;
-                    folder.EnableOnStartup = dialog.FolderPermission.EnableOnStartup;
                     folder.ProtectionLevel = dialog.FolderPermission.ProtectionLevel;
+                    folder.EnableOnStartup = dialog.FolderPermission.EnableOnStartup;
+                    folder.LastModified = DateTime.Now;
 
-                    // Mettre à jour l'affichage
+                    if (folder.IsProtectionEnabled)
+                    {
+                        FolderPermissionService.ApplyProtection(folder);
+                    }
+                    else
+                    {
+                        FolderPermissionService.RemoveProtection(folder);
+                    }
+
                     RefreshDisplay();
-
-                    // Sauvegarder les changements
                     SaveFolders();
                 }
             }
         }
 
-        // Supprimer un dossier - SUPPRESSION DE L'AUTHENTIFICATION
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is string folderId)
             {
-                // SUPPRIMÉ : Demande de mot de passe d'administration
-                // On est déjà dans le panel admin, pas besoin de re-authentifier
-
-                // Trouver le dossier
                 var folder = folders.FirstOrDefault(f => f.Id == folderId);
-                if (folder != null)
+                if (folder == null) return;
+
+                var result = CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Êtes-vous sûr de vouloir supprimer la protection du dossier '{folder.Name}' ?",
+                    "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
                 {
-                    // Demander confirmation directement
-                    MessageBoxResult result = CustomMessageBox.Show(Window.GetWindow(this),
-                        $"Êtes-vous sûr de vouloir supprimer le dossier protégé '{folder.Name}' ?\n\n" +
-                        "Cela va également retirer toute protection appliquée au dossier.",
-                        "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                    if (result == MessageBoxResult.Yes)
+                    if (folder.IsProtectionEnabled)
                     {
-                        // Retirer la protection si elle est active
-                        if (folder.IsProtectionEnabled)
+                        if (!FolderPermissionService.RemoveProtection(folder))
                         {
-                            if (!FolderPermissionService.RemoveProtection(folder))
-                            {
-                                CustomMessageBox.Show(Window.GetWindow(this),
-                                    $"La protection n'a pas pu être retirée du dossier '{folder.Name}'.\n" +
-                                    "La configuration sera supprimée mais le dossier peut rester protégé.",
-                                    "Avertissement", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            }
+                            CustomMessageBox.Show(Window.GetWindow(this),
+                                $"Impossible de supprimer la protection du dossier '{folder.Name}'.",
+                                "Avertissement", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
-
-                        // Supprimer de la liste
-                        folders.Remove(folder);
-
-                        // Mettre à jour l'affichage
-                        var displayFolder = foldersDisplay.FirstOrDefault(f => f.Id == folderId);
-                        if (displayFolder != null)
-                        {
-                            foldersDisplay.Remove(displayFolder);
-                        }
-
-                        // Sauvegarder les changements
-                        SaveFolders();
-
-                        // Mettre à jour l'état du toggle global
-                        UpdateToggleState();
                     }
+
+                    folders.Remove(folder);
+
+                    var displayFolder = foldersDisplay.FirstOrDefault(f => f.Id == folderId);
+                    if (displayFolder != null)
+                    {
+                        foldersDisplay.Remove(displayFolder);
+                    }
+
+                    SaveFolders();
+                    UpdateToggleState();
                 }
             }
         }
 
-        // Évènement pour le toggle global de verrouillage/déverrouillage
         private void ToggleLockAll_Changed(object sender, RoutedEventArgs e)
         {
-            // Si le changement est dû à la mise à jour programmatique, ne rien faire
             if (isUpdatingToggle || folders == null || folders.Count == 0) return;
 
             bool isChecked = toggleLockAll.IsChecked ?? false;
 
-            // Appliquer l'action à tous les dossiers
             if (isChecked)
             {
-                // Verrouiller tous les dossiers
                 foreach (var folder in folders)
                 {
                     folder.IsProtectionEnabled = true;
@@ -450,7 +433,6 @@ namespace SERGamesLauncher_V31
             }
             else
             {
-                // Déverrouiller tous les dossiers
                 foreach (var folder in folders)
                 {
                     folder.IsProtectionEnabled = false;
@@ -458,14 +440,10 @@ namespace SERGamesLauncher_V31
                 }
             }
 
-            // Mettre à jour l'affichage
             RefreshDisplay();
-
-            // Sauvegarder les changements
             SaveFolders();
         }
 
-        // Actualiser l'état de tous les dossiers
         private void RefreshStatus_Click(object sender, RoutedEventArgs e)
         {
             foreach (var folderVM in foldersDisplay)
@@ -475,20 +453,16 @@ namespace SERGamesLauncher_V31
             UpdateToggleState();
         }
 
-        // Événements pour les boutons Tout verrouiller/déverrouiller
         private void EnableAll_Click(object sender, RoutedEventArgs e)
         {
-            // Définir l'état du toggle à true (ce qui déclenchera l'événement ToggleLockAll_Changed)
             toggleLockAll.IsChecked = true;
         }
 
         private void DisableAll_Click(object sender, RoutedEventArgs e)
         {
-            // Définir l'état du toggle à false (ce qui déclenchera l'événement ToggleLockAll_Changed)
             toggleLockAll.IsChecked = false;
         }
 
-        // Méthode publique statique pour réinitialiser le flag de premier chargement
         public static void ResetFirstLoadFlag()
         {
             isFirstLoad = true;

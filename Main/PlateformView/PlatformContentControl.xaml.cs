@@ -14,8 +14,7 @@ namespace SERGamesLauncher_V31
         private string currentPlatform = null;
         private SteamActivityMonitor steamMonitor;
         private bool allowUserSteamAccounts = false;
-        private bool allowSteamUpdates = false; // NOUVEAU : État du toggle mises à jour
-        //private bool isSteamMonitorStarted = false;
+        private bool allowSteamUpdates = false;
 
         // Nouveaux champs pour la protection contre les clics multiples
         private DispatcherTimer launchCooldownTimer;
@@ -58,94 +57,28 @@ namespace SERGamesLauncher_V31
             // S'abonner aux changements de la checkbox
             chkConsent.Checked += OnCheckboxChanged;
             chkConsent.Unchecked += OnCheckboxChanged;
-
-            // S'abonner à l'événement Unloaded pour nettoyer les ressources
-            this.Unloaded += PlatformContentControl_Unloaded;
         }
 
-        private void PlatformContentControl_Unloaded(object sender, RoutedEventArgs e)
+        // Gestionnaire pour le changement d'utilisateur Steam
+        private void SteamMonitor_UserChanged(string username)
         {
-            // Nettoyer les timers
-            if (launchCooldownTimer != null)
+            // Mettre à jour l'affichage du compte actuel
+            Dispatcher.Invoke(() =>
             {
-                launchCooldownTimer.Stop();
-                launchCooldownTimer.Tick -= LaunchCooldownTimer_Tick;
-            }
-
-            if (countdownTimer != null)
-            {
-                countdownTimer.Stop();
-                countdownTimer.Tick -= CountdownTimer_Tick;
-            }
-
-            if (chkConsent != null)
-            {
-                chkConsent.Checked -= OnCheckboxChanged;
-                chkConsent.Unchecked -= OnCheckboxChanged;
-            }
+                txtCurrentSteamAccount.Text = string.IsNullOrEmpty(username) ? "Compte: Non détecté" : $"Compte: {username}";
+            });
         }
 
-        // Event handler pour la checkbox
+        // Gestionnaire pour le changement de la checkbox
         private void OnCheckboxChanged(object sender, RoutedEventArgs e)
         {
             UpdateButtonState();
         }
 
-        // Méthode complète pour gérer l'état du bouton
+        // Mettre à jour l'état du bouton selon les conditions
         private void UpdateButtonState()
         {
-            // Le bouton est activé uniquement si :
-            // 1. La checkbox est cochée
-            // 2. Aucun cooldown en cours
-            btnLaunch.IsEnabled = (chkConsent.IsChecked ?? false) && !IsCooldownActive;
-        }
-
-        // Méthode pour gérer le timer de décompte (1 seconde)
-        private void CountdownTimer_Tick(object sender, EventArgs e)
-        {
-            remainingSeconds--;
-
-            if (remainingSeconds <= 0)
-            {
-                // Le décompte est terminé, arrêter ce timer
-                countdownTimer.Stop();
-            }
-            else
-            {
-                // Mettre à jour le texte du bouton avec le nombre de secondes restantes
-                btnLaunch.Content = $"Exécution ({remainingSeconds})";
-            }
-        }
-
-        // Méthode pour gérer la fin du timer principal
-        private void LaunchCooldownTimer_Tick(object sender, EventArgs e)
-        {
-            // Restaurer le texte du bouton
-            btnLaunch.Content = originalButtonText;
-            launchCooldownTimer.Stop();
-            isLaunchButtonCoolingDown = false;
-
-            // Marquer que le cooldown est terminé
-            IsCooldownActive = false;
-
-            // Réactiver la checkbox
-            chkConsent.IsEnabled = true;
-
-            // Mettre à jour l'état du bouton
-            UpdateButtonState();
-
-            // Permettre à nouveau le changement de vue
-            AllowViewChange = true;
-            NavigationStateChanged?.Invoke(this, true);
-        }
-
-        private void SteamMonitor_UserChanged(string username)
-        {
-            // Mettre à jour l'affichage du compte Steam actuel
-            Dispatcher.Invoke(() =>
-            {
-                txtCurrentSteamAccount.Text = $"Compte: {username}";
-            });
+            btnLaunch.IsEnabled = chkConsent.IsChecked == true && !isLaunchButtonCoolingDown && !IsCooldownActive;
         }
 
         // Afficher la vue d'information
@@ -154,20 +87,16 @@ namespace SERGamesLauncher_V31
             infoView.Visibility = Visibility.Visible;
             platformView.Visibility = Visibility.Collapsed;
             currentPlatform = null;
-
-            // Ne pas arrêter le moniteur Steam, car il est géré par MainWindow
-            //isSteamMonitorStarted = false;
+            HideSteamControls();
         }
 
-        // Configurer et afficher une plateforme spécifique
+        // Configurer la plateforme
         public void ConfigurePlatform(string platformName)
         {
-            // Vérifier si le changement de plateforme est autorisé
-            if (!AllowViewChange)
+            if (IsCooldownActive)
             {
-                // Afficher un message indiquant que l'application est en cours d'exécution
                 CustomMessageBox.Show(Window.GetWindow(this),
-                    $"Une application est en cours de lancement.\nVeuillez attendre {remainingSeconds} secondes avant de changer de plateforme.",
+                    "Un lancement est en cours. Veuillez attendre la fin du cooldown avant de changer de plateforme.",
                     "Lancement en cours", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
@@ -189,13 +118,11 @@ namespace SERGamesLauncher_V31
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["SteamColor"];
                     // Activer le suivi de compte Steam et afficher les contrôles associés
                     txtCurrentSteamAccount.Visibility = Visibility.Visible;
-                    steamControlsPanel.Visibility = Visibility.Visible; // MODIFIÉ : Utiliser le panel au lieu des contrôles individuels
-                    // Indiquer que Steam est sélectionné
-                    //isSteamMonitorStarted = true;
+                    steamControlsPanel.Visibility = Visibility.Visible;
                     // Mettre à jour l'état des toggles pour qu'ils correspondent à l'état actuel
                     toggleAllowUserAccounts.IsChecked = steamMonitor.AllowUserAccounts;
                     allowUserSteamAccounts = steamMonitor.AllowUserAccounts;
-                    // NOUVEAU : Initialiser le toggle mises à jour à false
+                    // Initialiser le toggle mises à jour à false
                     toggleAllowSteamUpdates.IsChecked = false;
                     allowSteamUpdates = false;
                     break;
@@ -235,7 +162,6 @@ namespace SERGamesLauncher_V31
                     HideSteamControls();
                     break;
                 default:
-                    // Cas par défaut, ne devrait pas arriver
                     ShowInfoView();
                     break;
             }
@@ -243,45 +169,35 @@ namespace SERGamesLauncher_V31
 
         private void HideSteamControls()
         {
-            // Cacher les contrôles spécifiques à Steam
             txtCurrentSteamAccount.Visibility = Visibility.Collapsed;
-            steamControlsPanel.Visibility = Visibility.Collapsed; // MODIFIÉ : Utiliser le panel
-
-            // Indiquer que Steam n'est plus sélectionné
-            //isSteamMonitorStarted = false;
+            steamControlsPanel.Visibility = Visibility.Collapsed;
         }
 
-        // Gestionnaire pour le bouton de lancement - modifié pour gérer le cooldown
+        // Gestionnaire pour le bouton de lancement
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
         {
             if (currentPlatform == null || isLaunchButtonCoolingDown) return;
 
-            // Désactiver le bouton et changer son texte
             originalButtonText = btnLaunch.Content.ToString();
 
-            // Initialiser le compte à rebours
             remainingSeconds = 30;
             btnLaunch.Content = $"Exécution ({remainingSeconds})";
 
-            // Marquer que le cooldown est actif
             IsCooldownActive = true;
-            // Mettre à jour l'état du bouton
             UpdateButtonState();
 
             isLaunchButtonCoolingDown = true;
 
-            // Désactiver la checkbox pendant le cooldown
             chkConsent.IsEnabled = false;
 
-            // Bloquer la navigation entre les vues
             AllowViewChange = false;
             NavigationStateChanged?.Invoke(this, false);
 
-            // Démarrer les timers
+            LaunchRequested?.Invoke(this, currentPlatform);
+
             launchCooldownTimer.Start();
             countdownTimer.Start();
 
-            // Vérifier si la plateforme est configurée
             List<PathConfig> pathConfigs = PathConfigService.LoadPathConfigs();
             PathConfig pathConfig = PathConfigService.GetPathForPlatform(pathConfigs, currentPlatform);
 
@@ -293,7 +209,6 @@ namespace SERGamesLauncher_V31
                 return;
             }
 
-            // Vérifier que le chemin existe
             if (!pathConfig.IsUrl && !File.Exists(pathConfig.Path))
             {
                 CustomMessageBox.Show(Window.GetWindow(this),
@@ -302,79 +217,73 @@ namespace SERGamesLauncher_V31
                 return;
             }
 
-            // Pour Steam, utiliser le moniteur Steam et les identifiants
             if (currentPlatform == "Steam")
             {
-                LaunchSteam();
+                LaunchSteam(pathConfig);
             }
             else
             {
-                // Pour les autres plateformes, lancer normalement
                 LaunchPlatform(pathConfig);
             }
-
-            // Déclencher l'événement de lancement
-            LaunchRequested?.Invoke(this, currentPlatform);
         }
 
-        private void LaunchSteam()
+        // Timer de décompte
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            btnLaunch.Content = $"{originalButtonText} ({remainingSeconds}s)";
+            remainingSeconds--;
+
+            if (remainingSeconds < 0)
+            {
+                countdownTimer.Stop();
+            }
+        }
+
+        // Timer de cooldown principal
+        private void LaunchCooldownTimer_Tick(object sender, EventArgs e)
+        {
+            launchCooldownTimer.Stop();
+            countdownTimer.Stop();
+
+            IsCooldownActive = false;
+            AllowViewChange = true;
+            isLaunchButtonCoolingDown = false;
+            btnLaunch.Content = originalButtonText;
+
+            chkConsent.IsEnabled = true;
+            UpdateButtonState();
+
+            NavigationStateChanged?.Invoke(this, true);
+        }
+
+        // Lancer Steam avec le compte configuré
+        private void LaunchSteam(PathConfig pathConfig)
         {
             try
             {
-                // Si on autorise les comptes personnels, lancer Steam normalement
-                if (allowUserSteamAccounts)
-                {
-                    var configs = PathConfigService.LoadPathConfigs();
-                    var config = PathConfigService.GetPathForPlatform(configs, "Steam");
-
-                    if (config != null)
-                    {
-                        // NOUVEAU : Ajouter l'argument pour les mises à jour si autorisées
-                        string personalArgs = allowSteamUpdates ? "" : "-no-browser +@NoUpdates";
-
-                        ProcessStartInfo personalStartInfo = new ProcessStartInfo
-                        {
-                            FileName = config.Path,
-                            Arguments = personalArgs
-                        };
-
-                        Process.Start(personalStartInfo);
-                    }
-                    return;
-                }
-
-                // Récupérer le compte Steam pour ce poste
                 List<SteamAccount> steamAccounts = SteamAccountService.LoadSteamAccounts();
                 SteamAccount account = SteamAccountService.GetAccountForCurrentComputer(steamAccounts);
-
                 if (account == null)
                 {
                     CustomMessageBox.Show(Window.GetWindow(this),
                         "Aucun compte Steam n'est configuré pour ce poste. Veuillez contacter un administrateur.",
-                        "Compte non configuré", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        "Compte Steam manquant", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                // Récupérer le chemin de Steam
-                var pathConfigs = PathConfigService.LoadPathConfigs();
-                var pathConfig = PathConfigService.GetPathForPlatform(pathConfigs, "Steam");
-
-                if (pathConfig == null || !File.Exists(pathConfig.Path))
+                if (!File.Exists(pathConfig.Path))
                 {
                     CustomMessageBox.Show(Window.GetWindow(this),
-                        "Le chemin d'accès à Steam est invalide. Veuillez contacter un administrateur.",
+                        $"Le fichier Steam n'existe pas à l'emplacement configuré: {pathConfig.Path}\nVeuillez contacter un administrateur.",
                         "Chemin invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                // Décrypter le mot de passe
                 string password = SteamAccountService.DecryptPassword(account.EncryptedPassword);
 
-                // NOUVEAU : Construire les arguments avec ou sans mises à jour
                 string baseArguments = $"-noreactlogin -login {account.Username} {password}";
                 string finalArguments = allowSteamUpdates ? baseArguments : $"{baseArguments} -no-browser +@NoUpdates";
 
-                // Lancer Steam avec les identifiants
                 ProcessStartInfo accountStartInfo = new ProcessStartInfo
                 {
                     FileName = pathConfig.Path,
@@ -383,7 +292,6 @@ namespace SERGamesLauncher_V31
 
                 Process process = Process.Start(accountStartInfo);
 
-                // Notifier le moniteur que Steam est en cours de démarrage
                 steamMonitor.NotifyStarting();
             }
             catch (Exception ex)
@@ -400,12 +308,10 @@ namespace SERGamesLauncher_V31
             {
                 if (pathConfig.IsUrl)
                 {
-                    // Ouvrir l'URL dans le navigateur par défaut
                     Process.Start(pathConfig.Path);
                 }
                 else
                 {
-                    // Lancer l'application avec les arguments si spécifiés
                     ProcessStartInfo startInfo = new ProcessStartInfo
                     {
                         FileName = pathConfig.Path
@@ -427,75 +333,121 @@ namespace SERGamesLauncher_V31
             }
         }
 
-        // Gestionnaire pour le toggle d'autorisation des comptes personnels
+        // Gestionnaire pour le toggle d'autorisation des comptes personnels - CORRIGÉ
         private void ToggleAllowUserAccounts_Changed(object sender, RoutedEventArgs e)
         {
-            // Lire l'état souhaité
             bool newState = toggleAllowUserAccounts.IsChecked ?? false;
 
-            // Si on veut activer les comptes personnels, demander le mot de passe d'administrateur
             if (newState && !allowUserSteamAccounts)
             {
-                // Créer et configurer la boîte de dialogue de mot de passe
                 PasswordDialog passwordDialog = new PasswordDialog();
                 passwordDialog.Owner = Window.GetWindow(this);
                 passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur pour autoriser les comptes personnels";
                 passwordDialog.ShowDialog();
 
-                // Vérifier si l'authentification a réussi
                 if (!passwordDialog.IsAuthenticated)
                 {
-                    // Annuler le changement si l'authentification a échoué
                     toggleAllowUserAccounts.IsChecked = false;
                     return;
                 }
 
-                // Afficher un message d'avertissement
                 CustomMessageBox.Show(Window.GetWindow(this),
-                    "Attention: Les comptes personnels sont maintenant autorisés sur Steam.\n\n" +
-                    "Cette option sera désactivée à la fermeture de l'application.",
+                    "Attention: Les comptes personnels sont maintenant autorisés sur Steam.\n\nCette option sera désactivée à la fermeture de l'application.",
                     "Mode administrateur", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            // Mettre à jour l'état
-            allowUserSteamAccounts = toggleAllowUserAccounts.IsChecked ?? false;
-
-            // Mettre à jour l'état du moniteur Steam
+            allowUserSteamAccounts = newState;
             steamMonitor.AllowUserAccounts = allowUserSteamAccounts;
+
+            // NOUVEAU : Appliquer la même logique que le panel admin
+            // Si comptes personnels autorisés = pas de protection sur les dossiers
+            FolderPermissionsControl.SetProtectionForAllFolders(!newState);
+
+            // Notifier le panel admin du changement
+            NotifyAdminPanelOfChange();
         }
 
-        // NOUVEAU : Gestionnaire pour le toggle d'autorisation des mises à jour Steam
         private void ToggleAllowSteamUpdates_Changed(object sender, RoutedEventArgs e)
         {
-            // Lire l'état souhaité
             bool newState = toggleAllowSteamUpdates.IsChecked ?? false;
 
-            // Si on veut activer les mises à jour, demander le mot de passe d'administrateur
             if (newState && !allowSteamUpdates)
             {
-                // Créer et configurer la boîte de dialogue de mot de passe
                 PasswordDialog passwordDialog = new PasswordDialog();
                 passwordDialog.Owner = Window.GetWindow(this);
                 passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur pour autoriser les mises à jour Steam";
                 passwordDialog.ShowDialog();
 
-                // Vérifier si l'authentification a réussi
                 if (!passwordDialog.IsAuthenticated)
                 {
-                    // Annuler le changement si l'authentification a échoué
                     toggleAllowSteamUpdates.IsChecked = false;
                     return;
                 }
 
-                // Afficher un message d'avertissement
                 CustomMessageBox.Show(Window.GetWindow(this),
-                    "Attention: Les mises à jour Steam sont maintenant autorisées.\n\n" +
-                    "Cette option sera désactivée à la fermeture de l'application.",
+                    "Attention: Les mises à jour Steam sont maintenant autorisées.\n\nCette option sera désactivée à la fermeture de l'application.",
                     "Mode administrateur", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            // Mettre à jour l'état
-            allowSteamUpdates = toggleAllowSteamUpdates.IsChecked ?? false;
+            allowSteamUpdates = newState;
+
+            // COPIE EXACTE de ToggleLockAll_Changed du panel admin
+            try
+            {
+                var folders = FolderPermissionService.LoadFolderPermissions();
+                if (folders == null || folders.Count == 0) return;
+
+                bool isChecked = !newState; // Inverse: si mises à jour autorisées = pas de protection
+
+                if (isChecked)
+                {
+                    // Verrouiller tous les dossiers
+                    foreach (var folder in folders)
+                    {
+                        folder.IsProtectionEnabled = true;
+                        FolderPermissionService.ApplyProtection(folder);
+                    }
+                }
+                else
+                {
+                    // Déverrouiller tous les dossiers
+                    foreach (var folder in folders)
+                    {
+                        folder.IsProtectionEnabled = false;
+                        FolderPermissionService.RemoveProtection(folder);
+                    }
+                }
+
+                // Sauvegarder les changements
+                FolderPermissionService.SaveFolderPermissions(folders);
+
+                // Notifier le panel admin du changement
+                NotifyAdminPanelOfChange();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur toggle mise à jour: {ex.Message}");
+            }
+        }
+
+        // NOUVELLE MÉTHODE : Notifier le panel admin du changement
+        private void NotifyAdminPanelOfChange()
+        {
+            try
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window is AdminPanelWindow adminPanel)
+                    {
+                        adminPanel.RefreshFolderPermissionsDisplay();
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur notification admin: {ex.Message}");
+            }
         }
     }
 }
