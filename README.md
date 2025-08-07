@@ -334,7 +334,7 @@ dotnet build --configuration Release
 
 ## Crédits et licence
 
-- **Développeur** : Angelus76 (Anthony Colombel)
+- **Développeur** : Angelus76
 - **Client** : Saint-Étienne-du-Rouvray
 - **Version** : 3.1
 - **Année** : 2025
