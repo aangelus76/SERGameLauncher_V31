@@ -74,6 +74,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,6 +103,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\RobloxUpdateService.cs" />
     <Compile Include="Custom\StartupConfigService.cs" />
     <Compile Include="Panel\AgeControl\AddEditProcessDialog.xaml.cs">
       <DependentUpon>AddEditProcessDialog.xaml</DependentUpon>

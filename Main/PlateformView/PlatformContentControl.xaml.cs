@@ -1,10 +1,14 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
+﻿using SERGamesLauncher_V31.Services;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace SERGamesLauncher_V31
@@ -23,6 +27,9 @@ namespace SERGamesLauncher_V31
         private bool isLaunchButtonCoolingDown = false;
         private int remainingSeconds = 30;
 
+        // Nouveau champ pour Roblox
+        private bool isRobloxUpdating = false;
+
         // Propriété pour limiter le changement de vue
         public bool AllowViewChange { get; private set; } = true;
 
@@ -33,6 +40,8 @@ namespace SERGamesLauncher_V31
         public event EventHandler<bool> NavigationStateChanged;
 
         public event EventHandler<string> LaunchRequested;
+
+        private string cooldownButtonText = "Exécution";
 
         // Constructeur qui accepte un SteamActivityMonitor externe
         public PlatformContentControl(SteamActivityMonitor monitor)
@@ -65,96 +74,61 @@ namespace SERGamesLauncher_V31
             // Mettre à jour l'affichage du compte actuel
             Dispatcher.Invoke(() =>
             {
-                txtCurrentSteamAccount.Text = string.IsNullOrEmpty(username) ? "Compte: Non détecté" : $"Compte: {username}";
+                txtCurrentSteamAccount.Text = string.IsNullOrEmpty(username) ?
+                    "Aucun utilisateur Steam détecté" : $"Utilisateur Steam actuel : {username}";
             });
         }
 
-        // Gestionnaire pour le changement de la checkbox
-        private void OnCheckboxChanged(object sender, RoutedEventArgs e)
-        {
-            UpdateButtonState();
-        }
-
-        // Mettre à jour l'état du bouton selon les conditions
-        private void UpdateButtonState()
-        {
-            btnLaunch.IsEnabled = chkConsent.IsChecked == true && !isLaunchButtonCoolingDown && !IsCooldownActive;
-        }
-
-        // Afficher la vue d'information
-        public void ShowInfoView()
-        {
-            infoView.Visibility = Visibility.Visible;
-            platformView.Visibility = Visibility.Collapsed;
-            currentPlatform = null;
-            HideSteamControls();
-        }
-
-        // Configurer la plateforme
+        // Configurer la plateforme selon le type
         public void ConfigurePlatform(string platformName)
         {
-            if (IsCooldownActive)
-            {
-                CustomMessageBox.Show(Window.GetWindow(this),
-                    "Un lancement est en cours. Veuillez attendre la fin du cooldown avant de changer de plateforme.",
-                    "Lancement en cours", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-
             currentPlatform = platformName;
+
+            // Cacher la vue d'informations et afficher la vue de plateforme
             infoView.Visibility = Visibility.Collapsed;
             platformView.Visibility = Visibility.Visible;
-
-            // Réinitialiser la case à cocher
             chkConsent.IsChecked = false;
+            UpdateButtonState();
 
-            // Configurations spécifiques à la plateforme
-            switch (platformName)
+            switch (platformName.ToLower())
             {
-                case "Steam":
+                case "steam":
                     txtPlatformTitle.Text = "Steam";
-                    txtAccountMessage.Text = "Nous prêtons un compte Steam";
-                    txtInstructions.Text = "Un compte Steam configuré pour ce poste sera utilisé automatiquement. Toute tentative de déconnexion ou de changement de compte sera annulée.";
+                    txtAccountMessage.Text = "Compte Steam prêté par la ville";
+                    txtInstructions.Text = "Veuillez accepter les conditions d'utilisation ci-dessous pour continuer.";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["SteamColor"];
-                    // Activer le suivi de compte Steam et afficher les contrôles associés
-                    txtCurrentSteamAccount.Visibility = Visibility.Visible;
-                    steamControlsPanel.Visibility = Visibility.Visible;
-                    // Mettre à jour l'état des toggles pour qu'ils correspondent à l'état actuel
-                    toggleAllowUserAccounts.IsChecked = steamMonitor.AllowUserAccounts;
-                    allowUserSteamAccounts = steamMonitor.AllowUserAccounts;
-                    // Initialiser le toggle mises à jour à false
-                    toggleAllowSteamUpdates.IsChecked = false;
-                    allowSteamUpdates = false;
+                    ShowSteamControls();
+                    UpdateSteamAccountDisplay();
                     break;
-                case "Epic":
-                    txtPlatformTitle.Text = "Epic Games";
-                    txtAccountMessage.Text = "Nous ne prêtons pas de compte Epic Games";
-                    txtInstructions.Text = "Vous devez utiliser votre propre compte Epic Games.";
+                case "epic":
+                    txtPlatformTitle.Text = "Epic Games Store";
+                    txtAccountMessage.Text = "Nous ne prêtons pas de compte Epic";
+                    txtInstructions.Text = "Vous devez utiliser votre propre compte Epic Games";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["EpicColor"];
                     HideSteamControls();
                     break;
-                case "Crazy":
+                case "crazy":
                     txtPlatformTitle.Text = "CrazyGames (site de jeux en ligne)";
                     txtAccountMessage.Text = "Accès en ligne libre et gratuit";
                     txtInstructions.Text = "Aucun compte n'est nécessaire pour jouer à la plupart des jeux.";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["CrazyColor"];
                     HideSteamControls();
                     break;
-                case "Roblox":
+                case "roblox":
                     txtPlatformTitle.Text = "Roblox";
                     txtAccountMessage.Text = "Nous ne prêtons pas de compte Roblox";
                     txtInstructions.Text = "Vous devez utiliser votre propre compte Roblox";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["RobloxColor"];
                     HideSteamControls();
                     break;
-                case "BGA":
+                case "bga":
                     txtPlatformTitle.Text = "BoardGameArena (jeux de société en ligne)";
                     txtAccountMessage.Text = "Nous ne prêtons pas de compte BGA";
                     txtInstructions.Text = "Vous devez utiliser votre propre compte BoradGameArena";
                     imgPlatformLogo.Source = (BitmapImage)Application.Current.Resources["BGAColor"];
                     HideSteamControls();
                     break;
-                case "Xbox":
+                case "xbox":
                     txtPlatformTitle.Text = "Xbox Game Pass";
                     txtAccountMessage.Text = "Nous ne prêtons pas de compte Xbox";
                     txtInstructions.Text = "Vous devez utiliser votre propre compte Microsoft pour accéder au Xbox Game Pass.";
@@ -173,13 +147,21 @@ namespace SERGamesLauncher_V31
             steamControlsPanel.Visibility = Visibility.Collapsed;
         }
 
-        // Gestionnaire pour le bouton de lancement
-        private void LaunchButton_Click(object sender, RoutedEventArgs e)
+        // Gestionnaire pour le bouton de lancement - MODIFIÉ
+        private async void LaunchButton_Click(object sender, RoutedEventArgs e)
         {
             if (currentPlatform == null || isLaunchButtonCoolingDown) return;
 
             originalButtonText = btnLaunch.Content.ToString();
 
+            // Logique spéciale pour Roblox
+            if (currentPlatform.Equals("Roblox", StringComparison.OrdinalIgnoreCase))
+            {
+                await HandleRobloxLaunchAsync();
+                return;
+            }
+
+            // Logique normale pour les autres plateformes
             remainingSeconds = 30;
             btnLaunch.Content = $"Exécution ({remainingSeconds})";
 
@@ -227,10 +209,142 @@ namespace SERGamesLauncher_V31
             }
         }
 
+        // NOUVELLE MÉTHODE : Gestion du lancement Roblox avec mise à jour
+        private async Task HandleRobloxLaunchAsync()
+        {
+            try
+            {
+                isRobloxUpdating = true;
+                UpdateButtonState();
+                btnLaunch.Content = "En MAJ";
+                chkConsent.IsEnabled = false;
+                AllowViewChange = false;
+                NavigationStateChanged?.Invoke(this, false);
+
+                RobloxUpdateService.ProgressChanged += OnRobloxUpdateProgress;
+
+                var result = await RobloxUpdateService.CheckAndUpdateAsync();
+
+                RobloxUpdateService.ProgressChanged -= OnRobloxUpdateProgress;
+
+                if (result.Success)
+                {
+                    if (result.UpdatePerformed)
+                    {
+                        btnLaunch.Content = "Terminé";
+                        await Task.Delay(1000);
+                        // Utiliser le nouveau chemin après mise à jour
+                        LaunchRoblox(result.NewPath);
+                    }
+                    else
+                    {
+                        // Pas de mise à jour nécessaire, utiliser le chemin existant
+                        LaunchRoblox(null);
+                    }
+                }
+                else
+                {
+                    CustomMessageBox.Show(Window.GetWindow(this), result.Message,
+                        "Mise à jour Roblox", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    LaunchRoblox(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Erreur lors de la mise à jour: {ex.Message}",
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                LaunchRoblox(null);
+            }
+            finally
+            {
+                isRobloxUpdating = false;
+                RobloxUpdateService.ProgressChanged -= OnRobloxUpdateProgress;
+                txtRobloxProgress.Visibility = Visibility.Collapsed;
+                txtRobloxProgress.Text = "";
+                StartNormalCooldown();
+            }
+        }
+
+        // NOUVELLE MÉTHODE : Gestionnaire de progression Roblox
+        private void OnRobloxUpdateProgress(string message)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (!string.IsNullOrEmpty(message))
+                {
+                    btnLaunch.Content = "En MAJ";
+                    btnLaunch.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6B35"));
+                    btnLaunch.Cursor = Cursors.No;
+                    txtRobloxProgress.Text = message;
+                    txtRobloxProgress.Visibility = Visibility.Visible;
+                }
+            });
+        }
+
+        // NOUVELLE MÉTHODE : Lancer Roblox
+        private void LaunchRoblox(string customPath)
+        {
+            // Si pas de chemin personnalisé, recharger la config pour avoir le chemin mis à jour
+            if (string.IsNullOrEmpty(customPath))
+            {
+                List<PathConfig> pathConfigs = PathConfigService.LoadPathConfigs();
+                PathConfig pathConfig = PathConfigService.GetPathForPlatform(pathConfigs, currentPlatform);
+                if (pathConfig != null)
+                    customPath = pathConfig.Path;
+            }
+
+            if (string.IsNullOrEmpty(customPath) || !File.Exists(customPath))
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    "Impossible de trouver l'exécutable Roblox.",
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LaunchRequested?.Invoke(this, currentPlatform);
+
+            try
+            {
+                var startInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = customPath,
+                    Arguments = "--fast",
+                    UseShellExecute = true
+                };
+                System.Diagnostics.Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Impossible de lancer Roblox: {ex.Message}",
+                    "Erreur de lancement", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // NOUVELLE MÉTHODE : Démarrer cooldown normal
+        private void StartNormalCooldown()
+        {
+            btnLaunch.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF9500"));
+            remainingSeconds = 30;
+            cooldownButtonText = "Exécution";
+            btnLaunch.Content = $"{cooldownButtonText} ({remainingSeconds})";
+            
+            btnLaunch.Cursor = Cursors.No;
+            IsCooldownActive = true;
+            UpdateButtonState();
+            isLaunchButtonCoolingDown = true;
+            launchCooldownTimer.Start();
+            countdownTimer.Start();
+        }
+
         // Timer de décompte
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
-            btnLaunch.Content = $"{originalButtonText} ({remainingSeconds}s)";
+            btnLaunch.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF9500"));
+            btnLaunch.Content = $"{cooldownButtonText} ({remainingSeconds}s)";
+            
+            btnLaunch.Cursor = Cursors.No;
             remainingSeconds--;
 
             if (remainingSeconds < 0)
@@ -249,7 +363,8 @@ namespace SERGamesLauncher_V31
             AllowViewChange = true;
             isLaunchButtonCoolingDown = false;
             btnLaunch.Content = originalButtonText;
-
+            btnLaunch.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#268531"));
+            btnLaunch.Cursor = Cursors.Hand;
             chkConsent.IsEnabled = true;
             UpdateButtonState();
 
@@ -275,33 +390,33 @@ namespace SERGamesLauncher_V31
                 {
                     CustomMessageBox.Show(Window.GetWindow(this),
                         $"Le fichier Steam n'existe pas à l'emplacement configuré: {pathConfig.Path}\nVeuillez contacter un administrateur.",
-                        "Chemin invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        "Fichier manquant", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                string password = SteamAccountService.DecryptPassword(account.EncryptedPassword);
+                string arguments = $"-login {account.Username} {SteamAccountService.DecryptPassword(account.EncryptedPassword)}";
+                if (!string.IsNullOrEmpty(pathConfig.LaunchArguments))
+                {
+                    arguments += " " + pathConfig.LaunchArguments;
+                }
 
-                string baseArguments = $"-noreactlogin -login {account.Username} {password}";
-                string finalArguments = allowSteamUpdates ? baseArguments : $"{baseArguments} -no-browser +@NoUpdates";
-
-                ProcessStartInfo accountStartInfo = new ProcessStartInfo
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = pathConfig.Path,
-                    Arguments = finalArguments
-                };
-
-                Process process = Process.Start(accountStartInfo);
-
-                steamMonitor.NotifyStarting();
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                });
             }
             catch (Exception ex)
             {
                 CustomMessageBox.Show(Window.GetWindow(this),
-                    $"Erreur lors du lancement de Steam: {ex.Message}",
-                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    $"Impossible de lancer Steam: {ex.Message}",
+                    "Erreur de lancement", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Lancer d'autres plateformes
         private void LaunchPlatform(PathConfig pathConfig)
         {
             try
@@ -312,142 +427,90 @@ namespace SERGamesLauncher_V31
                 }
                 else
                 {
-                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    var startInfo = new ProcessStartInfo
                     {
-                        FileName = pathConfig.Path
+                        FileName = pathConfig.Path,
+                        Arguments = pathConfig.LaunchArguments ?? "",
+                        UseShellExecute = true
                     };
-
-                    if (!string.IsNullOrWhiteSpace(pathConfig.LaunchArguments))
-                    {
-                        startInfo.Arguments = pathConfig.LaunchArguments;
-                    }
-
                     Process.Start(startInfo);
                 }
             }
             catch (Exception ex)
             {
                 CustomMessageBox.Show(Window.GetWindow(this),
-                    $"Erreur lors du lancement de {currentPlatform}: {ex.Message}",
-                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    $"Impossible de lancer {currentPlatform}: {ex.Message}",
+                    "Erreur de lancement", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        // Gestionnaire pour le toggle d'autorisation des comptes personnels - CORRIGÉ
+        // Afficher la vue d'informations
+        public void ShowInfoView()
+        {
+            infoView.Visibility = Visibility.Visible;
+            platformView.Visibility = Visibility.Collapsed;
+            currentPlatform = null;
+        }
+
+        // Afficher les contrôles Steam
+        private void ShowSteamControls()
+        {
+            txtCurrentSteamAccount.Visibility = Visibility.Visible;
+            steamControlsPanel.Visibility = Visibility.Visible;
+        }
+
+        // Mettre à jour l'affichage du compte Steam
+        private void UpdateSteamAccountDisplay()
+        {
+            string machineName = Environment.MachineName;
+            List<SteamAccount> accounts = SteamAccountService.LoadSteamAccounts();
+            SteamAccount account = SteamAccountService.GetAccountForCurrentComputer(accounts);
+
+            if (account != null)
+            {
+                txtCurrentSteamAccount.Text = $"Compte configuré : {account.Username}";
+            }
+            else
+            {
+                txtCurrentSteamAccount.Text = "Aucun compte Steam configuré pour ce poste";
+            }
+        }
+
+        // Gestionnaire de changement de checkbox
+        private void OnCheckboxChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateButtonState();
+        }
+
+        // Mettre à jour l'état du bouton - MODIFIÉ
+        private void UpdateButtonState()
+        {
+            bool consentGiven = chkConsent.IsChecked == true;
+            bool platformSelected = !string.IsNullOrEmpty(currentPlatform);
+            bool notInCooldown = !isLaunchButtonCoolingDown && !isRobloxUpdating && !isRobloxUpdating;
+
+            btnLaunch.IsEnabled = consentGiven && platformSelected && notInCooldown;
+        }
+
+        // Gestion des toggles Steam
         private void ToggleAllowUserAccounts_Changed(object sender, RoutedEventArgs e)
         {
-            bool newState = toggleAllowUserAccounts.IsChecked ?? false;
-
-            if (newState && !allowUserSteamAccounts)
-            {
-                PasswordDialog passwordDialog = new PasswordDialog();
-                passwordDialog.Owner = Window.GetWindow(this);
-                passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur pour autoriser les comptes personnels";
-                passwordDialog.ShowDialog();
-
-                if (!passwordDialog.IsAuthenticated)
-                {
-                    toggleAllowUserAccounts.IsChecked = false;
-                    return;
-                }
-
-                CustomMessageBox.Show(Window.GetWindow(this),
-                    "Attention: Les comptes personnels sont maintenant autorisés sur Steam.\n\nCette option sera désactivée à la fermeture de l'application.",
-                    "Mode administrateur", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
-            allowUserSteamAccounts = newState;
-            steamMonitor.AllowUserAccounts = allowUserSteamAccounts;
-
-            // NOUVEAU : Appliquer la même logique que le panel admin
-            // Si comptes personnels autorisés = pas de protection sur les dossiers
-            FolderPermissionsControl.SetProtectionForAllFolders(!newState);
-
-            // Notifier le panel admin du changement
-            NotifyAdminPanelOfChange();
+            allowUserSteamAccounts = toggleAllowUserAccounts.IsChecked == true;
+            // Sauvegarder la configuration si nécessaire
         }
 
         private void ToggleAllowSteamUpdates_Changed(object sender, RoutedEventArgs e)
         {
-            bool newState = toggleAllowSteamUpdates.IsChecked ?? false;
-
-            if (newState && !allowSteamUpdates)
-            {
-                PasswordDialog passwordDialog = new PasswordDialog();
-                passwordDialog.Owner = Window.GetWindow(this);
-                passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur pour autoriser les mises à jour Steam";
-                passwordDialog.ShowDialog();
-
-                if (!passwordDialog.IsAuthenticated)
-                {
-                    toggleAllowSteamUpdates.IsChecked = false;
-                    return;
-                }
-
-                CustomMessageBox.Show(Window.GetWindow(this),
-                    "Attention: Les mises à jour Steam sont maintenant autorisées.\n\nCette option sera désactivée à la fermeture de l'application.",
-                    "Mode administrateur", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
-            allowSteamUpdates = newState;
-
-            // COPIE EXACTE de ToggleLockAll_Changed du panel admin
-            try
-            {
-                var folders = FolderPermissionService.LoadFolderPermissions();
-                if (folders == null || folders.Count == 0) return;
-
-                bool isChecked = !newState; // Inverse: si mises à jour autorisées = pas de protection
-
-                if (isChecked)
-                {
-                    // Verrouiller tous les dossiers
-                    foreach (var folder in folders)
-                    {
-                        folder.IsProtectionEnabled = true;
-                        FolderPermissionService.ApplyProtection(folder);
-                    }
-                }
-                else
-                {
-                    // Déverrouiller tous les dossiers
-                    foreach (var folder in folders)
-                    {
-                        folder.IsProtectionEnabled = false;
-                        FolderPermissionService.RemoveProtection(folder);
-                    }
-                }
-
-                // Sauvegarder les changements
-                FolderPermissionService.SaveFolderPermissions(folders);
-
-                // Notifier le panel admin du changement
-                NotifyAdminPanelOfChange();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Erreur toggle mise à jour: {ex.Message}");
-            }
+            allowSteamUpdates = toggleAllowSteamUpdates.IsChecked == true;
+            // Sauvegarder la configuration si nécessaire
         }
 
-        // NOUVELLE MÉTHODE : Notifier le panel admin du changement
-        private void NotifyAdminPanelOfChange()
+        // Nettoyage
+        public void Dispose()
         {
-            try
-            {
-                foreach (Window window in Application.Current.Windows)
-                {
-                    if (window is AdminPanelWindow adminPanel)
-                    {
-                        adminPanel.RefreshFolderPermissionsDisplay();
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Erreur notification admin: {ex.Message}");
-            }
+            launchCooldownTimer?.Stop();
+            countdownTimer?.Stop();
+            steamMonitor.UserChanged -= SteamMonitor_UserChanged;
         }
     }
 }

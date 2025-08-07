@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               
              xmlns:local="clr-namespace:SERGamesLauncher_V31"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="800">
@@ -114,9 +115,8 @@
                 <!-- Contrôles bas de page -->
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,20,0,60">
                     <!-- Consentement -->
-                    <!--<CheckBox x:Name="chkConsent" Margin="0,0,0,20" HorizontalAlignment="Center" Style="{StaticResource CustomCheckBoxStyle}">-->
                     <CheckBox x:Name="chkConsent" Margin="0,0,0,5" HorizontalAlignment="Center" Style="{StaticResource LargeCheckBoxStyle}">
-                        <TextBlock Text="Je m'engage à respecter les règles liées aux jeux vidéo de la structure." 
+                        <TextBlock Text="Je m'engage à respecter les règles liées aux jeux vidéo de la structure."
                                    Foreground="#e8ebe8" TextWrapping="Wrap" Width="650" TextAlignment="Center"
                                    FontSize="20" Margin="0,0,0,10"/>
                     </CheckBox>
@@ -126,13 +126,18 @@
                             Style="{StaticResource LaunchButtonStyle}"
                             IsEnabled="false"
                             Click="LaunchButton_Click"/>
-                    <!--<Button x:Name="btnLaunch" Content="Lancer" 
-        Style="{StaticResource LaunchButtonStyle}"
-        IsEnabled="{Binding ElementName=chkConsent, Path=IsChecked}"
-        Click="LaunchButton_Click"/>-->
+
+                    <!-- NOUVEAU : Zone de progression Roblox -->
+                    <TextBlock x:Name="txtRobloxProgress" 
+                               Text=""
+                               Foreground="#b5b5b5" 
+                               FontSize="12"
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,0"
+                               Visibility="Collapsed"/>
                 </StackPanel>
 
-                <!-- Contrôles Steam - MODIFIÉS pour ajouter le toggle mises à jour -->
+                <!-- Contrôles Steam -->
                 <StackPanel Grid.Row="2" 
                            HorizontalAlignment="Right" 
                            VerticalAlignment="Bottom"
@@ -154,7 +159,7 @@
                                       Unchecked="ToggleAllowUserAccounts_Changed"/>
                     </StackPanel>
 
-                    <!-- NOUVEAU : Toggle mises à jour Steam -->
+                    <!-- Toggle mises à jour Steam -->
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="txtAllowSteamUpdates" 
                                    Text="Autoriser mises à jour Steam  " 
@@ -169,15 +174,15 @@
                     </StackPanel>
                 </StackPanel>
 
-                <!-- Affichage du compte Steam actuel -->
-                <TextBlock x:Name="txtCurrentSteamAccount" 
-                           Grid.Row="2" 
-                           Text="Compte: Non détecté" 
-                           Foreground="#666666" 
-                           FontSize="12"
-                           HorizontalAlignment="Left" 
-                           VerticalAlignment="Bottom"
-                           Margin="20,0,0,20"
+                <!-- Compte Steam actuel -->
+                <TextBlock x:Name="txtCurrentSteamAccount"
+                           Grid.Row="0"
+                           Text=""
+                           Foreground="#b5b5b5"
+                           FontSize="14"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Margin="0,50,20,0"
                            Visibility="Collapsed"/>
             </Grid>
         </Border>
