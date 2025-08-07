@@ -7,24 +7,24 @@
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\custom\\versionutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\custom\\versionutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:custom\\versionutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|c:\\users\\admin\\source\\repos\\sergamelauncher_v31\\services\\robloxupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:services\\robloxupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\main\\plateformview\\platformcontentcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\plateformview\\platformcontentcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\main\\plateformview\\platformcontentcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\plateformview\\platformcontentcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\services\\robloxupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:services\\robloxupdateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|solutionrelative:main\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBC7A46F-DBAE-4A30-8BA6-3893745D4908}|SERGamesLauncher_V31.csproj|C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\properties\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -51,7 +51,7 @@
               "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Properties\\AssemblyInfo.cs",
               "RelativeToolTip": "Properties\\AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T08:34:00.053Z",
               "EditorCaption": ""
@@ -64,14 +64,14 @@
               "RelativeDocumentMoniker": "Custom\\VersionUtility.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Custom\\VersionUtility.cs",
               "RelativeToolTip": "Custom\\VersionUtility.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T08:33:34.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\App.xaml",
               "RelativeDocumentMoniker": "Main\\App.xaml",
@@ -82,30 +82,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "PlatformContentControl.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml",
               "RelativeDocumentMoniker": "Main\\PlateformView\\PlatformContentControl.xaml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml",
               "RelativeToolTip": "Main\\PlateformView\\PlatformContentControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-05T09:59:03.926Z"
+              "WhenOpened": "2025-08-05T09:59:03.926Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "PlatformContentControl.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml.cs",
               "RelativeDocumentMoniker": "Main\\PlateformView\\PlatformContentControl.xaml.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Main\\PlateformView\\PlatformContentControl.xaml.cs",
               "RelativeToolTip": "Main\\PlateformView\\PlatformContentControl.xaml.cs",
-              "ViewState": "AgIAADwBAAAAAAAAAAAUwFcBAABrAAAAAAAAAA==",
+              "ViewState": "AgIAAIEBAAAAAAAAAAAAAJcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T09:58:06.163Z"
+              "WhenOpened": "2025-08-05T09:58:06.163Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "RobloxUpdateService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\SERGameLauncher_V31\\Services\\RobloxUpdateService.cs",
               "RelativeDocumentMoniker": "Services\\RobloxUpdateService.cs",
@@ -113,8 +115,7 @@
               "RelativeToolTip": "Services\\RobloxUpdateService.cs",
               "ViewState": "AgIAAM4AAAAAAAAAAAAAAOQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T09:57:13.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-05T09:57:13.061Z"
             },
             {
               "$type": "Document",

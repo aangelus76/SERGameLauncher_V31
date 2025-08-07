@@ -400,13 +400,13 @@ namespace SERGamesLauncher_V31
                     arguments += " " + pathConfig.LaunchArguments;
                 }
 
-                Process.Start(new ProcessStartInfo
+                ProcessStartInfo startInfo = new ProcessStartInfo
                 {
                     FileName = pathConfig.Path,
-                    Arguments = arguments,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                });
+                    Arguments = arguments
+                };
+
+                Process.Start(startInfo);
             }
             catch (Exception ex)
             {
