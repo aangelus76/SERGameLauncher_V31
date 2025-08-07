@@ -7,7 +7,7 @@
       <IsProtectionEnabled>true</IsProtectionEnabled>
       <EnableOnStartup>true</EnableOnStartup>
       <ProtectionLevel>ReadOnly</ProtectionLevel>
-      <LastModified>07/08/2025 10:24:49</LastModified>
+      <LastModified>07/08/2025 10:35:26</LastModified>
     </Folder>
     <Folder id="d3fbd948-5b27-4eea-8423-f63513790799">
       <Name>Download Steam</Name>
@@ -15,7 +15,7 @@
       <IsProtectionEnabled>true</IsProtectionEnabled>
       <EnableOnStartup>true</EnableOnStartup>
       <ProtectionLevel>ReadOnly</ProtectionLevel>
-      <LastModified>07/08/2025 10:24:49</LastModified>
+      <LastModified>07/08/2025 10:35:26</LastModified>
     </Folder>
   </Folders>
 </Configuration>
