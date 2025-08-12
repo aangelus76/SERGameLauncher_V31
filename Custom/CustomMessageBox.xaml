@@ -59,15 +59,15 @@
             </Border>
 
             <!-- Contenu principal - Zone de message -->
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,54" Grid.RowSpan="2">
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <TextBlock x:Name="messageTextBlock" 
-                           Text="Message" Foreground="White" FontSize="14"
-                           TextWrapping="Wrap" Margin="20,15" VerticalAlignment="Center" 
-                           HorizontalAlignment="Center"/>
+               Text="Message" Foreground="White" FontSize="14"
+               TextWrapping="Wrap" Margin="20,15" VerticalAlignment="Top" 
+               HorizontalAlignment="Left"/>
             </ScrollViewer>
 
             <!-- Boutons -->
-            <Grid Grid.Row="1" x:Name="buttonGrid" Margin="0,132,0,10" Grid.RowSpan="2">
+            <Grid Grid.Row="2" x:Name="buttonGrid" Margin="20,10,20,0" VerticalAlignment="Center">
                 <!-- Grille dynamique pour les boutons, configurée par code -->
             </Grid>
         </Grid>

@@ -81,6 +81,43 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
+                <!-- SOLUTION 1 : Désactiver les clics sur le TextBlock -->
+                <Border x:Name="steamUpdateNotificationBorder" 
+        Grid.Row="0" 
+        Visibility="Collapsed" 
+        Background="#FF6B35" 
+        CornerRadius="4" 
+        Margin="20,20,20,0" 
+        HorizontalAlignment="Stretch" 
+        VerticalAlignment="Top" 
+        Cursor="Hand"
+        MouseLeftButtonUp="SteamUpdateNotification_Click"
+        MouseLeftButtonDown="SteamUpdateNotification_Click"
+        MouseRightButtonUp="SteamUpdateNotification_Click"
+        PreviewMouseLeftButtonUp="SteamUpdateNotification_Click"
+        PreviewMouseLeftButtonDown="SteamUpdateNotification_Click">
+
+                    <TextBlock x:Name="steamUpdateNotification" 
+               Text="🔄 Mises à jour disponibles - Cliquez ici" 
+               Foreground="White" 
+               Padding="12,6" 
+               TextAlignment="Center" 
+               FontWeight="SemiBold" 
+               FontSize="13"
+               IsHitTestVisible="False"/>
+
+                    <!-- Animation au survol -->
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#E55A2B"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+
                 <!-- En-tête (titre et message) -->
                 <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,40,0,10">
                     <TextBlock x:Name="txtPlatformTitle" 

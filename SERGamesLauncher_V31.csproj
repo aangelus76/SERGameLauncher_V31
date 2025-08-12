@@ -150,6 +150,7 @@
     <Compile Include="Panel\AgeControl\ProcessRestrictionService.cs" />
     <Compile Include="Custom\VersionUtility.cs" />
     <Compile Include="Custom\ShortcutUtility.cs" />
+    <Compile Include="Services\SteamUpdateChecker.cs" />
     <Page Include="Panel\AgeControl\AddEditProcessDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

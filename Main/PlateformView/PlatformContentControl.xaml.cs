@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Linq;
 
 namespace SERGamesLauncher_V31
 {
@@ -145,6 +146,7 @@ namespace SERGamesLauncher_V31
         {
             txtCurrentSteamAccount.Visibility = Visibility.Collapsed;
             steamControlsPanel.Visibility = Visibility.Collapsed;
+            steamUpdateNotificationBorder.Visibility = Visibility.Collapsed;
         }
 
         // Gestionnaire pour le bouton de lancement - MODIFIÉ
@@ -457,6 +459,82 @@ namespace SERGamesLauncher_V31
         {
             txtCurrentSteamAccount.Visibility = Visibility.Visible;
             steamControlsPanel.Visibility = Visibility.Visible;
+
+            _ = CheckSteamUpdatesAsync();
+        }
+
+        private async Task CheckSteamUpdatesAsync()
+        {
+            try
+            {
+                var updates = await SteamUpdateChecker.GetUpdatesAsync();
+
+                if (updates.Any())
+                {
+                    steamUpdateNotification.Text = $"🔄 {updates.Count} mise{(updates.Count > 1 ? "s" : "")} à jour disponible{(updates.Count > 1 ? "s" : "")} - Cliquez ici";
+                    steamUpdateNotificationBorder.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    steamUpdateNotificationBorder.Visibility = Visibility.Collapsed;
+                }
+            }
+            catch
+            {
+                steamUpdateNotificationBorder.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async void SteamUpdateNotification_Click(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                string originalText = steamUpdateNotification.Text;
+                steamUpdateNotification.Text = "🔄 Chargement...";
+
+                var updates = await SteamUpdateChecker.GetUpdatesAsync();
+
+                if (updates != null && updates.Any())
+                {
+                    var message = "Jeux Steam avec mises à jour disponibles :\n\n";
+                    foreach (var update in updates.Take(15)) // Afficher jusqu'à 15 jeux
+                    {
+                        message += $"• {update.Name}\n";
+                    }
+
+                    if (updates.Count > 15)
+                    {
+                        message += $"\n... et {updates.Count - 15} autre{(updates.Count - 15 > 1 ? "s" : "")} jeu{(updates.Count - 15 > 1 ? "x" : "")}\n";
+                    }
+
+                    message += $"\nLancez Steam pour installer les mises à jour.";
+
+                    // UTILISER LA VERSION AVEC TAILLE PERSONNALISÉE
+                    CustomMessageBox.Show(Window.GetWindow(this), message,
+                        "Mises à jour Steam", MessageBoxButton.OK, MessageBoxImage.Information,
+                        500,    // Largeur fixe
+                        400);   // Hauteur fixe
+                }
+                else
+                {
+                    // Version normale pour "aucune mise à jour"
+                    CustomMessageBox.Show(Window.GetWindow(this),
+                        "Aucune mise à jour disponible pour le moment.",
+                        "Mises à jour Steam", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                steamUpdateNotification.Text = originalText;
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Window.GetWindow(this),
+                    $"Erreur lors de la récupération des mises à jour :\n\n{ex.Message}",
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning,
+                    450,    // Largeur pour l'erreur
+                    250);   // Hauteur pour l'erreur
+
+                steamUpdateNotification.Text = "🔄 Erreur - Cliquez pour réessayer";
+            }
         }
 
         // Mettre à jour l'affichage du compte Steam
