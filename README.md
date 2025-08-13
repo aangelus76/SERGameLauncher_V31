@@ -405,9 +405,8 @@ dotnet build --configuration Release
 ### Informations de version
 - **Version du programme** : 3.1 (constante)
 - **Build actuel** : W33-25.B2 (Semaine 33, Année 2025, Jour B=Mardi, Modification 2)
-- **Format du build** : W[Semaine]-[Année].[Jour][Modification]
 - **Distribution** : Production
-- **Dernière mise à jour** : Date de compilation automatique
+- **Dernière mise à jour** : Mardi 12 Août 2025
 
 ---
 
