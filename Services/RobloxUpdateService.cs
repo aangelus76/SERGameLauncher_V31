@@ -954,7 +954,7 @@ namespace SERGamesLauncher_V31.Services
 
                 return hasMinimum;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

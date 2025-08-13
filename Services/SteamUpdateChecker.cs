@@ -94,13 +94,13 @@ namespace SERGamesLauncher_V31.Services
         /// <summary>
         /// Calculer un checksum basé sur les builds des jeux installés
         /// </summary>
-        private static async Task<string> CalculateInstalledGamesChecksumAsync()
+        private static Task<string> CalculateInstalledGamesChecksumAsync()
         {
             try
             {
                 var steamPath = GetSteamPathFromConfig();
                 if (string.IsNullOrEmpty(steamPath))
-                    return "NO_STEAM";
+                    return Task.FromResult("NO_STEAM");
 
                 var installedGames = ScanGames(steamPath);
 
@@ -117,12 +117,12 @@ namespace SERGamesLauncher_V31.Services
                 using (var sha256 = SHA256.Create())
                 {
                     var hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(checksumData));
-                    return Convert.ToBase64String(hash).Substring(0, 16); // 16 caractères suffisent
+                    return Task.FromResult(Convert.ToBase64String(hash).Substring(0, 16)); // 16 caractères suffisent
                 }
             }
             catch
             {
-                return DateTime.Now.ToString("yyyyMMdd"); // Fallback sur la date
+                return Task.FromResult(DateTime.Now.ToString("yyyyMMdd")); // Fallback sur la date
             }
         }
 
@@ -178,7 +178,7 @@ namespace SERGamesLauncher_V31.Services
             {
                 semaphore.Dispose();
             }
-
+            await Task.CompletedTask;
             return updates;
         }
 
