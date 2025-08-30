@@ -123,18 +123,29 @@ namespace SERGamesLauncher_V31.Services
         /// </summary>
         public static async Task<UpdateResult> CheckAndUpdateAsync()
         {
-
             HttpClient httpClient = null;
             string downloadFolder = null;
 
             try
             {
-                // Initialisation du client HTTP optimisé
+                bool isAdmin = new System.Security.Principal.WindowsPrincipal(
+                    System.Security.Principal.WindowsIdentity.GetCurrent())
+                    .IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
+
+                if (!isAdmin)
+                {
+                    return new UpdateResult
+                    {
+                        Success = true,
+                        UpdatePerformed = false,
+                        Message = "Session utilisateur - lancement de la version actuelle"
+                    };
+                }
+
                 httpClient = CreateOptimizedHttpClient();
 
                 ReportProgress("Vérification des permissions...");
 
-                // 1. Vérifier les permissions d'écriture
                 if (!CheckWritePermissions())
                 {
                     return new UpdateResult
@@ -147,7 +158,6 @@ namespace SERGamesLauncher_V31.Services
 
                 ReportProgress("Détection de la version locale...");
 
-                // 2. Détecter la version locale
                 string currentGuid = GetCurrentVersionGuid();
 
                 if (string.IsNullOrEmpty(currentGuid))
@@ -161,7 +171,6 @@ namespace SERGamesLauncher_V31.Services
 
                 ReportProgress("Vérification de la version en ligne...");
 
-                // 3. Vérifier la version en ligne
                 string onlineGuid = await GetOnlineVersionGuidAsync(httpClient);
 
                 if (string.IsNullOrEmpty(onlineGuid))
@@ -174,7 +183,6 @@ namespace SERGamesLauncher_V31.Services
                     };
                 }
 
-                // 4. Comparer les versions
                 if (currentGuid.Equals(onlineGuid, StringComparison.OrdinalIgnoreCase))
                 {
                     return new UpdateResult
@@ -187,11 +195,9 @@ namespace SERGamesLauncher_V31.Services
 
                 ReportProgress("Mise à jour nécessaire...");
 
-                // 5. Créer le dossier de téléchargement temporaire
                 downloadFolder = Path.Combine(Path.GetTempPath(), $"RobloxDownload_{Guid.NewGuid()}");
                 Directory.CreateDirectory(downloadFolder);
 
-                // 6. Effectuer la mise à jour optimisée
                 string newPath = await PerformOptimizedUpdateAsync(httpClient, onlineGuid, downloadFolder);
 
                 if (!string.IsNullOrEmpty(newPath))
@@ -226,12 +232,15 @@ namespace SERGamesLauncher_V31.Services
             }
             finally
             {
-                // Nettoyage
                 if (!string.IsNullOrEmpty(downloadFolder) && Directory.Exists(downloadFolder))
                 {
-                    
+                    try
+                    {
                         Directory.Delete(downloadFolder, true);
-                    
+                    }
+                    catch
+                    {
+                    }
                 }
 
                 httpClient?.Dispose();
