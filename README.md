@@ -31,6 +31,7 @@ Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différe
 - **Redémarrage automatique** : Force l'utilisation du compte configuré
 - **Mode administrateur** : Option pour autoriser les comptes personnels
 - **Contrôle des mises à jour** : Option pour bloquer/autoriser les mises à jour Steam
+- **Notifications de mise à jour** : Système intelligent de vérification des mises à jour de jeux Steam
 
 ### Système de mise à jour Roblox optimisé
 - **Service de mise à jour automatique** (`RobloxUpdateService`) : Mise à jour intelligente de Roblox
@@ -78,41 +79,41 @@ Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différe
 ```
 SERGamesLauncher_V31/
 ├── Main/                          # Interface principale
-│   ├── App.xaml(.cs)             # Application et styles globaux
-│   ├── MainWindow.xaml(.cs)      # Fenêtre principale
-│   └── PlateformView/            # Contrôles de plateforme
-├── Panel/                        # Panneau d'administration
-│   ├── AdminPanelWindow.xaml(.cs) # Fenêtre d'administration
-│   ├── Steam/                    # Gestion des comptes Steam
-│   ├── ButtonView/               # Visibilité des plateformes
-│   ├── Path/                     # Chemins d'applications
-│   ├── PermissionFolders/        # Permissions de dossiers
-│   ├── AgeControl/               # Contrôle parental
-│   └── SilentMode/               # Planning silencieux
-├── Services/                     # Services métiers
-│   └── RobloxUpdateService.cs    # Service de mise à jour Roblox
-├── Custom/                       # Composants personnalisés
-│   ├── CustomWindow.cs           # Classe de base des fenêtres
-│   ├── CustomMessageBox.xaml(.cs) # Boîtes de dialogue
-│   ├── PasswordDialog.xaml(.cs)  # Authentification
-│   ├── VersionUtility.cs         # Gestion des versions
-│   └── StartupConfigService.cs   # Service de configuration de démarrage
-└── Images/                       # Ressources graphiques
+│   ├── MainWindow.xaml            # Fenêtre principale
+│   ├── PlateformView/             # Vues des plateformes
+│   └── CustomMessageBox/          # Boîtes de dialogue personnalisées
+├── Panel/                         # Panneau d'administration
+│   ├── AdminPanel.xaml            # Interface admin
+│   ├── ButtonView/                # Configuration visibilité
+│   ├── Path/                      # Configuration chemins
+│   ├── Steam/                     # Configuration Steam
+│   ├── FolderPermissions/         # Permissions dossiers
+│   ├── AgeControl/                # Contrôle parental
+│   └── SilentMode/                # Mode silencieux
+├── Services/                      # Services métier
+│   ├── RobloxUpdateService.cs     # Mises à jour Roblox
+│   └── SteamUpdateChecker.cs      # Vérification mises à jour Steam
+├── Custom/                        # Utilitaires
+│   ├── StartupConfigService.cs    # Configuration démarrage
+│   └── VersionUtility.cs          # Gestion versions
+└── Config/                        # Fichiers de configuration
+    ├── adminPassword.txt          # Mot de passe admin (chiffré)
+    ├── steamAccounts.xml          # Comptes Steam (chiffrés)
+    ├── platformVisibility.xml     # Visibilité plateformes
+    ├── pathConfigs.xml            # Chemins applications
+    ├── folderPermissions.xml      # Permissions dossiers
+    ├── processRestrictions.xml    # Restrictions processus
+    ├── silentModeSchedule.json    # Planning silencieux
+    └── startupConfig.xml           # Configuration démarrage
 ```
 
-### Design et interface
-- **Thème sombre cohérent** : Palette de couleurs professionnelle
-- **Fenêtres sans bordures** : Design moderne avec barres de titre personnalisées
-- **Animations et transitions** : Effets visuels pour une expérience fluide
-- **Responsive** : Interface adaptée aux différentes résolutions
-- **Accessibilité** : Contrastes appropriés et navigation au clavier
-
-### Stockage des données
-- **Comptes Steam** : JSON chiffré (`Config/steamAccounts.json`)
-- **Visibilité plateformes** : XML (`Config/platformConfig.xml`)
-- **Chemins applications** : XML (`Config/Path.xml`)
-- **Permissions dossiers** : XML (`Config/FolderPermissions.xml`)
-- **Restrictions processus** : XML (`Config/ProcessRestrictions.xml`)
+### Stockage des configurations
+- **Mot de passe admin** : Texte chiffré AES (`Config/adminPassword.txt`)
+- **Comptes Steam** : XML chiffré (`Config/steamAccounts.xml`)
+- **Visibilité plateformes** : XML (`Config/platformVisibility.xml`)
+- **Chemins applications** : XML (`Config/pathConfigs.xml`)
+- **Permissions dossiers** : XML (`Config/folderPermissions.xml`)
+- **Restrictions processus** : XML (`Config/processRestrictions.xml`)
 - **Planning silencieux** : JSON (`Config/silentModeSchedule.json`)
 - **Configuration démarrage** : XML (`Config/startupConfig.xml`)
 
@@ -157,6 +158,18 @@ RobloxUpdateService.CleanupOldVersions(versionsToKeep: 2);
 
 // Vérification de disponibilité de mise à jour sans téléchargement
 bool updateAvailable = await RobloxUpdateService.IsUpdateAvailableAsync();
+```
+
+### Vérification des mises à jour Steam
+```csharp
+// Vérification intelligente des mises à jour Steam avec cache
+var updates = await SteamUpdateChecker.GetUpdatesAsync();
+if (updates.Any()) {
+    // Affichage des notifications de mise à jour
+    foreach (var update in updates) {
+        Console.WriteLine($"{update.Name}: {update.OldBuild} -> {update.NewBuild}");
+    }
+}
 ```
 
 ## Installation et configuration
@@ -270,7 +283,7 @@ dotnet build --configuration Release
 ## Notes de fonctionnalités par build
 
 > **Version du programme : 3.1** (constante)  
-> **Build actuel : W32-25.D2**
+> **Build actuel : W33-25.B2**
 
 ### Build W23-25.F2 - Ajout du système de planning
 > *Point de départ des notes de mise à jour*
@@ -332,6 +345,55 @@ dotnet build --configuration Release
 
 ---
 
+### Build W33-25.B2 - Notifications Steam et améliorations UX
+
+#### Fonctionnalités ajoutées
+- **Service de vérification des mises à jour Steam** (`Services/SteamUpdateChecker.cs`)
+  - Système intelligent de cache avec checksum pour éviter les vérifications inutiles
+  - Vérification automatique des mises à jour de jeux Steam installés
+  - Cache journalier avec détection de changements dans les jeux installés
+  - Exclusion automatique des redistributables et outils (ex: Steamworks Common)
+  - Gestion des timeouts et récupération d'erreurs gracieuse
+
+- **Notifications interactives de mise à jour Steam** dans `PlatformContentControl.xaml`
+  - Notification cliquable affichant le nombre de mises à jour disponibles
+  - Interface détaillée listant jusqu'à 15 jeux avec mises à jour
+  - Gestion intelligente des pluriels et messages d'état
+  - Indicateur de chargement pendant la vérification
+  - Gestion d'erreurs avec possibilité de réessayer
+
+#### Améliorations de l'interface
+- **CustomMessageBox avec tailles personnalisées**
+  - Support des dimensions fixes pour un meilleur affichage
+  - Optimisation pour l'affichage des listes de mises à jour Steam
+  - Amélioration de la présentation des messages d'erreur
+
+- **Intégration Steam enrichie**
+  - Vérification automatique des mises à jour lors de l'affichage de Steam
+  - Interface utilisateur plus réactive avec états de chargement
+  - Messages contextuels selon le nombre de mises à jour disponibles
+
+#### Améliorations techniques
+- **Cache intelligent** avec système de checksum MD5
+  - Détection automatique des changements dans la bibliothèque Steam
+  - Évite les vérifications réseau inutiles
+  - Persistence des données entre les sessions
+
+- **Optimisations performance**
+  - Timeout configuré à 10 secondes pour les requêtes HTTP
+  - Gestion asynchrone complète pour éviter le blocage de l'interface
+  - Nettoyage automatique des ressources HttpClient
+
+#### Nouvelles classes et services
+- `Services/SteamUpdateChecker.cs` - Service complet de vérification des mises à jour Steam
+- Classe `GameUpdate` - Modèle pour les informations de mise à jour
+- Classe `CheckCache` - Gestion du cache intelligent avec checksum
+
+#### Fichiers de configuration nouveaux
+- `Config/steamCheck.json` - Cache des vérifications Steam avec métadonnées
+
+---
+
 ## Crédits et licence
 
 - **Développeur** : Angelus76
@@ -342,10 +404,9 @@ dotnet build --configuration Release
 
 ### Informations de version
 - **Version du programme** : 3.1 (constante)
-- **Build actuel** : W32-25.D2 (Semaine 32, Année 2025, Jour 2)
-- **Format du build** : W[Semaine]-[Année].D[Jour]
+- **Build actuel** : W33-25.B2 (Semaine 33, Année 2025, Jour B=Mardi, Modification 2)
 - **Distribution** : Production
-- **Dernière mise à jour** : Date de compilation automatique
+- **Dernière mise à jour** : Mardi 12 Août 2025
 
 ---
 
