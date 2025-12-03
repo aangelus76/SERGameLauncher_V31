@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,6 +11,7 @@ namespace SERGamesLauncher_V31
         private FolderPermissionsControl folderPermissionsControl;
         private ProcessRestrictionsControl processRestrictionsControl;
         private SilentModeScheduleControl silentModeScheduleControl;
+        private CustomButtonControl customButtonControl;
 
         public AdminPanelWindow()
         {
@@ -37,6 +38,7 @@ namespace SERGamesLauncher_V31
             folderPermissionsControl = new FolderPermissionsControl();
             processRestrictionsControl = new ProcessRestrictionsControl();
             silentModeScheduleControl = new SilentModeScheduleControl();
+            customButtonControl = new CustomButtonControl();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -98,7 +100,19 @@ namespace SERGamesLauncher_V31
             contentPresenter.Content = silentModeScheduleControl;
         }
 
-        // NOUVELLE MÉTHODE : Rafraîchir l'affichage des permissions de dossiers
+        /// <summary>
+        /// NOUVEAU : Gestionnaire pour le bouton personnalisé
+        /// </summary>
+        private void btnCustomButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Recréer le contrôle pour rafraîchir les données
+            customButtonControl = new CustomButtonControl();
+            contentPresenter.Content = customButtonControl;
+        }
+
+        /// <summary>
+        /// Rafraîchir l'affichage des permissions de dossiers
+        /// </summary>
         public void RefreshFolderPermissionsDisplay()
         {
             try

@@ -1,0 +1,13 @@
+{
+  "IsEnabled": false,
+  "ButtonLabel": "Mon Projet",
+  "PageTitle": "Mon Projet",
+  "PageSubtitle": "Projet en cours",
+  "PageInstructions": "Description du projet ou instructions pour l\u0027utilisateur.",
+  "TargetType": "url",
+  "TargetPath": "https://ouipu.com",
+  "LaunchArguments": "",
+  "ImageFileName": "custom_image.png",
+  "UseToken": false,
+  "TokenFormat": "{FULLNAME},{AGE},{PC}"
+}

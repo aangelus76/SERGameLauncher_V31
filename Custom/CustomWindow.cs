@@ -1,5 +1,6 @@
-﻿// CustomWindow.cs
+// CustomWindow.cs
 using System;
+using System.Security.Principal;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,6 +22,22 @@ namespace SERGamesLauncher_V31
 
             // Connecter les boutons après le chargement
             this.Loaded += CustomWindow_Loaded;
+        }
+
+        /// <summary>
+        /// Vérifie si le programme est lancé en mode administrateur Windows
+        /// </summary>
+        private bool IsRunningAsAdmin()
+        {
+            try
+            {
+                return new WindowsPrincipal(WindowsIdentity.GetCurrent())
+                    .IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void CustomWindow_Loaded(object sender, RoutedEventArgs e)
@@ -91,15 +108,26 @@ namespace SERGamesLauncher_V31
                     return;
                 }
 
-                // Afficher la boîte de dialogue de mot de passe
-                PasswordDialog passwordDialog = new PasswordDialog();
-                passwordDialog.Owner = this;
-                passwordDialog.CustomTitle = "Authentification Admin";
-                passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur";
-                passwordDialog.ShowDialog();
+                bool isAuthenticated = false;
+
+                // MODIFIÉ : Skip password si mode admin Windows
+                if (IsRunningAsAdmin())
+                {
+                    isAuthenticated = true;
+                }
+                else
+                {
+                    // Afficher la boîte de dialogue de mot de passe
+                    PasswordDialog passwordDialog = new PasswordDialog();
+                    passwordDialog.Owner = this;
+                    passwordDialog.CustomTitle = "Authentification Admin";
+                    passwordDialog.DialogMessage = "Veuillez entrer le mot de passe administrateur";
+                    passwordDialog.ShowDialog();
+                    isAuthenticated = passwordDialog.IsAuthenticated;
+                }
 
                 // Si authentification réussie, ouvrir le panneau d'administration
-                if (passwordDialog.IsAuthenticated)
+                if (isAuthenticated)
                 {
                     try
                     {
@@ -144,15 +172,26 @@ namespace SERGamesLauncher_V31
         {
             try
             {
-                // Afficher la boîte de dialogue de mot de passe
-                PasswordDialog passwordDialog = new PasswordDialog();
-                passwordDialog.Owner = this;
-                passwordDialog.CustomTitle = "Authentification pour fermeture"; // Titre personnalisé
-                passwordDialog.DialogMessage = "Mot de passe requis pour fermer l'application";
-                passwordDialog.ShowDialog();
+                bool isAuthenticated = false;
+
+                // MODIFIÉ : Skip password si mode admin Windows
+                if (IsRunningAsAdmin())
+                {
+                    isAuthenticated = true;
+                }
+                else
+                {
+                    // Afficher la boîte de dialogue de mot de passe
+                    PasswordDialog passwordDialog = new PasswordDialog();
+                    passwordDialog.Owner = this;
+                    passwordDialog.CustomTitle = "Authentification pour fermeture"; // Titre personnalisé
+                    passwordDialog.DialogMessage = "Mot de passe requis pour fermer l'application";
+                    passwordDialog.ShowDialog();
+                    isAuthenticated = passwordDialog.IsAuthenticated;
+                }
 
                 // Si authentification réussie, fermer l'application
-                if (passwordDialog.IsAuthenticated)
+                if (isAuthenticated)
                 {
                     this.Close();
                 }

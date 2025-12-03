@@ -1,4 +1,4 @@
-﻿<Window x:Class="SERGamesLauncher_V31.AdminPanelWindow"
+<Window x:Class="SERGamesLauncher_V31.AdminPanelWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SERGamesLauncher_V31"
         mc:Ignorable="d"
         Title="Panneau d'administration" 
-        Height="650" 
+        Height="712" 
         Width="1100"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -125,6 +125,11 @@
 
                             <Button x:Name="btnSilentModeSchedule" Style="{StaticResource PlatformButtonStyle}" Click="btnSilentModeSchedule_Click">
                                 <TextBlock Text="Planning silencieux" Foreground="White" FontSize="18" VerticalAlignment="Center" Width="186"/>
+                            </Button>
+                            
+                            <!-- NOUVEAU : Bouton personnalisé -->
+                            <Button x:Name="btnCustomButton" Style="{StaticResource PlatformButtonStyle}" Click="btnCustomButton_Click">
+                                <TextBlock Text="Bouton personnalisé" Foreground="White" FontSize="18" VerticalAlignment="Center" Width="186"/>
                             </Button>
                         </StackPanel>
                     </Border>

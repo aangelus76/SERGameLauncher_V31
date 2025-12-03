@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using System.Windows.Interop;
 using System.Security.Principal;
+using SERGamesLauncher_V31.Services;
 
 namespace SERGamesLauncher_V31
 {
@@ -32,6 +33,12 @@ namespace SERGamesLauncher_V31
 
         // Variable pour le système de focus
         private bool hasFocusBeenForced = false;
+
+        // NOUVEAU : Propriété pour savoir si on est en mode Admin
+        public bool IsAdminMode { get; private set; } = false;
+
+        // NOUVEAU : Infos utilisateur pour les placeholders
+        public UserInfoRetriever.UserInfo CurrentUserInfo { get; private set; }
 
         // Importation des API Windows pour le forçage du focus
         [DllImport("user32.dll")]
@@ -108,6 +115,9 @@ namespace SERGamesLauncher_V31
             // Mettre à jour l'indicateur de rôle utilisateur
             UpdateUserRoleIndicator();
 
+            // NOUVEAU : Charger le bouton personnalisé
+            RefreshCustomButton();
+
             // S'abonner aux événements de lancement
             platformContentControl.LaunchRequested += PlatformContentControl_LaunchRequested;
 
@@ -177,6 +187,12 @@ namespace SERGamesLauncher_V31
             {
                 button.IsEnabled = isNavigationAllowed;
             }
+            
+            // NOUVEAU : Mettre à jour aussi le bouton custom s'il est visible
+            if (btnCustom.Visibility == Visibility.Visible)
+            {
+                btnCustom.IsEnabled = isNavigationAllowed;
+            }
         }
 
         // Gestionnaire d'événement pour les mises à jour des informations utilisateur
@@ -199,15 +215,17 @@ namespace SERGamesLauncher_V31
                 string username = Environment.UserName;
 
                 // Utiliser la classe UserInfoRetriever pour obtenir les informations
-                UserInfoRetriever.UserInfo userInfo = UserInfoRetriever.GetUserInfo(username);
+                CurrentUserInfo = UserInfoRetriever.GetUserInfo(username);
 
                 // Mettre à jour l'affichage
-                txtUserName.Text = $"Utilisateur : {userInfo.DisplayName}";
-                txtUserAge.Text = $"Âge : {userInfo.Age} ans";
+                txtUserName.Text = $"Utilisateur : {CurrentUserInfo.DisplayName}";
+                txtUserAge.Text = $"Âge : {CurrentUserInfo.Age} ans";
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Erreur lors de la mise à jour des informations utilisateur: {ex.Message}");
+                // Créer un UserInfo par défaut en cas d'erreur
+                CurrentUserInfo = new UserInfoRetriever.UserInfo();
             }
         }
 
@@ -219,11 +237,11 @@ namespace SERGamesLauncher_V31
             try
             {
                 // Vérifier si l'utilisateur actuel a des privilèges administrateur
-                bool isAdmin = new WindowsPrincipal(WindowsIdentity.GetCurrent())
+                IsAdminMode = new WindowsPrincipal(WindowsIdentity.GetCurrent())
                     .IsInRole(WindowsBuiltInRole.Administrator);
 
                 // Mettre à jour l'affichage
-                if (isAdmin)
+                if (IsAdminMode)
                 {
                     txtUserRole.Text = "Mode : Admin";
                     txtUserRole.Foreground = new SolidColorBrush(Color.FromRgb(0x26, 0x85, 0x31)); // Vert
@@ -233,14 +251,80 @@ namespace SERGamesLauncher_V31
                     txtUserRole.Text = "Mode : Utilisateur";
                     txtUserRole.Foreground = new SolidColorBrush(Color.FromRgb(0xE3, 0x91, 0x1E)); // Orange
                 }
+
+                // NOUVEAU : Informer le PlatformContentControl du mode admin
+                if (platformContentControl != null)
+                {
+                    platformContentControl.SetAdminMode(IsAdminMode);
+                }
             }
             catch (Exception ex)
             {
                 // En cas d'erreur, afficher "Inconnu"
                 txtUserRole.Text = "Mode : Inconnu";
                 txtUserRole.Foreground = new SolidColorBrush(Color.FromRgb(0xBB, 0xBD, 0xBB)); // Gris
+                IsAdminMode = false;
                 System.Diagnostics.Debug.WriteLine($"Erreur lors de la détection du rôle utilisateur: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// NOUVEAU : Rafraîchit l'affichage du bouton personnalisé
+        /// </summary>
+        public void RefreshCustomButton()
+        {
+            try
+            {
+                var config = CustomButtonService.LoadConfig();
+
+                if (config.IsEnabled)
+                {
+                    // Afficher le bouton
+                    btnCustom.Visibility = Visibility.Visible;
+
+                    // Mettre à jour le texte
+                    txtCustomButton.Text = config.ButtonLabel;
+
+                    // Charger l'image
+                    var image = CustomButtonService.LoadButtonImage(config);
+                    if (image != null)
+                    {
+                        imgCustomButton.Source = image;
+                    }
+                    else
+                    {
+                        // Image par défaut si pas d'image configurée
+                        try
+                        {
+                            imgCustomButton.Source = (System.Windows.Media.Imaging.BitmapImage)Application.Current.Resources["IconeLauncher"];
+                        }
+                        catch
+                        {
+                            // Pas d'image par défaut disponible
+                        }
+                    }
+                }
+                else
+                {
+                    btnCustom.Visibility = Visibility.Collapsed;
+                }
+            }
+            catch
+            {
+                btnCustom.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// NOUVEAU : Gestionnaire de clic sur le bouton personnalisé
+        /// </summary>
+        private void CustomButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!canChangePlatform) return;
+
+            currentPlatform = "Custom";
+            platformContentControl.ConfigurePlatform("Custom");
+            HighlightSelectedButton(btnCustom);
         }
 
         /// <summary>
@@ -267,7 +351,6 @@ namespace SERGamesLauncher_V31
 
         private void PlatformContentControl_LaunchRequested(object sender, string platform)
         {
-            // TODO: Peut ajouter une logique supplémentaire ici si nécessaire
             System.Diagnostics.Debug.WriteLine($"Lancement de la plateforme: {platform}");
         }
 
@@ -290,22 +373,18 @@ namespace SERGamesLauncher_V31
             // Verrouiller tous les dossiers à la fermeture de l'application
             try
             {
-                // Charger la configuration des dossiers protégés
                 var folders = FolderPermissionService.LoadFolderPermissions();
 
-                // Verrouiller tous les dossiers
                 foreach (var folder in folders)
                 {
                     folder.IsProtectionEnabled = true;
                     FolderPermissionService.ApplyProtection(folder);
                 }
 
-                // Sauvegarder les modifications
                 FolderPermissionService.SaveFolderPermissions(folders);
             }
             catch (Exception ex)
             {
-                // En cas d'erreur, ne pas bloquer la fermeture de l'application
                 System.Diagnostics.Debug.WriteLine($"Erreur lors du verrouillage des dossiers à la fermeture: {ex.Message}");
             }
         }
@@ -317,15 +396,11 @@ namespace SERGamesLauncher_V31
         {
             try
             {
-                // Charger la configuration des dossiers protégés
                 var folders = FolderPermissionService.LoadFolderPermissions();
-
-                // Appliquer les protections pour les dossiers configurés
                 FolderPermissionService.ApplyStartupProtections(folders);
             }
             catch (Exception ex)
             {
-                // En cas d'erreur, ne pas afficher de message pour ne pas perturber le démarrage
                 System.Diagnostics.Debug.WriteLine($"Erreur lors de l'application des protections de dossiers: {ex.Message}");
             }
         }
@@ -346,15 +421,12 @@ namespace SERGamesLauncher_V31
         }
 
         // Appliquer la configuration de visibilité des plateformes
-        // Méthode publique pour pouvoir être appelée depuis CustomWindow
         public void ApplyPlatformVisibility()
         {
             try
             {
-                // Charger la configuration de visibilité
                 Dictionary<string, bool> platformVisibility = Panel.PlatformConfigService.LoadPlatformVisibility();
 
-                // Appliquer la visibilité à chaque bouton
                 foreach (var platform in platformVisibility)
                 {
                     if (platformButtons.TryGetValue(platform.Key, out Button button))
@@ -365,48 +437,33 @@ namespace SERGamesLauncher_V31
             }
             catch (Exception)
             {
-                // En cas d'erreur, ne pas afficher de message
-                // Tous les boutons restent visibles par défaut
+                // En cas d'erreur, tous les boutons restent visibles par défaut
             }
         }
 
         private void ReglementButton_Click(object sender, RoutedEventArgs e)
         {
-            // Vérifier si le changement de vue est autorisé
             if (!canChangePlatform)
             {
                 return;
             }
 
-            // Réinitialiser la plateforme actuelle
             currentPlatform = null;
-
-            // Afficher la vue d'information
             platformContentControl.ShowInfoView();
-
-            // Mettre en évidence le bouton Règlement
             HighlightSelectedButton(btnReglement);
         }
 
-        // Navigation entre plateformes - modifiée pour vérifier si la navigation est autorisée
         private void PlatformButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is string platformName)
             {
-                // Vérifier si le changement de plateforme est autorisé
                 if (!canChangePlatform)
                 {
-                    // Ne rien faire si un lancement est en cours
                     return;
                 }
 
-                // Mettre à jour la plateforme actuelle
                 currentPlatform = platformName;
-
-                // Configurer le contrôle de contenu pour cette plateforme
                 platformContentControl.ConfigurePlatform(platformName);
-
-                // Mettre en évidence le bouton sélectionné
                 HighlightSelectedButton(button);
             }
         }
@@ -414,16 +471,20 @@ namespace SERGamesLauncher_V31
         // Mettre en évidence le bouton sélectionné
         private void HighlightSelectedButton(Button selectedButton)
         {
-            // Créer les styles
             var normalStyle = new Style(typeof(Button), (Style)FindResource("PlatformButtonStyle"));
             var selectedStyle = new Style(typeof(Button), (Style)FindResource("PlatformButtonStyle"));
             selectedStyle.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(0x28, 0x80, 0x1F))));
 
-            // Appliquer les styles
             foreach (var button in platformButtons.Values)
             {
                 button.Opacity = 1.0;
                 button.Style = normalStyle;
+            }
+
+            // NOUVEAU : Aussi réinitialiser le bouton custom
+            if (btnCustom.Visibility == Visibility.Visible)
+            {
+                btnCustom.Style = normalStyle;
             }
 
             selectedButton.Style = selectedStyle;
@@ -434,10 +495,7 @@ namespace SERGamesLauncher_V31
         {
             try
             {
-                // Accéder au handle de la fenêtre
                 IntPtr hwnd = new WindowInteropHelper(this).Handle;
-
-                // Modifier le style de la fenêtre pour forcer l'affichage dans la barre des tâches
                 int exStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
                 SetWindowLong(hwnd, GWL_EXSTYLE, exStyle | WS_EX_APPWINDOW);
             }
@@ -454,49 +512,39 @@ namespace SERGamesLauncher_V31
             {
                 var hwnd = new WindowInteropHelper(this).Handle;
 
-                // Si la fenêtre est minimisée, la restaurer
                 if (IsIconic(hwnd))
                 {
                     ShowWindow(hwnd, SW_RESTORE);
                 }
 
-                // Essayer plusieurs techniques pour forcer la fenêtre au premier plan
                 ShowWindow(hwnd, SW_SHOW);
                 BringWindowToTop(hwnd);
 
-                // Faire clignoter la fenêtre pour attirer l'attention (seulement au démarrage)
                 if (!hasFocusBeenForced)
                 {
                     FlashWindow(hwnd, true);
                 }
 
-                // Forcer la fenêtre au premier plan
                 SetForegroundWindow(hwnd);
 
-                // S'assurer que la fenêtre est visible
                 this.Visibility = Visibility.Visible;
                 this.WindowState = WindowState.Normal;
                 this.ShowInTaskbar = true;
 
-                // Technique agressive : Topmost temporaire
                 if (!hasFocusBeenForced)
                 {
                     this.Topmost = true;
 
-                    // Permettre aux événements de se propager
                     System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke(
                         System.Windows.Threading.DispatcherPriority.Background,
                         new Action(delegate { }));
 
-                    // Désactiver Topmost après un court délai
                     Task.Delay(1000).ContinueWith(t =>
                     {
                         this.Dispatcher.Invoke(() =>
                         {
                             this.Topmost = false;
                             this.Activate();
-
-                            // Marquer que le focus a été forcé
                             hasFocusBeenForced = true;
                         });
                     });

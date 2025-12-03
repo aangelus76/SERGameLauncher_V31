@@ -152,3 +152,5 @@ C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.e
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.application
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.exe
 C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\SERGamesLauncher_V31.pdb
+C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\CustomButton\CustomButtonControl.g.cs
+C:\Users\Admin\Source\Repos\SERGameLauncher_V31\obj\Debug\Panel\CustomButton\CustomButtonControl.baml

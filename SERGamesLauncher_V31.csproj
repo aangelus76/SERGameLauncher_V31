@@ -103,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Panel\CustomButton\CustomButtonControl.xaml.cs">
+      <DependentUpon>CustomButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CustomButtonService.cs" />
     <Compile Include="Services\RobloxUpdateService.cs" />
     <Compile Include="Custom\StartupConfigService.cs" />
     <Compile Include="Panel\AgeControl\AddEditProcessDialog.xaml.cs">
@@ -154,6 +158,10 @@
     <Page Include="Panel\AgeControl\AddEditProcessDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panel\CustomButton\CustomButtonControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Panel\PermissionFolders\AddEditFolderDialog.xaml">
       <SubType>Designer</SubType>
