@@ -15,15 +15,47 @@ Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différe
 - **CrazyGames** (site web)
 - **BoardGameArena** (site web)
 - **Xbox Game Pass**
+- **Bouton personnalisé** (configurable dynamiquement)
 
 ## Fonctionnalités principales
 
 ### Interface utilisateur
 - **Mode utilisateur** : Interface simple pour lancer les plateformes
 - **Mode administrateur** : Panneau de configuration avancé (protégé par mot de passe)
+- **Mode Admin Windows** : Bypass automatique des mots de passe si lancé en admin Windows
 - **Design moderne** : Thème sombre avec coins arrondis et effets visuels
 - **Navigation intuitive** : Sélection de plateforme avec aperçu et instructions
-- **Indicateur de rôle** : Affichage du mode (Utilisateur/Administrateur) dans l'interface
+- **Indicateur de rôle** : Affichage du mode (Utilisateur/Admin) dans l'interface avec couleur
+
+### Bouton personnalisé dynamique
+- **Configuration via panneau admin** : Création de bouton sans recompilation
+- **Support URL et exécutables** : Lance un site web ou une application
+- **Système de placeholders** : Variables dynamiques remplacées au lancement
+- **Token chiffré AES-128** : Authentification sécurisée vers serveurs externes
+- **Image personnalisée** : Upload et redimensionnement automatique
+
+#### Placeholders disponibles
+| Placeholder | Description |
+|-------------|-------------|
+| `{FULLNAME}` | Nom complet depuis Active Directory |
+| `{AGE}` | Âge calculé depuis la date de naissance AD |
+| `{PC}` | Nom du poste (Environment.MachineName) |
+| `{TIMESTAMP}` | Timestamp Unix en secondes |
+| `{TOKEN}` | Données chiffrées AES-128 (URL-encoded) |
+
+#### Exemple d'utilisation
+```
+URL: https://monsite.com/jeu?auth={TOKEN}&user={FULLNAME}
+Format token: {FULLNAME},{AGE},{PC},{TIMESTAMP}
+```
+
+### Mode Administrateur Windows
+Lorsque le programme est lancé avec des privilèges administrateur Windows :
+- **Bypass mot de passe** : Accès direct au panneau admin
+- **Fermeture sans mot de passe** : Fermeture directe de l'application
+- **Cooldown réduit** : 10 secondes au lieu de 30 après un lancement
+- **Toggles Steam sans mot de passe** : Activation directe des comptes perso/mises à jour
+- **Indicateur visuel** : "Mode : Admin" en vert dans l'interface
 
 ### Gestion de Steam avancée
 - **Comptes préconfigurés** : Injection automatique des identifiants par poste
@@ -32,6 +64,7 @@ Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différe
 - **Mode administrateur** : Option pour autoriser les comptes personnels
 - **Contrôle des mises à jour** : Option pour bloquer/autoriser les mises à jour Steam
 - **Notifications de mise à jour** : Système intelligent de vérification des mises à jour de jeux Steam
+- **Conservation des états** : Les toggles restent activés lors des changements de page
 
 ### Système de mise à jour Roblox optimisé
 - **Service de mise à jour automatique** (`RobloxUpdateService`) : Mise à jour intelligente de Roblox
@@ -49,7 +82,7 @@ Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différe
 
 ### Sécurité et contrôle d'accès
 - **Authentification administrateur** : Accès protégé par SHA-256
-- **Chiffrement AES** : Protection des mots de passe Steam
+- **Chiffrement AES-128** : Protection des mots de passe Steam et tokens
 - **Contrôle parental par âge** : Restrictions basées sur l'âge utilisateur (Active Directory)
 - **Protection de dossiers** : Contrôle des permissions (lecture seule, anti-suppression, anti-création)
 - **Surveillance des processus** : Fermeture automatique des applications non autorisées
@@ -62,13 +95,14 @@ Le SERGamesLauncher est un lanceur centralisé qui permet d'accéder à différe
 - **Permissions de dossiers** : Protection automatique au démarrage
 - **Restrictions d'âge** : Configuration des processus interdits par âge
 - **Planning silencieux** : Configuration des plages horaires de démarrage discret
+- **Bouton personnalisé** : Configuration complète d'un bouton dynamique
 
 ## Architecture technique
 
 ### Technologies utilisées
 - **.NET Framework 4.8**
 - **WPF (Windows Presentation Foundation)**
-- **Chiffrement AES** pour les données sensibles
+- **Chiffrement AES-128** pour les données sensibles et tokens
 - **SHA-256** pour l'authentification
 - **XML/JSON** pour le stockage des configurations
 - **Active Directory** pour les informations utilisateur
@@ -89,11 +123,14 @@ SERGamesLauncher_V31/
 │   ├── Steam/                     # Configuration Steam
 │   ├── FolderPermissions/         # Permissions dossiers
 │   ├── AgeControl/                # Contrôle parental
-│   └── SilentMode/                # Mode silencieux
+│   ├── SilentMode/                # Mode silencieux
+│   └── CustomButton/              # Configuration bouton personnalisé
 ├── Services/                      # Services métier
 │   ├── RobloxUpdateService.cs     # Mises à jour Roblox
-│   └── SteamUpdateChecker.cs      # Vérification mises à jour Steam
+│   ├── SteamUpdateChecker.cs      # Vérification mises à jour Steam
+│   └── CustomButtonService.cs     # Gestion bouton personnalisé
 ├── Custom/                        # Utilitaires
+│   ├── CustomWindow.cs            # Fenêtre personnalisée avec support admin
 │   ├── StartupConfigService.cs    # Configuration démarrage
 │   └── VersionUtility.cs          # Gestion versions
 └── Config/                        # Fichiers de configuration
@@ -104,7 +141,9 @@ SERGamesLauncher_V31/
     ├── folderPermissions.xml      # Permissions dossiers
     ├── processRestrictions.xml    # Restrictions processus
     ├── silentModeSchedule.json    # Planning silencieux
-    └── startupConfig.xml           # Configuration démarrage
+    ├── startupConfig.xml          # Configuration démarrage
+    └── CustomButton/              # Configuration bouton personnalisé
+        └── customButton.json      # Paramètres du bouton
 ```
 
 ### Stockage des configurations
@@ -116,6 +155,45 @@ SERGamesLauncher_V31/
 - **Restrictions processus** : XML (`Config/processRestrictions.xml`)
 - **Planning silencieux** : JSON (`Config/silentModeSchedule.json`)
 - **Configuration démarrage** : XML (`Config/startupConfig.xml`)
+- **Bouton personnalisé** : JSON (`Config/CustomButton/customButton.json`)
+
+## Protocole de chiffrement des tokens
+
+Le système utilise AES-128-CBC pour chiffrer les tokens d'authentification.
+
+### Paramètres de chiffrement
+| Paramètre | Valeur |
+|-----------|--------|
+| Algorithme | AES-128-CBC |
+| Clé | `SERangelus76GameLauncher` |
+| Sel | Clé inversée en UTF-16LE |
+| Dérivation | PBKDF2, 1000 itérations, SHA256 |
+| Encoding données | UTF-8 |
+| Encoding transport | Base64 → URL-encoded |
+
+### Exemple de déchiffrement Node.js
+```javascript
+const crypto = require('crypto');
+
+function decryptToken(encryptedToken) {
+    const key = "SERangelus76GameLauncher";
+    const reversed = key.split('').reverse().join('');
+    const salt = Buffer.from(reversed, 'utf16le');
+    
+    const derived = crypto.pbkdf2Sync(key, salt, 1000, 32, 'sha256');
+    const aesKey = derived.slice(0, 16);
+    const iv = derived.slice(16, 32);
+    
+    const decoded = decodeURIComponent(encryptedToken);
+    const encryptedBytes = Buffer.from(decoded, 'base64');
+    
+    const decipher = crypto.createDecipheriv('aes-128-cbc', aesKey, iv);
+    let decrypted = decipher.update(encryptedBytes);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+    
+    return decrypted.toString('utf8');
+}
+```
 
 ## Fonctionnalités de sécurité avancées
 
@@ -172,6 +250,15 @@ if (updates.Any()) {
 }
 ```
 
+### Bouton personnalisé avec token chiffré
+```csharp
+// Génération d'un token chiffré avec les infos utilisateur
+var userInfo = UserPlaceholderInfo.CreateCurrent("Jean Dupont", 15);
+string url = "https://site.com?auth={TOKEN}";
+string finalUrl = CustomButtonService.ReplacePlaceholders(url, userInfo, config);
+// Résultat : https://site.com?auth=Kx7mN2pQ8v...
+```
+
 ## Installation et configuration
 
 ### Prérequis
@@ -193,21 +280,30 @@ if (updates.Any()) {
 3. **Comptes Steam** : Panel Admin → Comptes Steam (par poste)
 4. **Restrictions d'âge** : Panel Admin → Restrictions d'âge
 5. **Permissions dossiers** : Panel Admin → Permissions dossiers
+6. **Bouton personnalisé** : Panel Admin → Bouton personnalisé
 
 ## Utilisation
 
 ### Interface utilisateur
 1. **Sélection de plateforme** : Clic sur le bouton de gauche
 2. **Acceptation des règles** : Case à cocher obligatoire
-3. **Lancement** : Bouton "Lancer" (cooldown de 30 secondes)
+3. **Lancement** : Bouton "Lancer" (cooldown de 30 secondes, 10s en mode admin)
 4. **Navigation bloquée** : Pendant le lancement
-5. **Indicateur de rôle** : Visualisation du niveau d'accès (Utilisateur/Administrateur)
+5. **Indicateur de rôle** : Visualisation du niveau d'accès (Utilisateur/Admin)
 
 ### Administration
 1. **Accès** : Bouton de configuration dans la barre de titre
-2. **Authentification** : Saisie du mot de passe administrateur
+2. **Authentification** : Saisie du mot de passe (bypass si admin Windows)
 3. **Configuration** : Menu de gauche pour chaque section
 4. **Sauvegarde automatique** : Modifications appliquées immédiatement
+
+### Configuration du bouton personnalisé
+1. **Activer le bouton** : Toggle dans le panneau admin
+2. **Uploader une image** : Redimensionnement automatique
+3. **Configurer les textes** : Nom, titre, sous-titre, instructions
+4. **Définir la cible** : URL ou exécutable
+5. **Activer le token** : Si authentification requise
+6. **Définir le format** : `{FULLNAME},{AGE},{PC}` par exemple
 
 ### Mode silencieux
 - **Configuration** : Panel Admin → Planning silencieux
@@ -218,14 +314,14 @@ if (updates.Any()) {
 
 ### Niveaux de sécurité
 - **Utilisateur** : Accès aux plateformes autorisées uniquement
-- **Administrateur local** : Indicateur visuel dans l'interface
+- **Administrateur Windows** : Bypass des mots de passe, cooldown réduit
 - **Administrateur application** : Accès complet au panneau de configuration
 
 ### Mécanismes de protection
 - **Instance unique** : Mutex empêchant les instances multiples
-- **Fermeture protégée** : Authentification requise pour quitter
+- **Fermeture protégée** : Authentification requise pour quitter (sauf admin Windows)
 - **Surveillance continue** : Processus et sessions Steam
-- **Chiffrement fort** : AES pour les données sensibles
+- **Chiffrement fort** : AES-128 pour les données sensibles et tokens
 - **Hash sécurisé** : SHA-256 pour l'authentification
 - **Démarrage sécurisé** : Contrôle du focus et du démarrage discret
 
@@ -268,6 +364,11 @@ dotnet build --configuration Release
 - **Connexion Internet** : Vérification de la connectivité avant mise à jour
 - **Permissions Roblox** : Vérification des droits d'écriture dans le répertoire Roblox
 
+### Dépannage bouton personnalisé
+- **Bouton non visible** : Vérifier que le toggle est activé dans le panneau admin
+- **Token invalide** : Vérifier le format et les placeholders utilisés
+- **Image non affichée** : Formats supportés : PNG, JPG, BMP, GIF
+
 ### Problèmes de démarrage
 - **Démarrage trop lent** : Ajuster le délai dans `startupConfig.xml`
 - **Focus perdu** : Augmenter le nombre de tentatives de focus
@@ -283,7 +384,7 @@ dotnet build --configuration Release
 ## Notes de fonctionnalités par build
 
 > **Version du programme : 3.1** (constante)  
-> **Build actuel : W33-25.B2**
+> **Build actuel : W49-25.C2**
 
 ### Build W23-25.F2 - Ajout du système de planning
 > *Point de départ des notes de mise à jour*
@@ -394,6 +495,64 @@ dotnet build --configuration Release
 
 ---
 
+### Build W49-25.C2 - Mode Admin Windows et Bouton Personnalisé
+
+#### Fonctionnalités ajoutées
+- **Mode Administrateur Windows** (`Custom/CustomWindow.cs`)
+  - Détection automatique des privilèges admin Windows
+  - Bypass du mot de passe pour l'accès au panneau admin
+  - Bypass du mot de passe pour la fermeture de l'application
+  - Indicateur visuel "Mode : Admin" en vert dans l'interface
+
+- **Cooldown adaptatif** (`Main/PlateformView/PlatformContentControl.xaml.cs`)
+  - 10 secondes de cooldown en mode admin Windows
+  - 30 secondes de cooldown en mode utilisateur standard
+  - Bypass mot de passe pour toggles Steam (comptes perso/mises à jour) en mode admin
+
+- **Système de bouton personnalisé** (`Panel/CustomButton/`, `Services/CustomButtonService.cs`)
+  - Interface de configuration complète dans le panneau admin
+  - Support URL et exécutables avec arguments
+  - Système de placeholders dynamiques : `{FULLNAME}`, `{AGE}`, `{PC}`, `{TIMESTAMP}`, `{TOKEN}`
+  - Chiffrement AES-128 des tokens pour authentification externe
+  - Upload d'image avec redimensionnement automatique (50x50 bouton, 200x200 page)
+  - Configuration JSON dans `Config/CustomButton/customButton.json`
+
+#### Améliorations de l'interface
+- **Conservation des états Steam**
+  - Les toggles (comptes perso, mises à jour) restent activés lors des changements de page
+  - Synchronisation avec l'état du SteamActivityMonitor
+
+- **Bouton dynamique dans le menu principal**
+  - Apparaît entre "Règlement" et les plateformes si activé
+  - Image et texte configurables depuis le panneau admin
+  - Rafraîchissement en temps réel après modification
+
+#### Nouvelles classes et services
+- `Services/CustomButtonService.cs` - Gestion complète du bouton personnalisé
+  - `CustomButtonConfig` - Classe de configuration
+  - `UserPlaceholderInfo` - Structure pour les données utilisateur
+  - Méthodes de chiffrement/déchiffrement AES-128
+  - Gestion des images avec redimensionnement
+- `Panel/CustomButton/CustomButtonControl.xaml` - Interface de configuration
+- `Panel/CustomButton/CustomButtonControl.xaml.cs` - Logique de l'interface
+
+#### Fichiers modifiés
+- `Custom/CustomWindow.cs` - Support mode admin Windows
+- `Main/MainWindow.xaml` - Ajout du bouton personnalisé
+- `Main/MainWindow.xaml.cs` - Gestion du mode admin et rafraîchissement bouton
+- `Main/PlateformView/PlatformContentControl.xaml.cs` - Cooldown adaptatif, conservation états toggles
+- `Panel/AdminPanelWindow.xaml` - Ajout bouton "Bouton personnalisé"
+- `Panel/AdminPanelWindow.xaml.cs` - Initialisation du contrôle CustomButton
+
+#### Fichiers de configuration nouveaux
+- `Config/CustomButton/customButton.json` - Configuration du bouton personnalisé
+- `Config/CustomButton/custom_image.*` - Image du bouton (extension variable)
+
+#### Protocole de déchiffrement externe
+Documentation complète du protocole AES-128 pour déchiffrement côté serveur (Node.js, PHP, Python, etc.)
+
+---
+
 ## Crédits et licence
 
 - **Développeur** : Angelus76
@@ -404,9 +563,9 @@ dotnet build --configuration Release
 
 ### Informations de version
 - **Version du programme** : 3.1 (constante)
-- **Build actuel** : W33-25.B2 (Semaine 33, Année 2025, Jour B=Mardi, Modification 2)
+- **Build actuel** : W49-25.C2 (Semaine 49, Année 2025, Jour C=Mercredi, Modification 2)
 - **Distribution** : Production
-- **Dernière mise à jour** : Mardi 12 Août 2025
+- **Dernière mise à jour** : Mercredi 3 Décembre 2025
 
 ---
 
