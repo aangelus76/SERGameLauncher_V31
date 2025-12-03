@@ -165,7 +165,7 @@ Le système utilise AES-128-CBC pour chiffrer les tokens d'authentification.
 | Paramètre | Valeur |
 |-----------|--------|
 | Algorithme | AES-128-CBC |
-| Clé | `SERangelus76GameLauncher` |
+| Clé | `XX??XX` |
 | Sel | Clé inversée en UTF-16LE |
 | Dérivation | PBKDF2, 1000 itérations, SHA256 |
 | Encoding données | UTF-8 |
@@ -176,7 +176,7 @@ Le système utilise AES-128-CBC pour chiffrer les tokens d'authentification.
 const crypto = require('crypto');
 
 function decryptToken(encryptedToken) {
-    const key = "SERangelus76GameLauncher";
+    const key = "XX??XX";
     const reversed = key.split('').reverse().join('');
     const salt = Buffer.from(reversed, 'utf16le');
     
